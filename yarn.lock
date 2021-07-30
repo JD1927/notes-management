@@ -1172,6 +1172,13 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.7.0"
 
+"@ngrx/effects@^12.3.0":
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-12.3.0.tgz#2d1ed8fba0fa9e4b6945efab8eacd7ffe83f0a96"
+  integrity sha512-Bt8AMnnAXZRWYTori5Xg6C8UH9yI/BtenJWJxbYS7fz2IEVpmn/9HnfcdDtjIfnbdIiBUojnUM82KqoZWomyJQ==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/store-devtools@^12.3.0":
   version "12.3.0"
   resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-12.3.0.tgz#dbb7e89289ab50ef51f4e72d346bb3db9bc4f2b8"
