@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "notes-managment": {
+      "hosting": {
+        "notes-management": [
+          "notes-managment"
+        ]
+      }
+    }
+  }
+}
