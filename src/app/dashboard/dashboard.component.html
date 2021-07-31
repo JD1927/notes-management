@@ -8,13 +8,16 @@
         {{ 'dashboard.menu' | translate }}
       </mat-toolbar>
       <mat-nav-list>
-        <a mat-list-item href="#">Link 1</a>
-        <a mat-list-item href="#">Link 2</a>
-        <a mat-list-item href="#">Link 3</a>
+        <mat-list>
+          <div mat-subheader>{{ 'dashboard.nav-list.home' | translate }}</div>
+          <a mat-list-item href="#">Link 1</a>
+          <a mat-list-item href="#">Link 2</a>
+          <a mat-list-item href="#">Link 3</a>
+        </mat-list>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <mat-toolbar [color]="!isDarkMode && 'primary'">
+      <mat-toolbar [color]="!isDarkMode && 'primary'" fixedInViewport>
         <button
           type="button"
           aria-label="Toggle sidenav"
@@ -26,11 +29,20 @@
         <span>
           {{ 'dashboard.notes' | translate }}
         </span>
+        <div class="dark-mode-toggle">
+          <button
+            type="button"
+            aria-label="Toggle dark mode"
+            (click)="onSwitchTheme()"
+            mat-icon-button>
+            <mat-icon *ngIf="!isDarkMode" aria-label="dark mode">dark_mode</mat-icon>
+            <mat-icon *ngIf="isDarkMode" aria-label="light mode">light_mode</mat-icon>
+          </button>
+        </div>
       </mat-toolbar>
       <div>
         <router-outlet></router-outlet>
       </div>
-      <!-- Add Content Here -->
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

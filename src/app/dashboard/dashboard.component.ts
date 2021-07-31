@@ -11,7 +11,7 @@ import { LocalizationService } from '../shared/services/localization/localizatio
 })
 export class DashboardComponent implements OnInit {
 
-  isDarkMode: boolean = false;
+  isDarkMode = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -25,6 +25,18 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getDarkModeValue();
+  }
+
+  getDarkModeValue(): void {
+    const item = localStorage.getItem('isDarkMode');
+    this.isDarkMode = item === 'true';
+    console.log(this.isDarkMode);
+  }
+
+  onSwitchTheme(): void {
+    this.isDarkMode = !this.isDarkMode
+    localStorage.setItem('isDarkMode', `${this.isDarkMode}`);
   }
 
 }

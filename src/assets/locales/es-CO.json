@@ -1,6 +1,10 @@
 {
   "dashboard": {
     "menu": "Menú",
-    "notes": "Recados"
+    "notes": "Recados",
+    "dark-mode": "Modo oscuro",
+    "nav-list": {
+      "home": "Inicio"
+    }
   }
 }

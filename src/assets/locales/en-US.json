@@ -1,6 +1,10 @@
 {
   "dashboard": {
     "menu": "Menu",
-    "notes": "Notes"
+    "notes": "Notes",
+    "dark-mode": "Dark mode",
+    "nav-link": {
+      "home": "Home"
+    }
   }
 }
