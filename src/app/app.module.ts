@@ -13,6 +13,16 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Translate
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { InternationalizationModule } from './shared/modules/internationalization/internationalization.module';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/locales/', '.json');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +44,15 @@ import { AppComponent } from './app.component';
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,
     LayoutModule,
+    HttpClientModule,
+    InternationalizationModule.forRoot({ locale_id: 'es-CO' }), // initializing with default language: en-US
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { LocalizationService } from '../shared/services/localization/localization.service';
 
 @Component({
   selector: 'nm-dashboard',
@@ -10,7 +11,7 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
 
-  isDarkMode: boolean = true;
+  isDarkMode: boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -18,7 +19,10 @@ export class DashboardComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    public localizationService: LocalizationService
+  ) { }
 
   ngOnInit(): void {
   }

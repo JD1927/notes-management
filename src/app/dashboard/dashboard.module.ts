@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { InternationalizationModule } from '../shared/modules/internationalization/internationalization.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { DashboardComponent } from './dashboard.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    InternationalizationModule,
   ]
 })
 export class DashboardModule { }
