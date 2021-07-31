@@ -36,6 +36,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "node_modules/flag-icon-css/css/flag-icon.min.css",
               "src/styles.scss"
             ],
             "scripts": [],

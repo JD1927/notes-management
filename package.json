@@ -29,6 +29,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "firebase": "^7.0 || ^8.0",
+    "flag-icon-css": "^3.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
