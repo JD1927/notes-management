@@ -130,6 +130,15 @@
   dependencies:
     tslib "^2.2.0"
 
+"@angular/cdk@12.1.4":
+  version "12.1.4"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-12.1.4.tgz#321bbbdd79f1173b61314608927a8412576b3ac8"
+  integrity sha512-so8HP7jRNkGfdTkPmFVqyW4pj1vU0ASG1NaZMDXnin44PVjbJpaKhQsArhQ/yOmRP9XzP6TR3zHzmxszfGiaKg==
+  dependencies:
+    tslib "^2.2.0"
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~12.1.4":
   version "12.1.4"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-12.1.4.tgz#58e50bc2907ecc415224162af51626fcbba917d6"
@@ -207,6 +216,13 @@
   version "12.1.4"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-12.1.4.tgz#2552cff43b3d032bb610f4fc8e2d5656b37c7bd8"
   integrity sha512-HlPZH2HllX2/XEdAT7PkAYIEXn69KanvjxFD40++Xx5a0lMsv7HleYqRdRZYkxKUNCJljL3UqvI5sZ5CCOoVGw==
+  dependencies:
+    tslib "^2.2.0"
+
+"@angular/material@12.1.4":
+  version "12.1.4"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-12.1.4.tgz#444a875ab42b6c158dc68b5bc2ca5e59bac11028"
+  integrity sha512-lfBuk+3fxOvyIf9PknVIIC1DxYOimru06FpXq74lNcrNZcX3qCdDe/KmNbR50Wy0aEC4cOPXxJuPqm7wT8z2vg==
   dependencies:
     tslib "^2.2.0"
 
@@ -1544,6 +1560,20 @@
   integrity sha512-hXc8dTnRfDB7o1Pd7a07aw0rjGmVLXU28+cTHQJliosgD3obcjfZ4QPA0k97vlQMtqVJawuShRfyiUKrpsJf8Q==
   dependencies:
     enhanced-resolve "5.8.2"
+
+"@ngx-translate/core@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-13.0.0.tgz#60547cb8a0845a2a0abfde6b0bf5ec6516a63fd6"
+  integrity sha512-+tzEp8wlqEnw0Gc7jtVRAJ6RteUjXw6JJR4O65KlnxOmJrCGPI0xjV/lKRnQeU0w4i96PQs/jtpL921Wrb7PWg==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngx-translate/http-loader@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-6.0.0.tgz#041393ab5753f50ecf64262d624703046b8c7570"
+  integrity sha512-LCekn6qCbeXWlhESCxU1rAbZz33WzDG0lI7Ig0pYC1o5YxJWrkU9y3Y4tNi+jakQ7R6YhTR2D3ox6APxDtA0wA==
+  dependencies:
+    tslib "^2.0.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -7607,6 +7637,11 @@ parse5-sax-parser@^6.0.1:
   integrity sha512-kXX+5S81lgESA0LsDuGjAlBybImAChYRMT+/uKCEXFBFOeEhS52qUCydGhU3qLRD8D9DVjaUo821WK7DM4iCeg==
   dependencies:
     parse5 "^6.0.1"
+
+parse5@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
+  integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
 
 parse5@^6.0.1:
   version "6.0.1"
