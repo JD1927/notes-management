@@ -4,7 +4,8 @@
     "notes": "Notes",
     "dark-mode": "Dark mode",
     "light-mode": "Light mode",
-    "nav-link": {
+    "language-tooltip": "Change the current language.",
+    "nav-list": {
       "home": "Home"
     }
   }

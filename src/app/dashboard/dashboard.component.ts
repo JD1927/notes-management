@@ -11,9 +11,7 @@ import { LocalizationService } from '../shared/services/localization/localizatio
 })
 export class DashboardComponent implements OnInit {
 
-  isDarkMode = false;
-  darkMode: string = this.locale.translate('dashboard.dark-mode');
-  lightMode: string = this.locale.translate('dashboard.dark-mode');
+  isDarkMode: boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -39,6 +37,15 @@ export class DashboardComponent implements OnInit {
   onSwitchTheme(): void {
     this.isDarkMode = !this.isDarkMode
     localStorage.setItem('isDarkMode', `${this.isDarkMode}`);
+  }
+
+  async onSwitchLanguage(): Promise<void> {
+    const currentLanguage = this.locale.getCurrentLanguage();
+    if (currentLanguage === 'es-CO') {
+      await this.locale.useLanguage('en-US');
+    } else {
+      await this.locale.useLanguage('es-CO');
+    }
   }
 
 }

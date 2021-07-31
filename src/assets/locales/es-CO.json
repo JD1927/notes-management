@@ -4,6 +4,7 @@
     "notes": "Recados",
     "dark-mode": "Modo oscuro",
     "light-mode": "Modo claro",
+    "language-tooltip": "Cambiar el idioma actual.",
     "nav-list": {
       "home": "Inicio"
     }

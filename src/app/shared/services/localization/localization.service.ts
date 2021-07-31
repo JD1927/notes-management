@@ -1,12 +1,13 @@
 import { Injectable, Optional, SkipSelf } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { TranslateLanguage } from '../../models/translate-language.model';
 import { LocalizationConfigService } from './localization-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalizationService {
-  private _localeId: string = 'es-CO';
+  private _localeId: TranslateLanguage | string = 'es-CO';
 
   constructor(
     @Optional() @SkipSelf() private singleton: LocalizationService,
@@ -26,7 +27,7 @@ export class LocalizationService {
     return this.useLanguage(this._localeId);
   }
 
-  public async useLanguage(lang: string): Promise<void> {
+  public async useLanguage(lang: TranslateLanguage | string): Promise<void> {
     this.translateService.setDefaultLang(lang);
     try {
       return await this.translateService.use(lang).toPromise();
@@ -37,5 +38,9 @@ export class LocalizationService {
 
   public translate(key: string | string[], interpolateParams?: object): string {
     return this.translateService.instant(key, interpolateParams) as string;
+  }
+
+  public getCurrentLanguage(): string {
+    return this.translateService.currentLang;
   }
 }
