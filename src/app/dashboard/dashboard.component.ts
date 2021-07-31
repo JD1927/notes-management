@@ -12,6 +12,8 @@ import { LocalizationService } from '../shared/services/localization/localizatio
 export class DashboardComponent implements OnInit {
 
   isDarkMode = false;
+  darkMode: string = this.locale.translate('dashboard.dark-mode');
+  lightMode: string = this.locale.translate('dashboard.dark-mode');
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -21,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    public localizationService: LocalizationService
+    public locale: LocalizationService
   ) { }
 
   ngOnInit(): void {

@@ -35,8 +35,18 @@
             aria-label="Toggle dark mode"
             (click)="onSwitchTheme()"
             mat-icon-button>
-            <mat-icon *ngIf="!isDarkMode" aria-label="dark mode">dark_mode</mat-icon>
-            <mat-icon *ngIf="isDarkMode" aria-label="light mode">light_mode</mat-icon>
+            <mat-icon
+              [matTooltip]="locale.translate('dashboard.dark-mode')"
+              *ngIf="!isDarkMode"
+              aria-label="dark mode">
+              dark_mode
+            </mat-icon>
+            <mat-icon
+              [matTooltip]="locale.translate('dashboard.light-mode')"
+              *ngIf="isDarkMode"
+              aria-label="light mode">
+            light_mode
+          </mat-icon>
           </button>
         </div>
       </mat-toolbar>
