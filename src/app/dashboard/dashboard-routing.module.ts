@@ -6,6 +6,16 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    children: [
+      {
+        path: 'notes',
+        loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule),
+      },
+      {
+        path: 'apartments',
+        loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule),
+      },
+    ]
   },
 ];
 

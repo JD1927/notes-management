@@ -10,9 +10,12 @@
       <mat-nav-list>
         <mat-list>
           <div mat-subheader>{{ 'dashboard.nav-list.home' | translate }}</div>
-          <a mat-list-item href="#">Link 1</a>
-          <a mat-list-item href="#">Link 2</a>
-          <a mat-list-item href="#">Link 3</a>
+          <a mat-list-item [routerLink]="['/home/notes']" routerLinkActive="router-link-active">
+            {{ 'dashboard.notes' | translate }}
+          </a>
+          <a mat-list-item [routerLink]="['/home/apartments']" routerLinkActive="router-link-active">
+            {{ 'dashboard.apartment' | translate }}
+          </a>
         </mat-list>
       </mat-nav-list>
     </mat-sidenav>
@@ -29,8 +32,7 @@
         <span>
           {{ 'dashboard.notes' | translate }}
         </span>
-        <div class="toolbar-config">
-
+        <div class="toolbar-config" *ngIf="!(isHandset$ | async)">
           <button
             type="button"
             [matTooltip]="locale.translate('dashboard.language-tooltip')"
@@ -54,13 +56,13 @@
             mat-icon-button>
             <mat-icon
               [matTooltip]="locale.translate('dashboard.dark-mode')"
-              *ngIf="!isDarkMode"
+              *ngIf="isDarkMode"
               aria-label="dark mode">
               dark_mode
             </mat-icon>
             <mat-icon
               [matTooltip]="locale.translate('dashboard.light-mode')"
-              *ngIf="isDarkMode"
+              *ngIf="!isDarkMode"
               aria-label="light mode">
               light_mode
             </mat-icon>
