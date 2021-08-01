@@ -2,11 +2,18 @@
   "dashboard": {
     "menu": "Menu",
     "notes": "Notes",
+    "apartment": "Apartments",
     "dark-mode": "Dark mode",
     "light-mode": "Light mode",
     "language-tooltip": "Change the current language.",
     "nav-list": {
       "home": "Home"
     }
+  },
+  "notes": {
+
+  },
+  "apartment": {
+
   }
 }

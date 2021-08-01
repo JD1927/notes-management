@@ -1,12 +1,19 @@
 {
   "dashboard": {
     "menu": "Menú",
-    "notes": "Recados",
+    "notes": "Notas",
+    "apartment": "Apartamentos",
     "dark-mode": "Modo oscuro",
     "light-mode": "Modo claro",
     "language-tooltip": "Cambiar el idioma actual.",
     "nav-list": {
       "home": "Inicio"
     }
+  },
+  "notes": {
+
+  },
+  "apartment": {
+
   }
 }
