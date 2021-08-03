@@ -6,7 +6,7 @@
 @include mat.core();
 
 $notes-management-primary: mat.define-palette(mat.$indigo-palette);
-$notes-management-accent: mat.define-palette(mat.$amber-palette);
+$notes-management-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 $notes-management-warn: mat.define-palette(mat.$red-palette);
 
 $notes-management-light-theme: mat.define-light-theme((
@@ -25,7 +25,8 @@ $notes-management-dark-theme: mat.define-dark-theme((
   )
 ));
 
-@include mat.all-component-themes($notes-management-light-theme);
-.dark-mode {
-  @include mat.all-component-themes($notes-management-dark-theme);
+@include mat.all-component-themes($notes-management-dark-theme);
+
+.light-mode {
+  @include mat.all-component-colors($notes-management-light-theme);
 }
