@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { LocalizationService } from '../shared/services/localization/localization.service';
+import { ThemeService } from '../shared/services/themes/theme.service';
+import { getLocalStorageBooleanItem } from '../shared/utils/utils';
 
 @Component({
   selector: 'nm-dashboard',
@@ -11,7 +13,7 @@ import { LocalizationService } from '../shared/services/localization/localizatio
 })
 export class DashboardComponent implements OnInit {
 
-  isDarkMode: boolean = false;
+  isLightMode: boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -21,31 +23,29 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    public locale: LocalizationService
+    public locale: LocalizationService,
+    private themeService: ThemeService,
   ) { }
 
   ngOnInit(): void {
-    this.getDarkModeValue();
+    this.handleThemes();
   }
 
-  getDarkModeValue(): void {
-    const item = localStorage.getItem('isDarkMode');
-    this.isDarkMode = item === 'true';
-    console.log(this.isDarkMode);
+  handleThemes(): void {
+    this.isLightMode = getLocalStorageBooleanItem('isLightMode');
   }
 
   onSwitchTheme(): void {
-    this.isDarkMode = !this.isDarkMode
-    localStorage.setItem('isDarkMode', `${this.isDarkMode}`);
+    this.isLightMode = !this.isLightMode;
+    this.themeService.theme = this.isLightMode;
   }
 
   async onSwitchLanguage(): Promise<void> {
     const currentLanguage = this.locale.getCurrentLanguage();
-    if (currentLanguage === 'es-CO') {
-      await this.locale.useLanguage('en-US');
-    } else {
-      await this.locale.useLanguage('es-CO');
-    }
+    const lang = currentLanguage === 'es-CO' ? 'en-US' : 'es-CO';
+    await this.locale.useLanguage(lang);
   }
+
+
 
 }

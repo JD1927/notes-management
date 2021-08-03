@@ -15,6 +15,11 @@ const routes: Routes = [
         path: 'apartments',
         loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule),
       },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/home/notes/list'
+      },
     ]
   },
 ];

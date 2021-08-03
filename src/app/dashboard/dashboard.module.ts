@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { InternationalizationModule } from '../shared/modules/internationalization/internationalization.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { InternationalizationModule } from '../shared/modules/internationalizati
     MatIconModule,
     MatListModule,
     MatTooltipModule,
+    MatFormFieldModule,
     InternationalizationModule,
   ]
 })
