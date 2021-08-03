@@ -1,0 +1,23 @@
+@use '~@angular/material' as mat;
+@import './../../styles.scss';
+
+.auth-content {
+  background-color: map-get(mat.$dark-theme-background-palette, 'background');
+  color: map-get(mat.$dark-theme-foreground-palette, 'text');
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  max-width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  @include mq-up(xs) {
+    max-width: 500px;
+  }
+
+
+}

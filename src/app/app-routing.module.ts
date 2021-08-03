@@ -3,18 +3,22 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home'
+    redirectTo: '/auth/sign-in'
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/home'
+    redirectTo: '/auth/sign-in'
   },
 ];
 
