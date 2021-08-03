@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ApartmentsRoutingModule } from './apartments-routing.module';
 import { ApartmentsComponent } from './apartments.component';
+import { InternationalizationModule } from 'src/app/shared/modules/internationalization/internationalization.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ApartmentsComponent } from './apartments.component';
   ],
   imports: [
     CommonModule,
-    ApartmentsRoutingModule
+    ApartmentsRoutingModule,
+    InternationalizationModule,
   ]
 })
 export class ApartmentsModule { }
