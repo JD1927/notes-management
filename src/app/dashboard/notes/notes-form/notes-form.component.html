@@ -1,0 +1,76 @@
+<div>
+  <div *ngIf="isLoading" class="overlay-loader">
+    <mat-progress-spinner
+      diameter="50"
+      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div class="dashboard__header">
+    <button mat-icon-button [routerLink]="['/home/notes']">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div>
+      <h1 class="dashboard__title">{{ 'notes.form-title' | translate }}</h1>
+    </div>
+  </div>
+  <hr style="margin-bottom: 20px" />
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
+      <mat-label>{{ 'notes.input-title' | translate }}</mat-label>
+      <input
+        #title
+        matInput
+        formControlName="title"
+        maxlength="60"
+      >
+      <mat-hint align="end">{{title.value.length}} / 60</mat-hint>
+      <mat-error *ngIf="form.controls['title'].hasError('required')">
+        {{ 'error.required' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      class="form-field" appearance="outline">
+      <mat-label>{{ 'notes.input-description' | translate }}</mat-label>
+      <textarea
+        #description
+        formControlName="description"
+        rows="5"
+        matInput>
+      </textarea>
+      <mat-hint align="end">{{description.value.length}} / 200</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field
+      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      class="form-field"
+      appearance="outline">
+      <mat-label>{{ 'notes.date' | translate }}</mat-label>
+      <input matInput formControlName="date" [matDatepicker]="datepicker">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker [touchUi]="isDesktop ? false : true" #datepicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field
+      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      class="form-field"
+      appearance="outline">
+      <mat-label>{{ 'notes.time' | translate }}</mat-label>
+      <input type="time" matInput formControlName="time">
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button type="button" mat-raised-button [routerLink]="['/home/notes']">
+        {{ 'general.cancel' | translate }}
+      </button>
+      <button type="submit"
+        [disabled]="!form.valid"
+        mat-raised-button
+        [color]="themeConfig.theme ? 'primary' : 'accent'">
+        {{ 'notes.add' | translate }}
+      </button>
+    </div>
+  </form>
+</div>

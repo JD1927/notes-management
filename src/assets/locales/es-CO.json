@@ -1,4 +1,19 @@
 {
+  "general": {
+    "cancel": "CANCELAR",
+    "confirm": "CONFIRMAR",
+    "send": "ENVIAR",
+    "app-name": "Controlador de Notas",
+    "ACTIVE": "ACTIVO",
+    "CLOSED": "CERRADO"
+  },
+  "error": {
+    "required": "Campo requerido."
+  },
+  "auth": {
+    "sign-in-title": "Iniciar sesión",
+    "sign-up-title": "Registrarme"
+  },
   "dashboard": {
     "menu": "Menú",
     "notes": "Notas",
@@ -11,9 +26,16 @@
     }
   },
   "notes": {
-
+    "title": "Lista de Notas",
+    "add": "AGREGAR NOTA",
+    "form-title": "Formulario de Notas",
+    "input-title": "Title",
+    "input-description": "Description",
+    "status": "Estado",
+    "date": "Fecha",
+    "time": "Hora"
   },
-  "apartment": {
-
+  "apartments": {
+    "title": "Lista de Apartamentos"
   }
 }

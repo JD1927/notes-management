@@ -1,4 +1,19 @@
 {
+  "general": {
+    "cancel": "CANCEL",
+    "confirm": "CONFIRM",
+    "send": "SEND",
+    "app-name": "Notes Controller",
+    "ACTIVE": "ACTIVE",
+    "CLOSED": "CLOSED"
+  },
+  "error": {
+    "required": "Field required."
+  },
+  "auth": {
+    "sign-in-title": "Sign in",
+    "sign-up-title": "Sign up"
+  },
   "dashboard": {
     "menu": "Menu",
     "notes": "Notes",
@@ -11,9 +26,16 @@
     }
   },
   "notes": {
-
+    "title": "Note List",
+    "add": "ADD NOTE",
+    "form-title": "Notes Form",
+    "input-title": "Title",
+    "input-description": "Description",
+    "status": "Status",
+    "date": "Date",
+    "time": "Time"
   },
-  "apartment": {
-
+  "apartments": {
+    "title": "Apartment List"
   }
 }

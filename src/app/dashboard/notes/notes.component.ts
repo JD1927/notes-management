@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Note } from 'src/app/shared/models/notes.model';
+import { NotesService } from 'src/app/shared/services/firebase/notes.service';
 
 @Component({
   selector: 'nm-notes',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesComponent implements OnInit {
 
-  constructor() { }
+  notes$!: Observable<Note[]>;
+
+  constructor(
+    private notesService: NotesService,
+  ) { }
 
   ngOnInit(): void {
+    this.notes$ = this.notesService.list();
   }
+
 
 }

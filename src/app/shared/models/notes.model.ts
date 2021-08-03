@@ -1,11 +1,8 @@
-export enum NoteStatus {
-  ACTIVE = 'ACTIVE',
-  CLOSED = 'CLOSED',
-}
-
 export interface Note {
-  id: string;
+  id?: string;
   title: string;
   description?: string;
-  status: NoteStatus;
+  date: string;
+  time: string;
+  createdAt: string;
 }
