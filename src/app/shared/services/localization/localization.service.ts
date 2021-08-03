@@ -43,4 +43,8 @@ export class LocalizationService {
   public getCurrentLanguage(): string {
     return this.translateService.currentLang;
   }
+
+  public getDefaultLanguage(): string {
+    return this.translateService.defaultLang;
+  }
 }

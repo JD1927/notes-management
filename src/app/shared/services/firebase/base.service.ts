@@ -39,6 +39,7 @@ export abstract class BaseService<T extends IBaseEntity> implements IBaseService
         })
       );
   }
+
   add(item: T): Promise<T> {
     const promise = new Promise<T>((resolve, reject) => {
       this.collection.add(item).then(ref => {
