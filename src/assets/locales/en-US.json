@@ -3,16 +3,25 @@
     "cancel": "CANCEL",
     "confirm": "CONFIRM",
     "send": "SEND",
-    "app-name": "Notes Controller",
+    "app-name": "My Notes",
     "ACTIVE": "ACTIVE",
     "CLOSED": "CLOSED"
   },
   "error": {
-    "required": "Field required."
+    "required": "Field required.",
+    "email-pattern": "Please enter a valid email address.",
+    "password-pattern": "Password must contain numbers and letters.",
+    "password-mismatch": "Las contraseñas deben coincidir."
   },
   "auth": {
-    "sign-in-title": "Sign in",
-    "sign-up-title": "Sign up"
+    "sign-in-title": "SIGN IN",
+    "sign-up-title": "SIGN UP",
+    "email": "Email",
+    "password": "Password",
+    "confirm-password": "Confirm password",
+    "not-registered": "Aren't you registered yet?",
+    "register": "Sign up",
+    "password-hint": "Password must have at least 6 characters."
   },
   "dashboard": {
     "menu": "Menu",

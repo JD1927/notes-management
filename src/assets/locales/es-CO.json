@@ -3,16 +3,25 @@
     "cancel": "CANCELAR",
     "confirm": "CONFIRMAR",
     "send": "ENVIAR",
-    "app-name": "Controlador de Notas",
+    "app-name": "Mis Notas",
     "ACTIVE": "ACTIVO",
     "CLOSED": "CERRADO"
   },
   "error": {
-    "required": "Campo requerido."
+    "required": "Campo requerido.",
+    "email-pattern": "Por favor ingrese un correo válido.",
+    "password-pattern": "La contraseña debe contener números y letras.",
+    "password-mismatch": "Las contraseñas deben coincidir."
   },
   "auth": {
-    "sign-in-title": "Iniciar sesión",
-    "sign-up-title": "Registrarme"
+    "sign-in-title": "INICIAR SESIÓN",
+    "sign-up-title": "REGISTRARME",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirm-password": "Confirmar contraseña",
+    "not-registered": "No te has registrado aún?",
+    "register": "Registrarme",
+    "password-hint": "La contraseña debe tener mínimo de 6 caracteres."
   },
   "dashboard": {
     "menu": "Menú",
