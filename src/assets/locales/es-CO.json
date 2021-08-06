@@ -5,13 +5,16 @@
     "send": "ENVIAR",
     "app-name": "Mis Notas",
     "ACTIVE": "ACTIVO",
-    "CLOSED": "CERRADO"
+    "CLOSED": "CERRADO",
+    "welcome": "¡Bienvenido:"
   },
   "error": {
     "required": "Campo requerido.",
     "email-pattern": "Por favor ingrese un correo válido.",
     "password-pattern": "La contraseña debe contener números y letras.",
-    "password-mismatch": "Las contraseñas deben coincidir."
+    "password-mismatch": "Las contraseñas deben coincidir.",
+    "sign-in": "Usuario o contraseña inválidos.",
+    "sign-up": "El usuario ya está registrado."
   },
   "auth": {
     "sign-in-title": "INICIAR SESIÓN",
@@ -21,7 +24,8 @@
     "confirm-password": "Confirmar contraseña",
     "not-registered": "No te has registrado aún?",
     "register": "Registrarme",
-    "password-hint": "La contraseña debe tener mínimo de 6 caracteres."
+    "password-hint": "La contraseña debe tener mínimo de 6 caracteres.",
+    "sign-out": "CERRAR SESIÓN"
   },
   "dashboard": {
     "menu": "Menú",

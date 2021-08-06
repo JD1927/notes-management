@@ -5,13 +5,16 @@
     "send": "SEND",
     "app-name": "My Notes",
     "ACTIVE": "ACTIVE",
-    "CLOSED": "CLOSED"
+    "CLOSED": "CLOSED",
+    "welcome": "Welcome:"
   },
   "error": {
     "required": "Field required.",
     "email-pattern": "Please enter a valid email address.",
     "password-pattern": "Password must contain numbers and letters.",
-    "password-mismatch": "Las contraseñas deben coincidir."
+    "password-mismatch": "Passwords must match.",
+    "sign-in": "Invalid username or password.",
+    "sign-up": "User already registered."
   },
   "auth": {
     "sign-in-title": "SIGN IN",
@@ -21,7 +24,8 @@
     "confirm-password": "Confirm password",
     "not-registered": "Aren't you registered yet?",
     "register": "Sign up",
-    "password-hint": "Password must have at least 6 characters."
+    "password-hint": "Password must have at least 6 characters.",
+    "sign-out": "SIGN OUT"
   },
   "dashboard": {
     "menu": "Menu",
