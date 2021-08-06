@@ -1,5 +1,6 @@
 @use '~@angular/material' as mat;
 
+$error-color: #CF6679;
 .router-link-active {
   font-weight: 600;
 }
@@ -90,4 +91,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .link {
   color: map-get(mat.$amber-palette, A200);
+}
+
+.form-error {
+
+  @include e('box') {
+    background-color: $error-color;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  @include e('text') {
+    color: black;
+    padding: 20px;
+    font-size: 1rem;
+  }
 }
