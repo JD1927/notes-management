@@ -1,9 +1,21 @@
 <mat-card class="mat-elevation-z3 animated fade-in-down">
+  <div *ngIf="isLoading" class="overlay-loader">
+    <mat-progress-spinner
+      diameter="50"
+      color="accent"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
   <mat-card-header>
     <mat-icon mat-card-avatar>account_circle</mat-icon>
     <mat-card-title>{{ 'auth.sign-in-title' | translate }}</mat-card-title>
   </mat-card-header>
   <hr style="margin-bottom: 20px"/>
+  <div *ngIf="hasSignInError" class="form-error__box">
+    <div class="form-error__text">
+      {{ 'error.sign-in' | translate }}
+    </div>
+  </div>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field color="accent" class="form-field" appearance="outline">
@@ -15,9 +27,18 @@
       </mat-form-field>
       <mat-form-field color="accent" class="form-field" appearance="outline">
         <mat-label>{{ 'auth.password' | translate }}</mat-label>
-        <input matInput type="password" formControlName="password" autocomplete="false">
+
+        <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" autocomplete="false">
+
+        <button type="button" mat-icon-button matSuffix (click)="showPassword = !showPassword">
+          <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+
         <mat-error *ngIf="form.controls['password'].hasError('required')">
           {{ 'error.required' | translate }}
+        </mat-error>
+        <mat-error *ngIf="form.controls['password'].hasError('pattern')">
+          {{ 'error.password-pattern' | translate }}
         </mat-error>
       </mat-form-field>
       <div class="form-actions">
