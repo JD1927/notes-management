@@ -11,6 +11,11 @@
     <mat-card-title>{{ 'auth.sign-up-title' | translate }}</mat-card-title>
   </mat-card-header>
   <hr style="margin-bottom: 20px"/>
+  <div *ngIf="hasSignUpError" class="form-error__box">
+    <div class="form-error__text">
+      {{ 'error.sign-up' | translate }}
+    </div>
+  </div>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field color="accent" class="form-field" appearance="outline">

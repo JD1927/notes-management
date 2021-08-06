@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
 import { EMAIL_REGEX, SIMPLE_PASSWORD_REGEX } from 'src/app/shared/utils/utils';
 
@@ -14,11 +15,13 @@ export class SignUpComponent implements OnInit {
   showPassword!: boolean;
   showConfirmPassword!: boolean;
   isLoading!: boolean;
+  hasSignUpError!: boolean;
 
 
   constructor(
     private fb: FormBuilder,
     private auth: FirebaseAuthService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +37,7 @@ export class SignUpComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
+    this.hasSignUpError = false;
     if (this.form.invalid) {
       return;
     }
@@ -45,8 +49,13 @@ export class SignUpComponent implements OnInit {
     this.isLoading = true;
     const { email, password } = this.form.value;
     const result = await this.auth.createUserWithEmailAndPassword(email, password);
-    console.log(result);
     this.isLoading = false;
+    if (!result) {
+      console.log(result);
+      this.hasSignUpError = true;
+      return;
+    }
+    this.router.navigate(['/auth/sign-in']);
   }
 
 }
