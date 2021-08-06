@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 export interface IBaseService<T> {
   get(id: string): Observable<T>;
