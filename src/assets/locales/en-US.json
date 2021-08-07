@@ -4,9 +4,9 @@
     "confirm": "CONFIRM",
     "send": "SEND",
     "app-name": "My Notes",
-    "ACTIVE": "ACTIVE",
-    "CLOSED": "CLOSED",
-    "welcome": "Welcome:"
+    "welcome": "Welcome:",
+    "resend": "RESEND",
+    "go-to": "GO TO"
   },
   "error": {
     "required": "Field required.",
@@ -14,6 +14,7 @@
     "password-pattern": "Password must contain numbers and letters.",
     "password-mismatch": "Passwords must match.",
     "sign-in": "Invalid username or password.",
+    "email-not-verified": "You have not verified your email address yet.",
     "sign-up": "User already registered."
   },
   "auth": {
@@ -25,7 +26,15 @@
     "not-registered": "Aren't you registered yet?",
     "register": "Sign up",
     "password-hint": "Password must have at least 6 characters.",
-    "sign-out": "SIGN OUT"
+    "sign-out": "SIGN OUT",
+    "thanks-registration": "Thank you for you registering!",
+    "confirmation-email": "We have sent a confirmation email to",
+    "check-email": "Please check your email and click on the link to verify your email address.",
+    "email-verification": "EMAIL VERIFICATION",
+    "forgotten-password": "Forgotten password.",
+    "password-reset": "PASSWORD RESET",
+    "reset": "RESET",
+    "password-reset-message": "We have sent a password reset email to"
   },
   "dashboard": {
     "menu": "Menu",

@@ -4,9 +4,9 @@
     "confirm": "CONFIRMAR",
     "send": "ENVIAR",
     "app-name": "Mis Notas",
-    "ACTIVE": "ACTIVO",
-    "CLOSED": "CERRADO",
-    "welcome": "¡Bienvenido:"
+    "welcome": "¡Bienvenido:",
+    "resend": "REENVIAR",
+    "go-to": "IR A"
   },
   "error": {
     "required": "Campo requerido.",
@@ -14,6 +14,7 @@
     "password-pattern": "La contraseña debe contener números y letras.",
     "password-mismatch": "Las contraseñas deben coincidir.",
     "sign-in": "Usuario o contraseña inválidos.",
+    "email-not-verified": "Aún no has verificado tu correo electrónico.",
     "sign-up": "El usuario ya está registrado."
   },
   "auth": {
@@ -25,7 +26,15 @@
     "not-registered": "No te has registrado aún?",
     "register": "Registrarme",
     "password-hint": "La contraseña debe tener mínimo de 6 caracteres.",
-    "sign-out": "CERRAR SESIÓN"
+    "sign-out": "CERRAR SESIÓN",
+    "thanks-registration": "¡Gracias por registrarte!",
+    "confirmation-email": "Hemos enviado un correo de confirmación a",
+    "check-email": "Por favor revisa tu correo y haz click en el enlace para verificar tu dirección de correo electrónico.",
+    "email-verification": "VERIFICACIÓN DEL EMAIL",
+    "forgotten-password": "Olvidé mi contraseña.",
+    "password-reset": "RESTABLECER CONTRASEÑA",
+    "reset": "RESTABLECER",
+    "password-reset-message": "Hemos enviado un correo de restablecimiento de contraseña a"
   },
   "dashboard": {
     "menu": "Menú",
