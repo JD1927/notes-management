@@ -1,0 +1,41 @@
+<mat-card class="mat-elevation-z3 animated fade-in-down registration">
+  <div *ngIf="!(user$ | async)" class="overlay-loader">
+    <mat-progress-spinner
+      diameter="50"
+      color="accent"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div *ngIf="isLoading" class="overlay-loader">
+    <mat-progress-spinner
+      diameter="50"
+      color="accent"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <mat-card-content>
+    <div class="content">
+      <h2 class="text-center">{{ 'auth.thanks-registration' | translate }}</h2>
+      <hr/>
+      <div class="body">
+        <p class="text-center">
+          {{ 'auth.confirmation-email' | translate }} <span class="confirmation-email">{{ (user$ | async)?.email }}.</span></p>
+        <p>{{ 'auth.check-email' | translate }}</p>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button [routerLink]="['/auth/sign-in']" type="button"
+        mat-button
+        color="accent">
+        <mat-icon inline=true>arrow_back</mat-icon>
+        {{ 'general.go-to' | translate }} {{ 'auth.sign-in-title' | translate }}
+      </button>
+      <button (click)="onSendConfirmEmail()" type="button"
+        mat-raised-button
+        color="accent">
+        {{ 'general.resend' | translate }}
+        <mat-icon inline=true>send</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
