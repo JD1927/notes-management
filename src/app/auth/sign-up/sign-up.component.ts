@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
 import { EMAIL_REGEX, SIMPLE_PASSWORD_REGEX } from 'src/app/shared/utils/utils';
@@ -16,6 +17,8 @@ export class SignUpComponent implements OnInit {
   showConfirmPassword!: boolean;
   isLoading!: boolean;
   hasSignUpError!: boolean;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
 
   constructor(
@@ -38,6 +41,21 @@ export class SignUpComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     this.hasSignUpError = false;
+    this.validateFormFields();
+    this.isLoading = true;
+
+    const { email, password } = this.form.value;
+    const credentials = await this.auth.createUserWithEmailAndPassword(email, password);
+    this.isLoading = false;
+
+    if (!credentials) {
+      this.hasSignUpError = true;
+      return;
+    }
+    this.router.navigate(['/auth/sign-up-success']);
+  }
+
+  validateFormFields(): void {
     if (this.form.invalid) {
       return;
     }
@@ -46,16 +64,6 @@ export class SignUpComponent implements OnInit {
       confirmControl.setErrors({ hasPasswordMismatch: true });
       return;
     }
-    this.isLoading = true;
-    const { email, password } = this.form.value;
-    const result = await this.auth.createUserWithEmailAndPassword(email, password);
-    this.isLoading = false;
-    if (!result) {
-      console.log(result);
-      this.hasSignUpError = true;
-      return;
-    }
-    this.router.navigate(['/auth/sign-in']);
   }
 
 }
