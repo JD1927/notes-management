@@ -8,7 +8,7 @@ export interface Roles {
 export interface User {
   id: string;
   apartment?: string;
-  name: string;
+  name?: string;
   email: string;
   roles: Roles;
 }
