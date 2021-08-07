@@ -15,6 +15,7 @@ export class SignInComponent implements OnInit {
   isLoading!: boolean;
   showPassword!: boolean;
   hasSignInError!: boolean;
+  hasEmailVerifiedError!: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -28,13 +29,14 @@ export class SignInComponent implements OnInit {
 
   createForm(): void {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
 
   async onSubmit(): Promise<void> {
     this.hasSignInError = false;
+    this.hasEmailVerifiedError = false;
     if (this.form.invalid) {
       return;
     }
@@ -42,10 +44,20 @@ export class SignInComponent implements OnInit {
     const { email, password } = this.form.value;
     const user = await this.auth.signInWithEmailAndPassword(email, password);
     this.isLoading = false;
-    if (user) {
-      this.router.navigate(['/home']);
-    } else {
+    if (!user) {
       this.hasSignInError = true;
+      return;
     }
+    if (!user.user?.emailVerified) {
+      this.hasEmailVerifiedError = true;
+      return;
+    }
+    this.router.navigate(['/home']);
+  }
+
+  onSendEmailVerification(): void {
+    this.router.navigate(['/auth/sign-up-success']).then(
+      () => this.auth.sendEmailVerification()
+    );
   }
 }

@@ -1,19 +1,27 @@
 <mat-card class="mat-elevation-z3 animated fade-in-down">
   <div *ngIf="isLoading" class="overlay-loader">
-    <mat-progress-spinner
-      diameter="50"
-      color="accent"
-      mode="indeterminate">
+    <mat-progress-spinner diameter="50" color="accent" mode="indeterminate">
     </mat-progress-spinner>
   </div>
   <mat-card-header>
     <mat-icon mat-card-avatar>account_circle</mat-icon>
     <mat-card-title>{{ 'auth.sign-in-title' | translate }}</mat-card-title>
   </mat-card-header>
-  <hr style="margin-bottom: 20px"/>
+  <hr style="margin-bottom: 20px" />
   <div *ngIf="hasSignInError" class="form-error__box">
     <div class="form-error__text">
       {{ 'error.sign-in' | translate }}
+    </div>
+  </div>
+  <div *ngIf="hasEmailVerifiedError" class="form-error__box">
+    <div class="form-error__text">
+      {{ 'error.email-not-verified' | translate }}
+    </div>
+    <div class="form-actions email-verification">
+      <button (click)="onSendEmailVerification()" type="button" mat-stroked-button>
+        {{ 'general.go-to' | translate }} {{ 'auth.email-verification' | translate }}
+        <mat-icon inline=true>arrow_forward</mat-icon>
+      </button>
     </div>
   </div>
   <mat-card-content>
@@ -42,19 +50,22 @@
         </mat-error>
       </mat-form-field>
       <div class="form-actions">
-        <button type="submit"
-          [disabled]="!form.valid"
-          mat-raised-button
-          color="accent">
+        <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">
           {{ 'auth.sign-in-title' | translate }}
+          <mat-icon inline=true>login</mat-icon>
         </button>
       </div>
-      <div style="margin-bottom: 20px;">
+      <div style="margin-bottom: 20px; text-align: center;">
         <p>{{ 'auth.not-registered' | translate }}
           <a class="link" [routerLink]="['/auth/sign-up']">
             {{ 'auth.register' | translate }}.
           </a>
         </p>
+      </div>
+      <div style="margin-bottom: 20px; text-align: center;">
+        <a class="link" [routerLink]="['/auth/forgotten-password']">
+          {{ 'auth.forgotten-password' | translate }}
+        </a>
       </div>
     </form>
   </mat-card-content>
