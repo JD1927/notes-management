@@ -14,6 +14,9 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignUpSuccessComponent } from './sign-up-success/sign-up-success.component';
+import { ForgottenPasswordComponent } from './forgotten-password/forgotten-password.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -21,7 +24,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   declarations: [
     AuthComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    SignUpSuccessComponent,
+    ForgottenPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +41,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatFormFieldModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     SharedModule
   ]
 })

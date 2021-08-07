@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
+import { canActivate, emailVerified } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
-import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/auth/sign-in']);
-
+const redirectUnverifiedTo = (redirect: any[]) => pipe(emailVerified, map(emailVerified => emailVerified || redirect));
+const redirectUnauthorizedToLogin = () => redirectUnverifiedTo(['/auth/sign-in']);
 const routes: Routes = [
   {
     path: 'auth',
@@ -12,10 +14,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: [AngularFireAuthGuard],
-    data: {
-      authGuardPipe: redirectUnauthorizedToLogin
-    }
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: '',
