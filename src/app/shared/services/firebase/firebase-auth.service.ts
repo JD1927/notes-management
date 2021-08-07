@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import firebase from 'firebase';
 import { first } from 'rxjs/operators';
 import { User } from '../../models/auth.model';
@@ -18,23 +18,25 @@ export class FirebaseAuthService extends BaseService<User> {
   }
 
   async signInWithEmailAndPassword(email: string, password: string) {
-    let result = undefined;
+    let credentials = undefined;
     try {
-      result = await this.auth.signInWithEmailAndPassword(email, password);
+      credentials = await this.auth.signInWithEmailAndPassword(email, password);
     } catch (error) {
       return undefined;
     }
-    return result;
+    return credentials;
   }
 
   async createUserWithEmailAndPassword(email: string, password: string) {
-    let result = undefined;
+    let credentials = undefined;
     try {
-      result = await this.auth.createUserWithEmailAndPassword(email, password);
+      credentials = await this.auth.createUserWithEmailAndPassword(email, password);
+      await this.updateUserData(credentials.user);
+      this.sendEmailVerification();
     } catch (error) {
-      return undefined;
+      console.log(error)
     }
-    return result;
+    return credentials;
   }
 
   async signOut(): Promise<void> {
@@ -47,5 +49,38 @@ export class FirebaseAuthService extends BaseService<User> {
 
   async getCurrentUser() {
     return await this.auth.authState.pipe(first()).toPromise();
+  }
+
+  async updateUserData(user: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const data: User = {
+      id: user.uid,
+      name: '',
+      apartment: '',
+      email: user.email,
+      roles: {
+        isResident: false,
+        isAdmin: false,
+        isGuard: false,
+        isSuperAdmin: false,
+      }
+    };
+    return userRef.set(data, { merge: true });
+  }
+
+  isUserAdmin(userUid: string) {
+    return this.afs.doc<User>(`users/${userUid}`).valueChanges();
+  }
+
+  async sendEmailVerification(): Promise<void> {
+    return (await this.auth.currentUser)?.sendEmailVerification();
+  }
+
+  async sendPasswordResetEmail(email: string): Promise<void> {
+    try {
+      await this.auth.sendPasswordResetEmail(email);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
