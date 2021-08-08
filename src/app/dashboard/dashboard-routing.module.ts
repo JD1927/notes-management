@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('./apartments/apartments.module').then(m => m.ApartmentsModule),
       },
       {
+        path: 'users',
+        loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: '/home/notes/list'
