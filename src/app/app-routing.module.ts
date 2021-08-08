@@ -19,12 +19,12 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/auth/sign-in'
+    redirectTo: '/home/notes/list'
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/auth/sign-in'
+    redirectTo: '/home/notes/list'
   },
 ];
 
