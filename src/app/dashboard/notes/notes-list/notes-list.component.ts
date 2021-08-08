@@ -37,9 +37,4 @@ export class NotesListComponent implements OnInit, OnDestroy {
         }
       );
   }
-
-
-  onAddNote(): void {
-
-  }
 }
