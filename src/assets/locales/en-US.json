@@ -4,7 +4,7 @@
     "confirm": "CONFIRM",
     "send": "SEND",
     "app-name": "My Notes",
-    "welcome": "Welcome:",
+    "welcome": "Welcome",
     "resend": "RESEND",
     "go-to": "GO TO"
   },
@@ -39,7 +39,8 @@
   "dashboard": {
     "menu": "Menu",
     "notes": "Notes",
-    "apartment": "Apartments",
+    "apartments": "Apartments",
+    "users": "Users",
     "dark-mode": "Dark mode",
     "light-mode": "Light mode",
     "language-tooltip": "Change the current language.",
@@ -59,5 +60,22 @@
   },
   "apartments": {
     "title": "Apartment List"
+  },
+  "users": {
+    "title": "User List",
+    "add": "ADD USER"
+  },
+  "table": {
+    "no-data": "No data matching the filter",
+    "search": "Search",
+    "search-hint": "You can search users by any field name.",
+    "name": "NAME",
+    "email": "EMAIL",
+    "apartment": "APARTMENT",
+    "role": "ROLE",
+    "actions": "ACTIONS",
+    "update": "UPDATE",
+    "delete": "DELETE",
+    "empty": "EMPTY"
   }
 }

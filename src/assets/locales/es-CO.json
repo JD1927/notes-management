@@ -4,7 +4,7 @@
     "confirm": "CONFIRMAR",
     "send": "ENVIAR",
     "app-name": "Mis Notas",
-    "welcome": "¡Bienvenido:",
+    "welcome": "¡Bienvenido",
     "resend": "REENVIAR",
     "go-to": "IR A"
   },
@@ -39,7 +39,8 @@
   "dashboard": {
     "menu": "Menú",
     "notes": "Notas",
-    "apartment": "Apartamentos",
+    "apartments": "Apartamentos",
+    "users": "Usuarios",
     "dark-mode": "Modo oscuro",
     "light-mode": "Modo claro",
     "language-tooltip": "Cambiar el idioma actual.",
@@ -59,5 +60,22 @@
   },
   "apartments": {
     "title": "Lista de Apartamentos"
+  },
+  "users": {
+    "title": "Lista de Usuarios",
+    "add": "AGREGAR USUARIO"
+  },
+  "table": {
+    "no-data": "No hay datos que coincidan con el filtro",
+    "search": "Buscar",
+    "search-hint": "Puedes buscar usuarios por cualquier campo.",
+    "name": "NOMBRE",
+    "email": "CORREO ELECTRÓNICO",
+    "apartment": "APARTAMENTO",
+    "role": "ROL",
+    "actions": "ACCIONES",
+    "update": "ACTUALIZAR",
+    "delete": "ELIMINAR",
+    "empty": "VACÍO"
   }
 }
