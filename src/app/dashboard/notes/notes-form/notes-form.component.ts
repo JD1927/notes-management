@@ -18,7 +18,6 @@ import { ThemeService } from 'src/app/shared/services/themes/theme.service';
   styleUrls: ['./notes-form.component.scss']
 })
 export class NotesFormComponent implements OnInit {
-  isLightMode: boolean = false;
   form!: FormGroup;
   isLoading!: boolean;
   isDesktop$: Subscription = new Subscription();
