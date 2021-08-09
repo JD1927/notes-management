@@ -5,7 +5,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/models/auth.model';
+import { ConfirmDialog } from 'src/app/shared/models/dialog.model';
+import { ConfirmDialogService } from 'src/app/shared/services/dialog/confirm-dialog.service';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
+import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
 import { ThemeService } from 'src/app/shared/services/themes/theme.service';
 
 @Component({
@@ -28,6 +31,8 @@ export class UsersListComponent implements OnInit, OnDestroy {
   constructor(
     private authService: FirebaseAuthService,
     public themeConfig: ThemeService,
+    private confirmDialog: ConfirmDialogService,
+    private locale: LocalizationService,
   ) {
     this.users = new MatTableDataSource<User>([]);
   }
@@ -64,10 +69,22 @@ export class UsersListComponent implements OnInit, OnDestroy {
     }
   }
 
-  deleteUser(userID: string): void {
-    this.isLoading = true;
-    this.authService.delete(userID);
-    this.isLoading = false;
+  deleteUser(userID: string, email: string): void {
+    const options: ConfirmDialog = {
+      title: this.locale.translate('users.delete-title'),
+      message: `${this.locale.translate('users.delete-message')} "${email}"`,
+      cancelText: this.locale.translate('general.cancel'),
+      confirmText: this.locale.translate('general.confirm'),
+    }
+    const dialogRef = this.confirmDialog.open(options);
+    this.confirmDialog.confirmed(dialogRef).subscribe((confirmed) => {
+      if (confirmed) {
+        this.isLoading = true;
+        this.authService.delete(userID);
+        this.isLoading = false;
+      }
+    });
+
   }
 
 }
