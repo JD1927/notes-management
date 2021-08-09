@@ -63,7 +63,13 @@
   },
   "users": {
     "title": "User List",
-    "add": "ADD USER"
+    "add": "ADD USER",
+    "update": "UPDATE USER",
+    "delete-title": "DELETE USER",
+    "delete-message": "Are you sure you want to delete this user?",
+    "form-title": "User Update",
+    "input-name": "Name",
+    "input-email": "Email"
   },
   "table": {
     "no-data": "No data matching the filter",
@@ -76,6 +82,7 @@
     "actions": "ACTIONS",
     "update": "UPDATE",
     "delete": "DELETE",
-    "empty": "EMPTY"
+    "empty": "EMPTY",
+    "unassigned": "UNASSIGNED"
   }
 }

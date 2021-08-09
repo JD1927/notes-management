@@ -52,7 +52,7 @@
     "title": "Lista de Notas",
     "add": "AGREGAR NOTA",
     "form-title": "Formulario de Notas",
-    "input-title": "Title",
+    "input-title": "Título",
     "input-description": "Description",
     "status": "Estado",
     "date": "Fecha",
@@ -63,7 +63,13 @@
   },
   "users": {
     "title": "Lista de Usuarios",
-    "add": "AGREGAR USUARIO"
+    "add": "AGREGAR USUARIO",
+    "update": "ACTUALIZAR USUARIO",
+    "delete-title": "ELIMINAR USUARIO",
+    "delete-message": "¿Estás seguro que quieres eliminar este usuario?",
+    "form-title": "Actualizar Usuario",
+    "input-name": "Nombre",
+    "input-email": "Correo Electrónico"
   },
   "table": {
     "no-data": "No hay datos que coincidan con el filtro",
@@ -76,6 +82,7 @@
     "actions": "ACCIONES",
     "update": "ACTUALIZAR",
     "delete": "ELIMINAR",
-    "empty": "VACÍO"
+    "empty": "VACÍO",
+    "unassigned": "SIN ASIGNAR"
   }
 }
