@@ -1,24 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Note } from 'src/app/shared/models/notes.model';
-import { NotesService } from 'src/app/shared/services/firebase/notes.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'nm-notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
-export class NotesComponent implements OnInit {
+export class NotesComponent {
 
-  notes$!: Observable<Note[]>;
-
-  constructor(
-    private notesService: NotesService,
-  ) { }
-
-  ngOnInit(): void {
-    this.notes$ = this.notesService.list();
-  }
-
+  constructor() { }
 
 }
