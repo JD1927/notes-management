@@ -22,7 +22,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
   users!: MatTableDataSource<User>;
   _users$: Subscription = new Subscription();
   userSearch: FormControl = new FormControl('');
-  keyUpSearch$: Subscription = new Subscription();
   displayedColumns: string[] = ['name', 'email', 'apartment', 'actions'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -43,7 +42,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._users$.unsubscribe();
-    this.keyUpSearch$.unsubscribe();
   }
 
   getUserList(): void {
