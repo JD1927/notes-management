@@ -59,7 +59,13 @@
     "time": "Hora"
   },
   "apartments": {
-    "title": "Lista de Apartamentos"
+    "title": "Lista de Apartamentos",
+    "add": "AGREGAR APARTAMENTO",
+    "update": "ACTUALIZAR APARTAMENTO",
+    "delete-title": "ELIMINAR APARTAMENTO",
+    "delete-message": "¿Estás seguro que quieres eliminar este apartamento?",
+    "input-apto": "Número de Apartamento",
+    "form-title": "Formulario de Apartamentos"
   },
   "users": {
     "title": "Lista de Usuarios",
@@ -74,7 +80,8 @@
   "table": {
     "no-data": "No hay datos que coincidan con el filtro",
     "search": "Buscar",
-    "search-hint": "Puedes buscar usuarios por cualquier campo.",
+    "search-hint": "Puedes buscar items por cualquier campo.",
+    "id": "ID",
     "name": "NOMBRE",
     "email": "CORREO ELECTRÓNICO",
     "apartment": "APARTAMENTO",

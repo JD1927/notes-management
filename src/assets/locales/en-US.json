@@ -59,7 +59,13 @@
     "time": "Time"
   },
   "apartments": {
-    "title": "Apartment List"
+    "title": "Apartment List",
+    "add": "ADD APARTMENT",
+    "update": "UPDATE APARTMENT",
+    "delete-title": "DELETE APARTMENT",
+    "delete-message": "Are you sure you want to delete this apartment?",
+    "input-apto": "Apartment Number",
+    "form-title": "Apartments Form"
   },
   "users": {
     "title": "User List",
@@ -74,7 +80,8 @@
   "table": {
     "no-data": "No data matching the filter",
     "search": "Search",
-    "search-hint": "You can search users by any field name.",
+    "search-hint": "You can search items by any field name.",
+    "id": "ID",
     "name": "NAME",
     "email": "EMAIL",
     "apartment": "APARTMENT",
