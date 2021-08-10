@@ -31,14 +31,10 @@
     </mat-form-field>
 
     <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
-      <mat-label>{{ 'users.input-email' | translate }}</mat-label>
-      <input matInput formControlName="email">
-      <mat-error *ngIf="form.controls['email'].hasError('required')">
-        {{ 'error.required' | translate }}
-      </mat-error>
-      <mat-error *ngIf="form.controls['email'].hasError('pattern')">
-        {{ 'error.email-pattern' | translate }}
-      </mat-error>
+      <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
+      <mat-select formControlName="aptoNumber">
+        <mat-option *ngFor="let option of apartments" [value]="option">{{ option?.aptoNumber }}</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <div class="form-actions">
