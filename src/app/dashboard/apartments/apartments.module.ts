@@ -16,10 +16,14 @@ import { InternationalizationModule } from 'src/app/shared/modules/international
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ApartmentsRoutingModule } from './apartments-routing.module';
 import { ApartmentsComponent } from './apartments.component';
+import { ApartmentsListComponent } from './apartments-list/apartments-list.component';
+import { ApartmentsFormComponent } from './apartments-form/apartments-form.component';
 
 @NgModule({
   declarations: [
-    ApartmentsComponent
+    ApartmentsComponent,
+    ApartmentsListComponent,
+    ApartmentsFormComponent
   ],
   imports: [
     CommonModule,
