@@ -7,6 +7,7 @@ export interface Roles {
 
 export interface User {
   id: string;
+  aptoID?: string;
   apartment?: string;
   name?: string;
   email: string;
