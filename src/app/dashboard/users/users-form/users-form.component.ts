@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Apartment } from 'src/app/shared/models/apartments.model';
+import { User } from 'src/app/shared/models/auth.model';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
 import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
@@ -22,25 +23,50 @@ export class UsersFormComponent implements OnInit {
   isDesktop!: boolean;
   _apartments$: Subscription = new Subscription();
   apartments: Apartment[] = [];
+  _route$: Subscription = new Subscription();
+  user!: User;
 
   constructor(
     private fb: FormBuilder,
     public themeConfig: ThemeService,
     private router: Router,
-    private localeService: LocalizationService,
-    private authService: FirebaseAuthService,
+    private usersService: FirebaseAuthService,
     private aptoService: ApartmentsService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.createForm();
     this.getApartments();
+    this.getParameters();
   }
 
   createForm(): void {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(60)]],
-      aptoNumber: ['', [Validators.required]],
+      apartment: ['', [Validators.required]],
+    });
+  }
+
+  getParameters(): void {
+    this._route$ = this.route.params
+      .subscribe((params) => {
+        this.isLoading = true;
+        this.handleUserID(params?.id);
+      });
+  }
+
+  handleUserID(id: string): void {
+    if (id === undefined) {
+      this.isLoading = false;
+      return;
+    }
+    this.usersService.get(id).subscribe((user) => {
+      this.user = { ...user };
+      this.form.controls['name'].setValue(user.name);
+      this.form.controls['apartment'].setValue(user.aptoID);
+      this.form.updateValueAndValidity();
+      this.isLoading = false;
     });
   }
 
@@ -54,8 +80,25 @@ export class UsersFormComponent implements OnInit {
     )
   }
 
-  onSubmit(): void {
-
+  async onSubmit(): Promise<void> {
+    if (this.form.invalid) {
+      return;
+    }
+    this.isLoading = true;
+    const { name, apartment: aptoID } = this.form.value;
+    const apto = this.apartments.find((a) => a.id === aptoID);
+    const item: User = {
+      ...this.user,
+      name,
+      apartment: apto?.aptoNumber,
+      aptoID: aptoID,
+    }
+    const result = await this.usersService.update(item);
+    this.isLoading = false;
+    if (!result) {
+      return;
+    }
+    this.router.navigate(['/home/users']);
   }
 
 }
