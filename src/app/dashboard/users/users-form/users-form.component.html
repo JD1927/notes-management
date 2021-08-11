@@ -32,8 +32,8 @@
 
     <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
       <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
-      <mat-select formControlName="aptoNumber">
-        <mat-option *ngFor="let option of apartments" [value]="option">{{ option?.aptoNumber }}</mat-option>
+      <mat-select formControlName="apartment">
+        <mat-option *ngFor="let option of apartments" [value]="option.id">{{ option?.aptoNumber }}</mat-option>
       </mat-select>
     </mat-form-field>
 
