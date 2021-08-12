@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { InternationalizationModule } from 'src/app/shared/modules/internationalization/internationalization.module';
@@ -18,8 +19,8 @@ import { UsersFormComponent } from './users-form/users-form.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
-
-
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -42,6 +43,9 @@ import { UsersComponent } from './users.component';
     MatSortModule,
     MatPaginatorModule,
     MatTableModule,
+    MatSlideToggleModule,
+    MatDividerModule,
+    MatListModule,
     InternationalizationModule,
     FormsModule,
     ReactiveFormsModule,
