@@ -43,8 +43,12 @@ export class UsersFormComponent implements OnInit {
 
   createForm(): void {
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.maxLength(60)]],
-      apartment: ['', [Validators.required]],
+      name: ['', [Validators.maxLength(60)]],
+      apartment: [''],
+      isResident: [false],
+      isGuard: [false],
+      isAdmin: [false],
+      isSuperAdmin: [false],
     });
   }
 
@@ -62,12 +66,21 @@ export class UsersFormComponent implements OnInit {
       return;
     }
     this.usersService.get(id).subscribe((user) => {
-      this.user = { ...user };
-      this.form.controls['name'].setValue(user.name);
-      this.form.controls['apartment'].setValue(user.aptoID);
-      this.form.updateValueAndValidity();
-      this.isLoading = false;
+      this.setFormValues(user);
     });
+  }
+
+  setFormValues(user: User): void {
+    this.user = { ...user };
+    const { roles } = user;
+    this.form.controls['name'].setValue(user.name);
+    this.form.controls['apartment'].setValue(user.aptoID);
+    this.form.controls['isResident'].setValue(roles?.isResident);
+    this.form.controls['isGuard'].setValue(roles?.isGuard);
+    this.form.controls['isAdmin'].setValue(roles?.isAdmin);
+    this.form.controls['isSuperAdmin'].setValue(roles?.isSuperAdmin);
+    this.form.updateValueAndValidity();
+    this.isLoading = false;
   }
 
   getApartments(): void {
@@ -85,13 +98,26 @@ export class UsersFormComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    const { name, apartment: aptoID } = this.form.value;
+    const {
+      name,
+      apartment: aptoID,
+      isResident,
+      isGuard,
+      isAdmin,
+      isSuperAdmin,
+    } = this.form.value;
     const apto = this.apartments.find((a) => a.id === aptoID);
     const item: User = {
       ...this.user,
       name,
       apartment: apto?.aptoNumber,
       aptoID: aptoID,
+      roles: {
+        isResident,
+        isGuard,
+        isAdmin,
+        isSuperAdmin,
+      }
     }
     const result = await this.usersService.update(item);
     this.isLoading = false;
