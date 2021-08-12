@@ -75,7 +75,16 @@
     "delete-message": "Are you sure you want to delete this user?",
     "form-title": "User Update",
     "input-name": "Name",
-    "input-email": "Email"
+    "input-email": "Email",
+    "roles": "ROLES",
+    "resident-title": "RESIDENT",
+    "guard-title": "GUARD",
+    "admin-title": "ADMINISTRATOR",
+    "super-admin-title": "SUPER ADMINISTRADOR",
+    "resident-info": "This role is applied to users who will only create notes.",
+    "guard-info": "This role is applied to users who will only have access to see notes from all apartments.",
+    "admin-info": "This role is applied to users who will have permissions to manage other users.",
+    "super-admin-info": "This role is applied for users who have permission throughout the application."
   },
   "table": {
     "no-data": "No data matching the filter",

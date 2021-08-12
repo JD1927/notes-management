@@ -75,7 +75,16 @@
     "delete-message": "¿Estás seguro que quieres eliminar este usuario?",
     "form-title": "Actualizar Usuario",
     "input-name": "Nombre",
-    "input-email": "Correo Electrónico"
+    "input-email": "Correo Electrónico",
+    "roles": "ROLES",
+    "resident-title": "RESIDENTE",
+    "guard-title": "VIGILANTE",
+    "admin-title": "ADMINISTRADOR",
+    "super-admin-title": "SUPER ADMINISTRADOR",
+    "resident-info": "Este rol se aplica para los usuarios que sólo crearán notas.",
+    "guard-info": "Este rol se aplica para los usuarios que sólo tendrán acceso a ver notas de todos los apartamentos.",
+    "admin-info": "Este rol se aplica para los usuarios que tendrán permisos para el manejo de otros usuarios.",
+    "super-admin-info": "Este rol se aplica para los usuarios que tienen permiso en toda la aplicación."
   },
   "table": {
     "no-data": "No hay datos que coincidan con el filtro",
