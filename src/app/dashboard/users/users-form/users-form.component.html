@@ -33,9 +33,59 @@
     <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
       <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
       <mat-select formControlName="apartment">
+        <mat-option></mat-option>
         <mat-option *ngFor="let option of apartments" [value]="option.id">{{ option?.aptoNumber }}</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <hr style="margin-bottom: 20px"/>
+    <h2 style="text-align: center;">{{ 'users.roles' | translate }}</h2>
+
+    <mat-list class="form-field form-toggles">
+      <div class="role">
+        <p>
+          <strong>{{ 'users.resident-title' | translate }}: </strong>
+          {{ 'users.resident-info' | translate }}
+        </p>
+        <mat-slide-toggle
+          [color]="themeConfig.theme ? 'primary' : 'accent'"
+          formControlName="isResident">
+        </mat-slide-toggle>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="role">
+        <p>
+          <strong>{{ 'users.guard-title' | translate }}: </strong>
+          {{ 'users.guard-info' | translate }}
+        </p>
+        <mat-slide-toggle
+          [color]="themeConfig.theme ? 'primary' : 'accent'"
+          formControlName="isGuard">
+        </mat-slide-toggle>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="role">
+        <p>
+          <strong>{{ 'users.admin-title' | translate }}: </strong>
+          {{ 'users.admin-info' | translate }}
+        </p>
+        <mat-slide-toggle
+          [color]="themeConfig.theme ? 'primary' : 'accent'"
+          formControlName="isAdmin">
+        </mat-slide-toggle>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="role">
+        <p>
+          <strong>{{ 'users.super-admin-title' | translate }}: </strong>
+          {{ 'users.super-admin-info' | translate }}
+        </p>
+        <mat-slide-toggle
+          [color]="themeConfig.theme ? 'primary' : 'accent'"
+          formControlName="isSuperAdmin">
+        </mat-slide-toggle>
+      </div>
+    </mat-list>
 
     <div class="form-actions">
       <button type="button" mat-raised-button [routerLink]="['/home/users']">
