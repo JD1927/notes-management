@@ -15,7 +15,7 @@
     </div>
   </div>
   <hr style="margin-bottom: 20px" />
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="apartment ? onUpdate() : onSubmit()">
     <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
       <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
       <input
@@ -36,7 +36,7 @@
         [disabled]="!form.valid"
         mat-raised-button
         [color]="themeConfig.theme ? 'primary' : 'accent'">
-        {{ 'apartments.add' | translate }}
+        {{ (apartment ? 'apartments.update': 'apartments.add') | translate }}
       </button>
     </div>
   </form>
