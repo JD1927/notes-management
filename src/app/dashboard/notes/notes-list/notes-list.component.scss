@@ -1,0 +1,21 @@
+@import './../../../../assets/scss/utils/mixins';
+
+.notes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+
+  @include mq-up(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include e('card') {
+    width: 100%;
+    min-height: 200px;
+
+    @include m('no-items') {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
