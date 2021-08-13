@@ -18,10 +18,15 @@
       </button>
     </div>
   </div>
-  <hr/>
-  <ul>
-    <li *ngFor="let note of notes">
+  <hr style="margin-bottom: 20px"/>
+  <div class="notes" *ngIf="notes.length !== 0">
+    <mat-card class="notes__card" *ngFor="let note of notes">
       <span>{{ note?.title }}</span>
-    </li>
-  </ul>
+    </mat-card>
+  </div>
+  <div class="notes" *ngIf="notes.length === 0">
+    <mat-card class="notes__card notes__card--no-items mat-elevation-z3 animated fade-in-down">
+      <span>Hello</span>
+    </mat-card>
+  </div>
 </div>
