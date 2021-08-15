@@ -26,7 +26,7 @@
   </div>
   <div class="notes" *ngIf="notes.length === 0">
     <mat-card class="notes__card notes__card--no-items mat-elevation-z3 animated fade-in-down">
-      <span>Hello</span>
+      <span [routerLink]="['/home/notes/form']" style="cursor: pointer;">{{ 'notes.no-items' | translate }} <strong><u>{{ 'notes.add' | translate | titlecase }}</u></strong></span>
     </mat-card>
   </div>
 </div>
