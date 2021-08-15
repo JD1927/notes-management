@@ -56,7 +56,8 @@
     "input-description": "Description",
     "status": "Estado",
     "date": "Fecha",
-    "time": "Hora"
+    "time": "Hora",
+    "no-items": "Aún no tienes notas agregadas."
   },
   "apartments": {
     "title": "Lista de Apartamentos",
