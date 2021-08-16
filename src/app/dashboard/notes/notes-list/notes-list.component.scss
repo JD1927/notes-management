@@ -30,5 +30,13 @@
         transform: scale(1.05);
       }
     }
+    @include m('no-notes-apto') {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      line-height: 27px;
+      grid-column: 1 / -1;
+    }
   }
 }

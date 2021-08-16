@@ -27,7 +27,10 @@
     </ng-template>
     <ng-template [ngIf]="notes?.length === 0">
       <mat-card [routerLink]="['/home/notes/form']" class="notes__card notes__card--no-items">
-        <span>{{ 'notes.no-items' | translate }} <strong><u>{{ 'notes.add' | translate }}</u></strong></span>
+        <span>
+          {{ 'notes.no-items' | translate }} <br/>
+          <strong><u>{{ 'notes.add' | translate }}</u></strong>
+        </span>
       </mat-card>
     </ng-template>
   </div>
