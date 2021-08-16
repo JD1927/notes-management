@@ -19,14 +19,16 @@
     </div>
   </div>
   <hr style="margin-bottom: 20px"/>
-  <div class="notes" *ngIf="notes.length !== 0">
-    <mat-card class="notes__card" *ngFor="let note of notes">
-      <span>{{ note?.title }}</span>
-    </mat-card>
-  </div>
-  <div class="notes" *ngIf="notes.length === 0">
-    <mat-card class="notes__card notes__card--no-items mat-elevation-z3 animated fade-in-down">
-      <span [routerLink]="['/home/notes/form']" style="cursor: pointer;">{{ 'notes.no-items' | translate }} <strong><u>{{ 'notes.add' | translate | titlecase }}</u></strong></span>
-    </mat-card>
+  <div class="notes animated fade-in-down">
+    <ng-template [ngIf]="notes?.length !== 0">
+      <mat-card class="notes__card" *ngFor="let note of notes">
+        <span>{{ note?.title }}</span>
+      </mat-card>
+    </ng-template>
+    <ng-template [ngIf]="notes?.length === 0">
+      <mat-card [routerLink]="['/home/notes/form']" class="notes__card notes__card--no-items">
+        <span>{{ 'notes.no-items' | translate }} <strong><u>{{ 'notes.add' | translate }}</u></strong></span>
+      </mat-card>
+    </ng-template>
   </div>
 </div>
