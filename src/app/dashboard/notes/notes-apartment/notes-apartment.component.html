@@ -1,0 +1,35 @@
+<div class="animated fade-in-down">
+  <div *ngIf="isLoading" class="overlay-loader">
+    <mat-progress-spinner
+      diameter="50"
+      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <div class="dashboard__header">
+    <h1 class="dashboard__title">{{ 'dashboard.notes-by-apartment' | translate }}</h1>
+  </div>
+  <hr style="margin-bottom: 20px"/>
+
+  <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
+    <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
+    <mat-select formControlName="apartment">
+      <mat-option *ngFor="let option of apartments" [value]="option.id">{{ option?.aptoNumber }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="notes animated fade-in-down">
+    <ng-template [ngIf]="notes?.length !== 0">
+      <mat-card class="notes__card" *ngFor="let note of notes">
+        <span>{{ note?.title }}</span>
+      </mat-card>
+    </ng-template>
+    <ng-template [ngIf]="notes?.length === 0">
+      <mat-card class="notes__card notes__card--no-notes-apto">
+        <span>
+          {{ 'notes.no-notes-apto' | translate }}
+        </span>
+      </mat-card>
+    </ng-template>
+  </div>
+</div>
