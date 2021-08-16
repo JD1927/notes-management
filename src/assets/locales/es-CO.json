@@ -40,6 +40,7 @@
     "menu": "Menú",
     "notes": "Notas",
     "apartments": "Apartamentos",
+    "notes-by-apartment": "Notas por Apartamento",
     "users": "Usuarios",
     "dark-mode": "Modo oscuro",
     "light-mode": "Modo claro",
@@ -57,7 +58,8 @@
     "status": "Estado",
     "date": "Fecha",
     "time": "Hora",
-    "no-items": "Aún no tienes notas agregadas."
+    "no-items": "Aún no tienes notas agregadas.",
+    "no-notes-apto": "Aún no hay notas registradas para este apartamento."
   },
   "apartments": {
     "title": "Lista de Apartamentos",
