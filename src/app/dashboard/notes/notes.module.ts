@@ -17,6 +17,7 @@ import { NotesFormComponent } from './notes-form/notes-form.component';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { NotesRoutingModule } from './notes-routing.module';
 import { NotesComponent } from './notes.component';
+import { NotesApartmentComponent } from './notes-apartment/notes-apartment.component';
 
 
 export const FORMAT = {
@@ -35,6 +36,7 @@ export const FORMAT = {
     NotesComponent,
     NotesListComponent,
     NotesFormComponent,
+    NotesApartmentComponent,
   ],
   imports: [
     CommonModule,
