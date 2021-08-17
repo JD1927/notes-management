@@ -23,7 +23,6 @@ export class AuthComponent implements OnInit {
     if (!user) {
       return;
     }
-    console.log(user.uid);
   }
 
 }
