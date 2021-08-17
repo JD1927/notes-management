@@ -109,9 +109,9 @@ export class UsersFormComponent implements OnInit {
     const apto = this.apartments.find((a) => a.id === aptoID);
     const item: User = {
       ...this.user,
-      name,
-      apartment: apto?.aptoNumber,
-      aptoID: aptoID,
+      name: name || '',
+      apartment: apto?.aptoNumber || '',
+      aptoID: apto?.id || '',
       roles: {
         isResident,
         isGuard,
