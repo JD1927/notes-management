@@ -57,9 +57,11 @@
     "input-description": "Description",
     "status": "Estado",
     "date": "Fecha",
+    "search": "BUSCAR",
     "time": "Hora",
     "no-items": "Aún no tienes notas agregadas.",
-    "no-notes-apto": "Aún no hay notas registradas para este apartamento."
+    "no-notes-apto": "Aún no hay notas registradas para este apartamento.",
+    "no-apto": "Aún no tienes registrado un apartamento. Comunicate con un administrador."
   },
   "apartments": {
     "title": "Lista de Apartamentos",
