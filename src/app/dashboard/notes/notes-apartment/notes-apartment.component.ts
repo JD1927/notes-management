@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Apartment } from 'src/app/shared/models/apartments.model';
 import { Note } from 'src/app/shared/models/notes.model';
@@ -13,6 +14,7 @@ import { ThemeService } from 'src/app/shared/services/themes/theme.service';
 })
 export class NotesApartmentComponent implements OnInit {
 
+  form!: FormGroup;
   isLoading!: boolean;
   notes: Note[] = [];
   _notes$: Subscription = new Subscription();
@@ -23,11 +25,18 @@ export class NotesApartmentComponent implements OnInit {
     private notesService: NotesService,
     public themeConfig: ThemeService,
     private aptoService: ApartmentsService,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
-   this.getNotesByApartment();
-   this.getApartments();
+    this.createForm();
+    this.getApartments();
+  }
+
+  createForm(): void {
+    this.form = this.fb.group({
+      apartment: ['', [Validators.required]],
+    });
   }
 
   ngOnDestroy(): void {
@@ -55,8 +64,21 @@ export class NotesApartmentComponent implements OnInit {
     );
   }
 
-  getNotesByApartment(): void {
-    const aptoID = 'WIe1YQu9DbNHTB57gdAT';
-    this.notesService.getNotesByApartment(aptoID).subscribe((res) => console.log(res));
+  getNotesByApartment(aptoID: string): void {
+    this.isLoading = true;
+    this.notesService.getNotesByApartment(aptoID).subscribe(
+      (res) => {
+        this.notes = [...res];
+        this.isLoading = false;
+      }
+    );
+  }
+
+  onSubmit(): void {
+    if (this.form.invalid) {
+      return;
+    }
+    const { apartment } = this.form.value;
+    this.getNotesByApartment(apartment);
   }
 }
