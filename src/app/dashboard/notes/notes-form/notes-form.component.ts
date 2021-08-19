@@ -99,7 +99,7 @@ export class NotesFormComponent implements OnInit, OnDestroy {
     }
     this.isLoading = true;
     const { date, time } = this.form.value;
-    const createdAt = moment().toString();
+    const createdAt = moment().toDate().getTime();
     const newTimeFormat = this.timeFormat.transform(time);
     let item: Note = {
       ...this.form.value,
