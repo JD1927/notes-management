@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Note } from '../../models/notes.model';
 import { BaseService } from './base.service';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,16 @@ export class NotesService extends BaseService<Note> {
   }
 
   getNotesByApartment(aptoID: string): Observable<Note[]> {
+    const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
     return this.afs.collection<Note>(
-      'notes', ref => ref.where('aptoID', '==', aptoID)
+      'notes', ref => ref.where('aptoID', '==', aptoID).where('createdAt', '>=', createdAt.getTime())
+    ).valueChanges();
+  }
+
+  getNotesByUser(userID: string): Observable<Note[]> {
+    const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
+    return this.afs.collection<Note>(
+      'notes', ref => ref.where('userID', '==', userID).where('createdAt', '>=', createdAt.getTime())
     ).valueChanges();
   }
 }
