@@ -8,28 +8,48 @@
   </div>
   <div class="dashboard__header">
     <h1 class="dashboard__title">{{ 'notes.title' | translate }}</h1>
-    <div class="dashboard__button">
+    <div *ngIf="user?.aptoID !== ''" class="dashboard__button">
       <button
         [routerLink]="['/home/notes/form']"
         mat-raised-button
         [color]="themeConfig.theme ? 'primary' : 'accent'">
-        <mat-icon inline=true>add</mat-icon>
         {{ 'notes.add' | translate }}
+        <mat-icon inline=true>add</mat-icon>
       </button>
     </div>
   </div>
   <hr style="margin-bottom: 20px"/>
   <div class="notes animated fade-in-down">
-    <ng-template [ngIf]="notes?.length !== 0">
+    <ng-template [ngIf]="notes?.length !== 0 && user?.aptoID !== ''">
       <mat-card class="notes__card" *ngFor="let note of notes">
-        <span>{{ note?.title }}</span>
+        <div class="notes__card-container">
+          <div class="notes__card-header">
+            <mat-icon>sticky_note_2</mat-icon>
+            <h3>{{ note?.title }}</h3>
+          </div>
+          <p style="margin-bottom: 20px;">{{ note?.description }}</p>
+          <div class="form-actions" style="margin-top: auto;">
+            <button type="submit"
+              mat-raised-button
+              [color]="themeConfig.theme ? 'primary' : 'accent'">
+              {{ 'notes.add' | translate }}
+            </button>
+          </div>
+        </div>
       </mat-card>
     </ng-template>
-    <ng-template [ngIf]="notes?.length === 0">
+    <ng-template [ngIf]="notes?.length === 0 && user?.aptoID !== ''">
       <mat-card [routerLink]="['/home/notes/form']" class="notes__card notes__card--no-items">
         <span>
           {{ 'notes.no-items' | translate }} <br/>
           <strong><u>{{ 'notes.add' | translate }}</u></strong>
+        </span>
+      </mat-card>
+    </ng-template>
+    <ng-template [ngIf]="notes?.length === 0 && user?.aptoID === ''">
+      <mat-card style="cursor: not-allowed;" class="notes__card notes__card--no-notes-apto">
+        <span>
+          {{ 'notes.no-apto' | translate }} <br/>
         </span>
       </mat-card>
     </ng-template>
