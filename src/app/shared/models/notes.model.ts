@@ -7,5 +7,5 @@ export interface Note {
   userID: string;
   date: string;
   time: string;
-  createdAt: string;
+  createdAt: number;
 }
