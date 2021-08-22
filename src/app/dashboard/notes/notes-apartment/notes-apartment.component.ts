@@ -72,6 +72,7 @@ export class NotesApartmentComponent implements OnInit {
         this.isLoading = false;
       }
     );
+    this.notesService.deleteNotesByApartment(aptoID);
   }
 
   onSubmit(): void {
