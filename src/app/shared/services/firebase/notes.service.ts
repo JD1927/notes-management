@@ -30,4 +30,13 @@ export class NotesService extends BaseService<Note> {
       'notes', ref => ref.where('userID', '==', userID).where('createdAt', '>=', createdAt.getTime())
     ).valueChanges();
   }
+
+  async deleteNotesByApartment(aptoID: string): Promise<void> {
+    const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
+    const notesRef = await this.afs.collection<Note>(
+      'notes',
+      ref => ref.where('aptoID', '==', aptoID).where('createdAt', '<', createdAt.getTime()),
+    ).get().toPromise();
+    notesRef.docs.forEach(doc => this.delete(doc.id));
+  }
 }
