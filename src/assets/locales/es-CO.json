@@ -52,6 +52,7 @@
   "notes": {
     "title": "Lista de Notas",
     "add": "AGREGAR NOTA",
+    "update": "ACTUALIZAR NOTA",
     "form-title": "Formulario de Notas",
     "input-title": "Título",
     "input-description": "Description",
@@ -61,7 +62,9 @@
     "time": "Hora",
     "no-items": "Aún no tienes notas agregadas.",
     "no-notes-apto": "Aún no hay notas registradas para este apartamento.",
-    "no-apto": "Aún no tienes registrado un apartamento. Comunicate con un administrador."
+    "no-apto": "Aún no tienes registrado un apartamento. Comunicate con un administrador.",
+    "delete-title": "ELIMINAR NOTA",
+    "delete-message": "¿Estás seguro que quieres eliminar esta nota?"
   },
   "apartments": {
     "title": "Lista de Apartamentos",

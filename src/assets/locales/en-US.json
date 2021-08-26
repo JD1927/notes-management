@@ -52,6 +52,7 @@
   "notes": {
     "title": "Note List",
     "add": "ADD NOTE",
+    "update": "UPDATE NOTE",
     "form-title": "Notes Form",
     "input-title": "Title",
     "input-description": "Description",
@@ -61,7 +62,9 @@
     "time": "Time",
     "no-items": "You have no notes added yet.",
     "no-notes-apto": "There are no notes registered for this apartment yet.",
-    "no-apto": "You don't have an apartment registered yet. Contact an administrator."
+    "no-apto": "You don't have an apartment registered yet. Contact an administrator.",
+    "delete-title": "DELETE NOTE",
+    "delete-message": "Are you sure you want to delete this note?"
   },
   "apartments": {
     "title": "Apartment List",
