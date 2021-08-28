@@ -6,9 +6,6 @@ import { Apartment } from 'src/app/shared/models/apartments.model';
 import { User } from 'src/app/shared/models/auth.model';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
-import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
-import { ThemeService } from 'src/app/shared/services/themes/theme.service';
-import { EMAIL_REGEX } from 'src/app/shared/utils/utils';
 
 @Component({
   selector: 'nm-users-form',
@@ -28,7 +25,6 @@ export class UsersFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public themeConfig: ThemeService,
     private router: Router,
     private usersService: FirebaseAuthService,
     private aptoService: ApartmentsService,

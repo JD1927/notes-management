@@ -1,21 +1,18 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { FirebaseAuthService } from '../shared/services/firebase/firebase-auth.service';
 import { LocalizationService } from '../shared/services/localization/localization.service';
-import { ThemeService } from '../shared/services/themes/theme.service';
-import { getLocalStorageBooleanItem } from '../shared/utils/utils';
 
 @Component({
   selector: 'nm-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  isLightMode: boolean = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map((result: any) => result?.matches),
@@ -27,23 +24,9 @@ export class DashboardComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     public locale: LocalizationService,
-    public themeService: ThemeService,
     private authService: FirebaseAuthService,
     private router: Router,
   ) { }
-
-  ngOnInit(): void {
-    this.handleThemes();
-  }
-
-  handleThemes(): void {
-    this.isLightMode = getLocalStorageBooleanItem('isLightMode');
-  }
-
-  onSwitchTheme(): void {
-    this.isLightMode = !this.isLightMode;
-    this.themeService.theme = this.isLightMode;
-  }
 
   async onSwitchLanguage(): Promise<void> {
     const currentLanguage = this.locale.getCurrentLanguage();

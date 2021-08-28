@@ -1,6 +1,6 @@
-<div [ngClass]="{'light-mode': isLightMode}">
+<div>
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav color="primary" #drawer class="sidenav" fixedInViewport
+    <mat-sidenav color="accent" #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
       <mat-toolbar>
@@ -25,7 +25,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <mat-toolbar [color]="isLightMode && 'primary'" fixedInViewport>
+      <mat-toolbar fixedInViewport>
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
@@ -41,15 +41,6 @@
               </span>
               <span *ngIf="locale.getCurrentLanguage() === 'es-CO'" class="flag-icon flag-icon-co flag-icon-squared">
               </span>
-            </button>
-            <button type="button" aria-label="Toggle dark mode" (click)="onSwitchTheme()" mat-icon-button>
-              <mat-icon [matTooltip]="locale.translate('dashboard.dark-mode')" *ngIf="!isLightMode" aria-label="dark mode">
-                dark_mode
-              </mat-icon>
-              <mat-icon [matTooltip]="locale.translate('dashboard.light-mode')" *ngIf="isLightMode"
-                aria-label="light mode">
-                light_mode
-              </mat-icon>
             </button>
           </div>
           <button (click)="signOut()" mat-flat-button>

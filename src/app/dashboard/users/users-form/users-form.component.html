@@ -2,7 +2,7 @@
   <div *ngIf="isLoading" class="overlay-loader">
     <mat-progress-spinner
       diameter="50"
-      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      color="accent"
       mode="indeterminate">
     </mat-progress-spinner>
   </div>
@@ -16,7 +16,7 @@
   </div>
   <hr style="margin-bottom: 20px" />
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
+    <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'users.input-name' | translate }}</mat-label>
       <input
         #name
@@ -30,7 +30,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
+    <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
       <mat-select formControlName="apartment">
         <mat-option value=""></mat-option>
@@ -48,7 +48,7 @@
           {{ 'users.resident-info' | translate }}
         </p>
         <mat-slide-toggle
-          [color]="themeConfig.theme ? 'primary' : 'accent'"
+          color="accent"
           formControlName="isResident">
         </mat-slide-toggle>
       </div>
@@ -59,7 +59,7 @@
           {{ 'users.guard-info' | translate }}
         </p>
         <mat-slide-toggle
-          [color]="themeConfig.theme ? 'primary' : 'accent'"
+          color="accent"
           formControlName="isGuard">
         </mat-slide-toggle>
       </div>
@@ -70,7 +70,7 @@
           {{ 'users.admin-info' | translate }}
         </p>
         <mat-slide-toggle
-          [color]="themeConfig.theme ? 'primary' : 'accent'"
+          color="accent"
           formControlName="isAdmin">
         </mat-slide-toggle>
       </div>
@@ -81,7 +81,7 @@
           {{ 'users.super-admin-info' | translate }}
         </p>
         <mat-slide-toggle
-          [color]="themeConfig.theme ? 'primary' : 'accent'"
+          color="accent"
           formControlName="isSuperAdmin">
         </mat-slide-toggle>
       </div>
@@ -94,7 +94,7 @@
       <button type="submit"
         [disabled]="!form.valid"
         mat-raised-button
-        [color]="themeConfig.theme ? 'primary' : 'accent'">
+        color="accent">
         {{ 'users.update' | translate }}
       </button>
     </div>

@@ -2,7 +2,7 @@
   <div *ngIf="isLoading" class="overlay-loader">
     <mat-progress-spinner
       diameter="50"
-      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      color="accent"
       mode="indeterminate">
     </mat-progress-spinner>
   </div>
@@ -12,7 +12,7 @@
       <button
         [routerLink]="['/home/notes/form']"
         mat-raised-button
-        [color]="themeConfig.theme ? 'primary' : 'accent'">
+        color="accent">
         {{ 'notes.add' | translate }}
         <mat-icon inline=true>add</mat-icon>
       </button>
@@ -23,16 +23,25 @@
     <ng-template [ngIf]="notes?.length !== 0 && user?.aptoID !== ''">
       <mat-card class="notes__card" *ngFor="let note of notes">
         <div class="notes__card-container">
+          <button
+            (click)="onDeleteNote(note)"
+            class="notes__card-delete"
+            color="warn" type="button"
+            aria-label="Delete note" mat-mini-fab>
+            <mat-icon
+              aria-label="delete forever">
+              delete_forever
+            </mat-icon>
+          </button>
           <div class="notes__card-header">
-            <mat-icon>sticky_note_2</mat-icon>
-            <h3>{{ note?.title }}</h3>
+            <h2>{{ note?.title }}</h2>
           </div>
           <p style="margin-bottom: 20px;">{{ note?.description }}</p>
           <div class="form-actions" style="margin-top: auto;">
             <button type="submit"
-              mat-raised-button
-              [color]="themeConfig.theme ? 'primary' : 'accent'">
-              {{ 'notes.add' | translate }}
+              mat-stroked-button
+              color="accent">
+              {{ 'notes.update' | translate }}
             </button>
           </div>
         </div>

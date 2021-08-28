@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Apartment } from 'src/app/shared/models/apartments.model';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
-import { ThemeService } from 'src/app/shared/services/themes/theme.service';
 
 @Component({
   selector: 'nm-apartments-form',
@@ -21,7 +20,6 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    public themeConfig: ThemeService,
     private router: Router,
     private aptoService: ApartmentsService,
     private route: ActivatedRoute,

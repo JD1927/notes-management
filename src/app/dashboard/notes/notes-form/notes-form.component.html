@@ -2,7 +2,7 @@
   <div *ngIf="isLoading" class="overlay-loader">
     <mat-progress-spinner
       diameter="50"
-      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      color="accent"
       mode="indeterminate">
     </mat-progress-spinner>
   </div>
@@ -16,7 +16,7 @@
   </div>
   <hr style="margin-bottom: 20px" />
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
+    <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'notes.input-title' | translate }}</mat-label>
       <input
         #title
@@ -31,7 +31,7 @@
     </mat-form-field>
 
     <mat-form-field
-      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      color="accent"
       class="form-field" appearance="outline">
       <mat-label>{{ 'notes.input-description' | translate }}</mat-label>
       <textarea
@@ -45,7 +45,7 @@
     </mat-form-field>
 
     <mat-form-field
-      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      color="accent"
       class="form-field"
       appearance="outline">
       <mat-label>{{ 'notes.date' | translate }}</mat-label>
@@ -55,7 +55,7 @@
     </mat-form-field>
 
     <mat-form-field
-      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      color="accent"
       class="form-field"
       appearance="outline">
       <mat-label>{{ 'notes.time' | translate }}</mat-label>
@@ -69,7 +69,7 @@
       <button type="submit"
         [disabled]="!form.valid"
         mat-raised-button
-        [color]="themeConfig.theme ? 'primary' : 'accent'">
+        color="accent">
         {{ 'notes.add' | translate }}
       </button>
     </div>

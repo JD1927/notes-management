@@ -5,7 +5,6 @@ import { Apartment } from 'src/app/shared/models/apartments.model';
 import { Note } from 'src/app/shared/models/notes.model';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
 import { NotesService } from 'src/app/shared/services/firebase/notes.service';
-import { ThemeService } from 'src/app/shared/services/themes/theme.service';
 
 @Component({
   selector: 'nm-notes-apartment',
@@ -23,7 +22,6 @@ export class NotesApartmentComponent implements OnInit {
 
   constructor(
     private notesService: NotesService,
-    public themeConfig: ThemeService,
     private aptoService: ApartmentsService,
     private fb: FormBuilder,
   ) { }
@@ -70,9 +68,9 @@ export class NotesApartmentComponent implements OnInit {
       (res) => {
         this.notes = [...res];
         this.isLoading = false;
+        this.notesService.deleteNotesByApartment(aptoID);
       }
     );
-    this.notesService.deleteNotesByApartment(aptoID);
   }
 
   onSubmit(): void {

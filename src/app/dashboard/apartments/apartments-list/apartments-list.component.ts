@@ -9,7 +9,6 @@ import { ConfirmDialog } from 'src/app/shared/models/dialog.model';
 import { ConfirmDialogService } from 'src/app/shared/services/dialog/confirm-dialog.service';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
 import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
-import { ThemeService } from 'src/app/shared/services/themes/theme.service';
 
 @Component({
   selector: 'nm-apartments-list',
@@ -29,7 +28,6 @@ export class ApartmentsListComponent implements OnInit {
 
   constructor(
     private aptoService: ApartmentsService,
-    public themeConfig: ThemeService,
     private confirmDialog: ConfirmDialogService,
     private locale: LocalizationService,
   ) {

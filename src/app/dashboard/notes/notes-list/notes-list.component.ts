@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/models/auth.model';
+import { ConfirmDialog } from 'src/app/shared/models/dialog.model';
 import { Note } from 'src/app/shared/models/notes.model';
+import { ConfirmDialogService } from 'src/app/shared/services/dialog/confirm-dialog.service';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
 import { NotesService } from 'src/app/shared/services/firebase/notes.service';
-import { ThemeService } from 'src/app/shared/services/themes/theme.service';
+import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
 
 @Component({
   selector: 'nm-notes-list',
@@ -20,8 +22,9 @@ export class NotesListComponent implements OnInit, OnDestroy {
 
   constructor(
     private notesService: NotesService,
-    public themeConfig: ThemeService,
     private authService: FirebaseAuthService,
+    private locale: LocalizationService,
+    private confirmDialog: ConfirmDialogService,
   ) { }
 
   ngOnInit(): void {
@@ -54,5 +57,25 @@ export class NotesListComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       }
     );
+  }
+
+  onDeleteNote(note: Note): void {
+    if (note?.userID !== this.user?.id) {
+      return;
+    }
+    const options: ConfirmDialog = {
+      title: this.locale.translate('notes.delete-title'),
+      message: `${this.locale.translate('notes.delete-message')}`,
+      cancelText: this.locale.translate('general.cancel'),
+      confirmText: this.locale.translate('general.confirm'),
+    }
+    const dialogRef = this.confirmDialog.open(options);
+    this.confirmDialog.confirmed(dialogRef).subscribe((confirmed) => {
+      if (confirmed) {
+        this.isLoading = true;
+        this.notesService.delete((note?.id) as string);
+        this.isLoading = false;
+      }
+    });
   }
 }

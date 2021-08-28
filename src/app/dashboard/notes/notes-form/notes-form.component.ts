@@ -12,7 +12,6 @@ import { TimeFormatPipe } from 'src/app/shared/pipes/time-format.pipe';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
 import { NotesService } from 'src/app/shared/services/firebase/notes.service';
 import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
-import { ThemeService } from 'src/app/shared/services/themes/theme.service';
 
 @Component({
   selector: 'nm-notes-form',
@@ -29,7 +28,6 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    public themeConfig: ThemeService,
     private noteService: NotesService,
     private router: Router,
     private dateAdapter: DateAdapter<Moment>,

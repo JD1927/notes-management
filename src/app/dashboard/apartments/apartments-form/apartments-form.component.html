@@ -2,7 +2,7 @@
   <div *ngIf="isLoading" class="overlay-loader">
     <mat-progress-spinner
       diameter="50"
-      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      color="accent"
       mode="indeterminate">
     </mat-progress-spinner>
   </div>
@@ -16,7 +16,7 @@
   </div>
   <hr style="margin-bottom: 20px" />
   <form [formGroup]="form" (ngSubmit)="apartment ? onUpdate() : onSubmit()">
-    <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
+    <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
       <input
         matInput
@@ -35,7 +35,7 @@
       <button type="submit"
         [disabled]="!form.valid"
         mat-raised-button
-        [color]="themeConfig.theme ? 'primary' : 'accent'">
+        color="accent">
         {{ (apartment ? 'apartments.update': 'apartments.add') | translate }}
       </button>
     </div>

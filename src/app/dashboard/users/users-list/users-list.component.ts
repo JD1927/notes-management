@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,7 +9,6 @@ import { ConfirmDialog } from 'src/app/shared/models/dialog.model';
 import { ConfirmDialogService } from 'src/app/shared/services/dialog/confirm-dialog.service';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
 import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
-import { ThemeService } from 'src/app/shared/services/themes/theme.service';
 
 @Component({
   selector: 'nm-users-list',
@@ -29,7 +28,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: FirebaseAuthService,
-    public themeConfig: ThemeService,
     private confirmDialog: ConfirmDialogService,
     private locale: LocalizationService,
   ) {

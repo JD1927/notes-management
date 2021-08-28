@@ -2,7 +2,7 @@
   <div *ngIf="isLoading" class="overlay-loader">
     <mat-progress-spinner
       diameter="50"
-      [color]="themeConfig.theme ? 'primary' : 'accent'"
+      color="accent"
       mode="indeterminate">
     </mat-progress-spinner>
   </div>
@@ -11,7 +11,7 @@
   </div>
   <hr style="margin-bottom: 30px"/>
 
-  <mat-form-field [color]="themeConfig.theme ? 'primary' : 'accent'" class="form-field" appearance="outline">
+  <mat-form-field color="accent" class="form-field" appearance="outline">
     <mat-label>{{ 'table.search' | translate }}</mat-label>
     <input type="text" matInput (keyup)="applyFilter($event)" #input>
     <mat-hint>{{ 'table.search-hint' | translate }}</mat-hint>
@@ -46,7 +46,7 @@
             <button
               mat-flat-button
               [routerLink]="['/home/users/form', row.id]"
-              [color]="themeConfig.theme ? 'primary' : 'accent'">
+              color="accent">
               {{ 'table.update' | translate }}
               <mat-icon inline=true>edit</mat-icon>
             </button>
@@ -67,6 +67,6 @@
       </tr>
     </table>
 
-    <mat-paginator [color]="themeConfig.theme ? 'primary' : 'accent'" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    <mat-paginator color="accent" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 </div>
