@@ -8,15 +8,14 @@ import { Apartment } from 'src/app/shared/models/apartments.model';
 import { ConfirmDialog } from 'src/app/shared/models/dialog.model';
 import { ConfirmDialogService } from 'src/app/shared/services/dialog/confirm-dialog.service';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
-import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
+import { TranslationService } from 'src/app/shared/services/translation/translation.service';
 
 @Component({
   selector: 'nm-apartments-list',
   templateUrl: './apartments-list.component.html',
-  styleUrls: ['./apartments-list.component.scss']
+  styleUrls: ['./apartments-list.component.scss'],
 })
 export class ApartmentsListComponent implements OnInit {
-
   isLoading!: boolean;
   apartments!: MatTableDataSource<Apartment>;
   _apartments$: Subscription = new Subscription();
@@ -29,7 +28,7 @@ export class ApartmentsListComponent implements OnInit {
   constructor(
     private aptoService: ApartmentsService,
     private confirmDialog: ConfirmDialogService,
-    private locale: LocalizationService,
+    private locale: TranslationService
   ) {
     this.apartments = new MatTableDataSource<Apartment>([]);
   }
@@ -40,21 +39,18 @@ export class ApartmentsListComponent implements OnInit {
 
   ngOnDestroy(): void {
     this._apartments$.unsubscribe();
-
   }
 
   getUserList(): void {
     this.isLoading = true;
-    this._apartments$ = this.aptoService.list()
-      .subscribe(
-        (res) => {
-          this.apartments = new MatTableDataSource([...res]);
-          this.apartments.paginator = this.paginator;
-          this.apartments.sort = this.sort;
-          this.apartments.sortingDataAccessor = (data: any, header: any) => data[header];
-          this.isLoading = false;
-        }
-      );
+    this._apartments$ = this.aptoService.list().subscribe((res) => {
+      this.apartments = new MatTableDataSource([...res]);
+      this.apartments.paginator = this.paginator;
+      this.apartments.sort = this.sort;
+      this.apartments.sortingDataAccessor = (data: any, header: any) =>
+        data[header];
+      this.isLoading = false;
+    });
   }
 
   applyFilter(event: Event) {
@@ -69,10 +65,12 @@ export class ApartmentsListComponent implements OnInit {
   deleteUser(userID: string, email: string): void {
     const options: ConfirmDialog = {
       title: this.locale.translate('apartments.delete-title'),
-      message: `${this.locale.translate('apartments.delete-message')} "${email}"`,
+      message: `${this.locale.translate(
+        'apartments.delete-message'
+      )} "${email}"`,
       cancelText: this.locale.translate('general.cancel'),
       confirmText: this.locale.translate('general.confirm'),
-    }
+    };
     const dialogRef = this.confirmDialog.open(options);
     this.confirmDialog.confirmed(dialogRef).subscribe((confirmed) => {
       if (confirmed) {
@@ -81,7 +79,5 @@ export class ApartmentsListComponent implements OnInit {
         this.isLoading = false;
       }
     });
-
   }
-
 }
