@@ -11,5 +11,12 @@ export interface User {
   apartment?: string;
   name?: string;
   email: string;
+  phoneNumber: string;
   roles: Roles;
+}
+
+export interface SignUpRequest {
+  email: string;
+  phoneNumber: string;
+  password: string;
 }

@@ -7,5 +7,6 @@ export interface Note {
   userID: string;
   date: string;
   time: string;
+  timeFormat?: string;
   createdAt: number;
 }
