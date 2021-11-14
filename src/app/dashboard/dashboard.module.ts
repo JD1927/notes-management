@@ -8,15 +8,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { InternationalizationModule } from '../shared/modules/internationalization/internationalization.module';
+import { SharedModule } from '../shared/shared.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
-
-
 @NgModule({
-  declarations: [
-    DashboardComponent,
-  ],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -28,6 +25,7 @@ import { DashboardComponent } from './dashboard.component';
     MatTooltipModule,
     MatFormFieldModule,
     InternationalizationModule,
-  ]
+    SharedModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

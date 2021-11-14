@@ -1,49 +1,56 @@
 <div>
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav color="accent" #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+    <mat-sidenav color="accent" #drawer class="sidenav animated fade-in-left" fixedInViewport
+      [attr.role]="!isDesktop ? 'dialog' : 'navigation'" [mode]="!isDesktop ? 'over' : 'side'" [opened]="isDesktop">
       <mat-toolbar>
         {{ 'dashboard.menu' | translate }}
       </mat-toolbar>
       <mat-nav-list>
         <mat-list>
           <div mat-subheader>{{ 'dashboard.nav-list.home' | translate }}</div>
-          <a mat-list-item [routerLink]="['/home/notes']" routerLinkActive="router-link-active">
+          <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/home/notes']"
+            routerLinkActive="router-link-active">
             {{ 'dashboard.notes' | translate }}
           </a>
-          <a mat-list-item [routerLink]="['/home/notes/apartment']" routerLinkActive="router-link-active">
+          <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/home/notes/apartment']"
+            routerLinkActive="router-link-active">
             {{ 'dashboard.notes-by-apartment' | translate }}
           </a>
-          <a mat-list-item [routerLink]="['/home/apartments']" routerLinkActive="router-link-active">
+          <a *ngIf="isDesktop && isDesktopDevice" mat-list-item (click)="onSelectedOption()"
+            [routerLink]="['/home/apartments']" routerLinkActive="router-link-active">
             {{ 'dashboard.apartments' | translate }}
           </a>
-          <a mat-list-item [routerLink]="['/home/users']" routerLinkActive="router-link-active">
+          <a *ngIf="isDesktop && isDesktopDevice" mat-list-item (click)="onSelectedOption()"
+            [routerLink]="['/home/users']" routerLinkActive="router-link-active">
             {{ 'dashboard.users' | translate }}
           </a>
         </mat-list>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <mat-toolbar fixedInViewport>
-        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
+      <mat-toolbar class="animated fade-in-down" fixedInViewport>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="!isDesktop">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span *ngIf="!(isHandset$ | async)">
+        <span class="general-welcome">
           {{ 'general.welcome' | translate }} {{ (user$ | async)?.displayName || (user$ | async)?.email }}!
         </span>
-        <div class="toolbar-config" *ngIf="!(isHandset$ | async)">
+        <div class="toolbar-config">
           <div>
-            <button type="button" [matTooltip]="locale.translate('dashboard.language-tooltip')"
+            <button type="button" [matTooltip]="translation.translate('dashboard.language-tooltip')"
               aria-label="Toggle translate" (click)="onSwitchLanguage()" mat-icon-button>
-              <span *ngIf="locale.getCurrentLanguage() === 'en-US'" class="flag-icon flag-icon-us flag-icon-squared">
+              <span *ngIf="translation.getCurrentLanguage() === 'en-US'"
+                class="flag-icon flag-icon-us flag-icon-squared">
               </span>
-              <span *ngIf="locale.getCurrentLanguage() === 'es-CO'" class="flag-icon flag-icon-co flag-icon-squared">
+              <span *ngIf="translation.getCurrentLanguage() === 'es-CO'"
+                class="flag-icon flag-icon-co flag-icon-squared">
               </span>
             </button>
           </div>
-          <button (click)="signOut()" mat-flat-button>
+          <button *ngIf="!isDesktop" type="button" aria-label="Sign out" (click)="signOut()" mat-icon-button>
+            <mat-icon inline=true>logout</mat-icon>
+          </button>
+          <button *ngIf="isDesktop" (click)="signOut()" mat-flat-button>
             {{ 'auth.sign-out' | translate }}
             <mat-icon inline=true>logout</mat-icon>
           </button>
