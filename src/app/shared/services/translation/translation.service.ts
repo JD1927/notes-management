@@ -1,18 +1,18 @@
 import { Injectable, Optional, SkipSelf } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateLanguage } from '../../models/translate-language.model';
-import { LocalizationConfigService } from './localization-config.service';
+import { TranslationConfigService } from './translation-config.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class LocalizationService {
+export class TranslationService {
   private _localeId: TranslateLanguage | string = 'es-CO';
 
   constructor(
-    @Optional() @SkipSelf() private singleton: LocalizationService,
-    private config: LocalizationConfigService,
-    private translateService: TranslateService,
+    @Optional() @SkipSelf() private singleton: TranslationService,
+    private config: TranslationConfigService,
+    private translateService: TranslateService
   ) {
     if (this.singleton) {
       throw new Error(

@@ -1,11 +1,9 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -19,15 +17,19 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InternationalizationModule } from './shared/modules/internationalization/internationalization.module';
+import { registerLocaleData } from '@angular/common';
+import localeCO from '@angular/common/locales/es-CO';
+import localeEN from '@angular/common/locales/en';
+
+registerLocaleData(localeCO, 'es-CO');
+registerLocaleData(localeEN, 'en-US');
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '../assets/locales/', '.json');
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     RouterModule,
@@ -38,10 +40,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }), // PWA
     StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,
     LayoutModule,
@@ -51,13 +56,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }) // TRANSLATE SERVICE
+        deps: [HttpClient],
+      },
+    }), // TRANSLATE SERVICE
   ],
-  providers: [
-    AngularFirestore,
-  ],
-  bootstrap: [AppComponent]
+  providers: [AngularFirestore],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
