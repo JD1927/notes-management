@@ -16,8 +16,7 @@
       </mat-select>
     </mat-form-field>
     <div class="search-notes">
-      <button type="submit" [disabled]="!form.valid" mat-raised-button
-        color="accent">
+      <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">
         {{ 'notes.search' | translate }}
         <mat-icon inline=true>search</mat-icon>
       </button>
@@ -28,11 +27,27 @@
     <ng-template [ngIf]="notes?.length !== 0">
       <mat-card class="notes__card" *ngFor="let note of notes">
         <div class="notes__card-container">
+          <button [matTooltip]="translation.translate('notes.whatsapp-tooltip')"
+            class="notes__card-opt-right notes__card-opt-right--whatsapp" (click)="onMessageOwner(note)" type="button"
+            aria-label="Message to owner" mat-mini-fab>
+            <mat-icon aria-label="whatsapp">
+              message
+            </mat-icon>
+          </button>
           <div class="notes__card-header">
-            <mat-icon>sticky_note_2</mat-icon>
-            <h3>{{ note?.title }}</h3>
+            <h2>{{ note?.title }}</h2>
           </div>
           <p style="margin-bottom: 20px;">{{ note?.description }}</p>
+          <div style="margin-top: auto;">
+            <div class="notes__datetime">
+              <span class="notes__tag-info">
+                <strong>{{ 'notes.date' | translate }}</strong>: {{ note?.date | date: 'dd-MM-YYYY' }}
+              </span>
+              <span class="notes__tag-info">
+                <strong>{{ 'notes.time' | translate }}</strong>: {{ note?.time }}
+              </span>
+            </div>
+          </div>
         </div>
       </mat-card>
     </ng-template>
