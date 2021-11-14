@@ -32,6 +32,19 @@
       </mat-form-field>
 
       <mat-form-field color="accent" class="form-field" appearance="outline">
+        <mat-label>{{ 'auth.phone' | translate }}</mat-label>
+
+        <input matInput type="string" formControlName="phoneNumber" autocomplete="false">
+
+        <mat-error *ngIf="form.controls['phoneNumber'].hasError('required')">
+          {{ 'error.required' | translate }}
+        </mat-error>
+        <mat-error *ngIf="form.controls['phoneNumber'].hasError('pattern')">
+          {{ 'error.phone-pattern' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field color="accent" class="form-field" appearance="outline">
         <mat-label>{{ 'auth.password' | translate }}</mat-label>
 
         <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" autocomplete="false">

@@ -13,6 +13,16 @@
       {{ 'error.sign-in' | translate }}
     </div>
   </div>
+  <div *ngIf="hasRoleError" class="form-error__box">
+    <div class="form-error__text">
+      {{ 'error.user-role' | translate }}
+    </div>
+  </div>
+  <div *ngIf="hasFragmentedUser" class="form-error__box">
+    <div class="form-error__text">
+      {{ 'error.fragmented-user' | translate }}
+    </div>
+  </div>
   <div *ngIf="hasEmailVerifiedError" class="form-error__box">
     <div class="form-error__text">
       {{ 'error.email-not-verified' | translate }}

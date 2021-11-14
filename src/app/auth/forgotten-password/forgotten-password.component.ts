@@ -3,15 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
-import { LocalizationService } from 'src/app/shared/services/localization/localization.service';
+import { TranslationService } from 'src/app/shared/services/translation/translation.service';
 
 @Component({
   selector: 'nm-forgotten-password',
   templateUrl: './forgotten-password.component.html',
-  styleUrls: ['./forgotten-password.component.scss']
+  styleUrls: ['./forgotten-password.component.scss'],
 })
 export class ForgottenPasswordComponent implements OnInit {
-
   form!: FormGroup;
   isLoading!: boolean;
 
@@ -19,9 +18,9 @@ export class ForgottenPasswordComponent implements OnInit {
     private fb: FormBuilder,
     private auth: FirebaseAuthService,
     private snackBar: MatSnackBar,
-    private locale: LocalizationService,
-    private router: Router,
-  ) { }
+    private locale: TranslationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -47,8 +46,8 @@ export class ForgottenPasswordComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
-    snackBarRef.afterDismissed().subscribe(
-      () => this.router.navigate(['/auth/sign-in'])
-    );
+    snackBarRef
+      .afterDismissed()
+      .subscribe(() => this.router.navigate(['/auth/sign-in']));
   }
 }
