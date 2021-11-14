@@ -9,24 +9,30 @@
     "go-to": "IR A"
   },
   "error": {
+    "generic": "Hubo un error. Por favor intenta de nuevo.",
     "required": "Campo requerido.",
     "email-pattern": "Por favor ingrese un correo válido.",
+    "phone-pattern": "Por favor ingrese un teléfono móvil válido.",
     "password-pattern": "La contraseña debe contener números y letras.",
     "password-mismatch": "Las contraseñas deben coincidir.",
     "sign-in": "Usuario o contraseña inválidos.",
     "email-not-verified": "Aún no has verificado tu correo electrónico.",
-    "sign-up": "El usuario ya está registrado."
+    "sign-up": "El usuario ya está registrado.",
+    "user-role": "Aún no tienes permisos asignados, comunícate con un administrador.",
+    "fragmented-user": "Usuario fragmentado. Tu usuario no cuenta con la información requerida, comunícate con un administrador."
   },
   "auth": {
     "sign-in-title": "INICIAR SESIÓN",
     "sign-up-title": "REGISTRARME",
     "email": "Correo electrónico",
     "password": "Contraseña",
+    "phone": "Teléfono móvil",
     "confirm-password": "Confirmar contraseña",
     "not-registered": "No te has registrado aún?",
     "register": "Registrarme",
     "password-hint": "La contraseña debe tener mínimo de 6 caracteres.",
     "sign-out": "CERRAR SESIÓN",
+    "sign-out-message": "¿Estás seguro que deseas cerrar sesión?",
     "thanks-registration": "¡Gracias por registrarte!",
     "confirmation-email": "Hemos enviado un correo de confirmación a",
     "check-email": "Por favor revisa tu correo y haz click en el enlace para verificar tu dirección de correo electrónico.",
@@ -40,7 +46,7 @@
     "menu": "Menú",
     "notes": "Notas",
     "apartments": "Apartamentos",
-    "notes-by-apartment": "Notas por Apartamento",
+    "notes-by-apartment": "Notas por apto",
     "users": "Usuarios",
     "dark-mode": "Modo oscuro",
     "light-mode": "Modo claro",
@@ -64,7 +70,10 @@
     "no-notes-apto": "Aún no hay notas registradas para este apartamento.",
     "no-apto": "Aún no tienes registrado un apartamento. Comunicate con un administrador.",
     "delete-title": "ELIMINAR NOTA",
-    "delete-message": "¿Estás seguro que quieres eliminar esta nota?"
+    "delete-message": "¿Estás seguro que quieres eliminar esta nota?",
+    "delete-note-tooltip": "Eliminar nota",
+    "edit-note-tooltip": "Editar nota",
+    "whatsapp-tooltip": "Enviar mensaje al dueño de la nota"
   },
   "apartments": {
     "title": "Lista de Apartamentos",
