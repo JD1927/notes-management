@@ -1,19 +1,19 @@
-@use '~@angular/material' as mat;
+@use "~@angular/material" as mat;
 
-$error-color: #CF6679;
-$light-dark: map-get(mat.$dark-theme-background-palette, 'background');
+$error-color: #cf6679;
+$light-dark: map-get(mat.$dark-theme-background-palette, "background");
 .router-link-active {
   font-weight: 600;
   background-color: lighten($light-dark, 20%);
 }
 
 .dashboard {
-  @include e('header') {
+  @include e("header") {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
-  @include e('title') {
+  @include e("title") {
     font-size: 1.2rem;
     @include mq-up(xs) {
       font-size: 1.5rem;
@@ -22,10 +22,10 @@ $light-dark: map-get(mat.$dark-theme-background-palette, 'background');
       font-size: 2rem;
     }
   }
-  @include e('button') {
+  @include e("button") {
     margin-left: auto;
   }
-  @include e('return-back') {
+  @include e("return-back") {
     margin-right: 15px;
   }
 }
@@ -105,15 +105,14 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .form-error {
-
-  @include e('box') {
+  @include e("box") {
     background-color: $error-color;
     border-radius: 5px;
     width: 100%;
     margin-bottom: 20px;
   }
 
-  @include e('text') {
+  @include e("text") {
     color: black;
     padding: 20px;
     font-size: 1rem;
@@ -127,4 +126,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .table-actions {
   @extend .form-actions;
   justify-content: flex-start;
+}
+
+mat-sidenav {
+  transition: all 0.5s ease-in-out !important;
 }
