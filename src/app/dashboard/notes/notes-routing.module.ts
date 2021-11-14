@@ -19,21 +19,24 @@ const routes: Routes = [
         component: NotesFormComponent,
       },
       {
+        path: 'form/:id',
+        component: NotesFormComponent,
+      },
+      {
         path: 'apartment',
         component: NotesApartmentComponent,
       },
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/home/notes/list'
+        redirectTo: '/home/notes/list',
       },
-    ]
+    ],
   },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class NotesRoutingModule { }
+export class NotesRoutingModule {}

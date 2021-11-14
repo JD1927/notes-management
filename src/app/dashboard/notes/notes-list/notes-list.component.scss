@@ -1,5 +1,5 @@
-@use '~@angular/material' as mat;
-@import './../../../../assets/scss/utils/mixins';
+@use "~@angular/material" as mat;
+@import "./../../../../assets/scss/utils/mixins";
 
 .notes {
   display: grid;
@@ -9,17 +9,18 @@
 
   @include mq-up(sm) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
   @include mq-up(xl) {
     grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
-  @include e('card') {
+  @include e("card") {
     width: auto;
-    cursor: pointer;
     border-radius: 5px;
-    min-height: 250px;
+    min-height: 200px;
 
-    @include m('no-items') {
+    @include m("no-items") {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,7 +32,7 @@
         transform: scale(1.05);
       }
     }
-    @include m('no-notes-apto') {
+    @include m("no-notes-apto") {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -41,24 +42,78 @@
     }
   }
 
-  @include e('card-container') {
+  @include e("card-container") {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
   }
-  @include e('card-delete') {
+  @include e("card-opt-right") {
     position: absolute;
     right: -30px;
     top: -30px;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      transform: scale(1.125);
+    }
+
+    @include m("whatsapp") {
+      background-color: map-get(mat.$green-palette, A200);
+    }
   }
-  @include e('card-header') {
+  @include e("card-opt-left") {
+    position: absolute;
+    right: 15px;
+    top: -30px;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      transform: scale(1.125);
+    }
+  }
+
+  @include e("card-whatsapp") {
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      transform: scale(1.125);
+    }
+  }
+  @include e("card-header") {
     margin-top: -10px;
     margin-bottom: -20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 15px;
+  }
+
+  @include e("datetime") {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  @include e("tag-info") {
+    font-size: 15px;
+    background-color: #212121;
+    padding: 5px 12px;
+    border-radius: 5px;
+
+    @include mq-up(xs) {
+      font-size: 16px;
+    }
+
+    @include m("apto") {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+    }
   }
 }

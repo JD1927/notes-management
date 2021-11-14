@@ -1,48 +1,47 @@
 <div class="animated fade-in-down">
   <div *ngIf="isLoading" class="overlay-loader">
-    <mat-progress-spinner
-      diameter="50"
-      color="accent"
-      mode="indeterminate">
+    <mat-progress-spinner diameter="50" color="accent" mode="indeterminate">
     </mat-progress-spinner>
   </div>
   <div class="dashboard__header">
     <h1 class="dashboard__title">{{ 'notes.title' | translate }}</h1>
     <div *ngIf="user?.aptoID !== ''" class="dashboard__button">
-      <button
-        [routerLink]="['/home/notes/form']"
-        mat-raised-button
-        color="accent">
+      <button [routerLink]="['/home/notes/form']" mat-raised-button color="accent">
         {{ 'notes.add' | translate }}
         <mat-icon inline=true>add</mat-icon>
       </button>
     </div>
   </div>
-  <hr style="margin-bottom: 20px"/>
+  <hr style="margin-bottom: 40px" />
   <div class="notes animated fade-in-down">
     <ng-template [ngIf]="notes?.length !== 0 && user?.aptoID !== ''">
       <mat-card class="notes__card" *ngFor="let note of notes">
         <div class="notes__card-container">
-          <button
-            (click)="onDeleteNote(note)"
-            class="notes__card-delete"
-            color="warn" type="button"
-            aria-label="Delete note" mat-mini-fab>
-            <mat-icon
-              aria-label="delete forever">
+          <button [matTooltip]="translation.translate('notes.delete-note-tooltip')" (click)="onDeleteNote(note)"
+            class="notes__card-opt-right" color="warn" type="button" aria-label="Delete note" mat-mini-fab>
+            <mat-icon aria-label="delete forever">
               delete_forever
+            </mat-icon>
+          </button>
+          <button [matTooltip]="translation.translate('notes.edit-note-tooltip')" (click)="onEditNote(note)"
+            class="notes__card-opt-left" color="accent" type="button" aria-label="Edit note" mat-mini-fab>
+            <mat-icon aria-label="edit">
+              edit
             </mat-icon>
           </button>
           <div class="notes__card-header">
             <h2>{{ note?.title }}</h2>
           </div>
           <p style="margin-bottom: 20px;">{{ note?.description }}</p>
-          <div class="form-actions" style="margin-top: auto;">
-            <button type="submit"
-              mat-stroked-button
-              color="accent">
-              {{ 'notes.update' | translate }}
-            </button>
+          <div style="margin-top: auto;">
+            <div class="notes__datetime">
+              <span class="notes__tag-info">
+                <strong>{{ 'notes.date' | translate }}</strong>: {{ note?.date | date: 'dd-MM-YYYY' }}
+              </span>
+              <span class="notes__tag-info">
+                <strong>{{ 'notes.time' | translate }}</strong>: {{ note?.time }}
+              </span>
+            </div>
           </div>
         </div>
       </mat-card>
@@ -50,7 +49,7 @@
     <ng-template [ngIf]="notes?.length === 0 && user?.aptoID !== ''">
       <mat-card [routerLink]="['/home/notes/form']" class="notes__card notes__card--no-items">
         <span>
-          {{ 'notes.no-items' | translate }} <br/>
+          {{ 'notes.no-items' | translate }} <br />
           <strong><u>{{ 'notes.add' | translate }}</u></strong>
         </span>
       </mat-card>
@@ -58,7 +57,7 @@
     <ng-template [ngIf]="notes?.length === 0 && user?.aptoID === ''">
       <mat-card style="cursor: not-allowed;" class="notes__card notes__card--no-notes-apto">
         <span>
-          {{ 'notes.no-apto' | translate }} <br/>
+          {{ 'notes.no-apto' | translate }} <br />
         </span>
       </mat-card>
     </ng-template>
