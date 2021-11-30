@@ -3,27 +3,43 @@
     <mat-sidenav color="accent" #drawer class="sidenav animated fade-in-left" fixedInViewport
       [attr.role]="!isDesktop ? 'dialog' : 'navigation'" [mode]="!isDesktop ? 'over' : 'side'" [opened]="isDesktop">
       <mat-toolbar>
-        {{ 'dashboard.menu' | translate }}
+        {{ 'general.app-name' | translate }}
       </mat-toolbar>
       <mat-nav-list>
         <mat-list>
-          <div mat-subheader>{{ 'dashboard.nav-list.home' | translate }}</div>
-          <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/home/notes']"
+          <div *ngIf="isLoading" class="overlay-loader">
+            <mat-progress-spinner diameter="50" color="accent" mode="indeterminate">
+            </mat-progress-spinner>
+          </div>
+          <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/dashboard/announcements/']"
             routerLinkActive="router-link-active">
-            {{ 'dashboard.notes' | translate }}
+            {{ 'dashboard.announcements' | translate }}
           </a>
-          <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/home/notes/apartment']"
-            routerLinkActive="router-link-active">
-            {{ 'dashboard.notes-by-apartment' | translate }}
-          </a>
-          <a *ngIf="isDesktop && isDesktopDevice" mat-list-item (click)="onSelectedOption()"
-            [routerLink]="['/home/apartments']" routerLinkActive="router-link-active">
-            {{ 'dashboard.apartments' | translate }}
-          </a>
-          <a *ngIf="isDesktop && isDesktopDevice" mat-list-item (click)="onSelectedOption()"
-            [routerLink]="['/home/users']" routerLinkActive="router-link-active">
-            {{ 'dashboard.users' | translate }}
-          </a>
+          <mat-divider></mat-divider>
+          <ng-template [ngIf]="isResident">
+            <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/dashboard/notes']"
+              routerLinkActive="router-link-active">
+              {{ 'dashboard.notes' | translate }}
+            </a>
+          </ng-template>
+          <ng-template [ngIf]="isGuard">
+            <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/dashboard/notes/apartment']"
+              routerLinkActive="router-link-active">
+              {{ 'dashboard.notes-by-apartment' | translate }}
+            </a>
+          </ng-template>
+          <ng-template [ngIf]="isAdmin">
+            <a *ngIf="isDesktop && isDesktopDevice" mat-list-item (click)="onSelectedOption()"
+              [routerLink]="['/dashboard/apartments']" routerLinkActive="router-link-active">
+              {{ 'dashboard.apartments' | translate }}
+            </a>
+          </ng-template>
+          <ng-template [ngIf]="isAdmin">
+            <a *ngIf="isDesktop && isDesktopDevice" mat-list-item (click)="onSelectedOption()"
+              [routerLink]="['/dashboard/users']" routerLinkActive="router-link-active">
+              {{ 'dashboard.users' | translate }}
+            </a>
+          </ng-template>
         </mat-list>
       </mat-nav-list>
     </mat-sidenav>

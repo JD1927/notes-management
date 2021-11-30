@@ -91,7 +91,7 @@ export class NotesFormComponent implements OnInit, OnDestroy {
   getUserFromFirestore(uid: string): void {
     this.users.get(uid).subscribe((user) => {
       if (!user || user.aptoID === '') {
-        this.router.navigate(['/home/notes']);
+        this.router.navigate(['/dashboard/notes']);
         return;
       }
       this.user = { ...user };
@@ -135,7 +135,7 @@ export class NotesFormComponent implements OnInit, OnDestroy {
     } else {
       await this.noteService.add(item);
     }
-    this.router.navigate(['/home/notes']);
+    this.router.navigate(['/dashboard/notes']);
   }
 
   getNoteObject(): Note {

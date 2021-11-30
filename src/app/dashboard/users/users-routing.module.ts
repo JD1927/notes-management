@@ -20,14 +20,14 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/home/users/list'
+        redirectTo: '/dashboard/users/list',
       },
-    ]
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UsersRoutingModule { }
+export class UsersRoutingModule {}

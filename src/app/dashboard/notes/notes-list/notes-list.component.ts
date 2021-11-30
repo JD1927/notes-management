@@ -29,8 +29,8 @@ export class NotesListComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.getCurrentUser();
+  async ngOnInit(): Promise<void> {
+    await this.getCurrentUser();
   }
 
   async getCurrentUser(): Promise<void> {
@@ -82,6 +82,6 @@ export class NotesListComponent implements OnInit, OnDestroy {
     if (note?.userID !== this.user?.id) {
       return;
     }
-    this.router.navigate([`/home/notes/form/${note.id}`]);
+    this.router.navigate([`/dashboard/notes/form/${note.id}`]);
   }
 }

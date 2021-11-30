@@ -1,13 +1,10 @@
 <div class="animated fade-in-down">
   <div *ngIf="isLoading" class="overlay-loader">
-    <mat-progress-spinner
-      diameter="50"
-      color="accent"
-      mode="indeterminate">
+    <mat-progress-spinner diameter="50" color="accent" mode="indeterminate">
     </mat-progress-spinner>
   </div>
   <div class="dashboard__header">
-    <button mat-icon-button [routerLink]="['/home/apartments']">
+    <button mat-icon-button [routerLink]="['/dashboard/apartments']">
       <mat-icon>arrow_back</mat-icon>
     </button>
     <div>
@@ -18,24 +15,17 @@
   <form [formGroup]="form" (ngSubmit)="apartment ? onUpdate() : onSubmit()">
     <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
-      <input
-        matInput
-        formControlName="aptoNumber"
-        maxLength="5"
-      >
+      <input matInput formControlName="aptoNumber" maxLength="5">
       <mat-error *ngIf="form.controls['aptoNumber'].hasError('required')">
         {{ 'error.required' | translate }}
       </mat-error>
     </mat-form-field>
 
     <div class="form-actions">
-      <button type="button" mat-raised-button [routerLink]="['/home/apartments']">
+      <button type="button" mat-raised-button [routerLink]="['/dashboard/apartments']">
         {{ 'general.cancel' | translate }}
       </button>
-      <button type="submit"
-        [disabled]="!form.valid"
-        mat-raised-button
-        color="accent">
+      <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">
         {{ (apartment ? 'apartments.update': 'apartments.add') | translate }}
       </button>
     </div>

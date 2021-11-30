@@ -4,7 +4,7 @@
     </mat-progress-spinner>
   </div>
   <div class="dashboard__header">
-    <button mat-icon-button [routerLink]="['/home/notes']">
+    <button mat-icon-button [routerLink]="['/dashboard/notes']">
       <mat-icon>arrow_back</mat-icon>
     </button>
     <div>
@@ -34,15 +34,21 @@
       <input matInput formControlName="date" [matDatepicker]="datepicker">
       <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
       <mat-datepicker [touchUi]="isDesktop ? false : true" #datepicker></mat-datepicker>
+      <mat-error *ngIf="form.controls['date'].hasError('required')">
+        {{ 'error.required' | translate }}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'notes.time' | translate }}</mat-label>
       <input type="time" matInput formControlName="time">
+      <mat-error *ngIf="form.controls['time'].hasError('required')">
+        {{ 'error.required' | translate }}
+      </mat-error>
     </mat-form-field>
 
     <div class="form-actions">
-      <button type="button" mat-raised-button [routerLink]="['/home/notes']">
+      <button type="button" mat-raised-button [routerLink]="['/dashboard/notes']">
         {{ 'general.cancel' | translate }}
       </button>
       <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">

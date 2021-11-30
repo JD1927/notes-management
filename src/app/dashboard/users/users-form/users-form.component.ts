@@ -10,10 +10,9 @@ import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-a
 @Component({
   selector: 'nm-users-form',
   templateUrl: './users-form.component.html',
-  styleUrls: ['./users-form.component.scss']
+  styleUrls: ['./users-form.component.scss'],
 })
 export class UsersFormComponent implements OnInit {
-
   form!: FormGroup;
   isLoading!: boolean;
   isDesktop$: Subscription = new Subscription();
@@ -28,8 +27,8 @@ export class UsersFormComponent implements OnInit {
     private router: Router,
     private usersService: FirebaseAuthService,
     private aptoService: ApartmentsService,
-    private route: ActivatedRoute,
-  ) { }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -49,11 +48,10 @@ export class UsersFormComponent implements OnInit {
   }
 
   getParameters(): void {
-    this._route$ = this.route.params
-      .subscribe((params) => {
-        this.isLoading = true;
-        this.handleUserID(params?.id);
-      });
+    this._route$ = this.route.params.subscribe((params) => {
+      this.isLoading = true;
+      this.handleUserID(params?.id);
+    });
   }
 
   handleUserID(id: string): void {
@@ -81,12 +79,10 @@ export class UsersFormComponent implements OnInit {
 
   getApartments(): void {
     this.isLoading = true;
-    this._apartments$ = this.aptoService.list().subscribe(
-      (res) => {
-        this.apartments = [...res];
-        this.isLoading = false;
-      }
-    )
+    this._apartments$ = this.aptoService.list().subscribe((res) => {
+      this.apartments = [...res];
+      this.isLoading = false;
+    });
   }
 
   async onSubmit(): Promise<void> {
@@ -113,14 +109,13 @@ export class UsersFormComponent implements OnInit {
         isGuard,
         isAdmin,
         isSuperAdmin,
-      }
-    }
+      },
+    };
     const result = await this.usersService.update(item);
     this.isLoading = false;
     if (!result) {
       return;
     }
-    this.router.navigate(['/home/users']);
+    this.router.navigate(['/dashboard/users']);
   }
-
 }

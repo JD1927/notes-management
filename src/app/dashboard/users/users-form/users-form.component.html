@@ -1,13 +1,10 @@
 <div class="animated fade-in-down">
   <div *ngIf="isLoading" class="overlay-loader">
-    <mat-progress-spinner
-      diameter="50"
-      color="accent"
-      mode="indeterminate">
+    <mat-progress-spinner diameter="50" color="accent" mode="indeterminate">
     </mat-progress-spinner>
   </div>
   <div class="dashboard__header">
-    <button mat-icon-button [routerLink]="['/home/users']">
+    <button mat-icon-button [routerLink]="['/dashboard/users']">
       <mat-icon>arrow_back</mat-icon>
     </button>
     <div>
@@ -18,12 +15,7 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'users.input-name' | translate }}</mat-label>
-      <input
-        #name
-        matInput
-        formControlName="name"
-        maxlength="60"
-      >
+      <input #name matInput formControlName="name" maxlength="60">
       <mat-hint align="end">{{name.value.length}} / 60</mat-hint>
       <mat-error *ngIf="form.controls['name'].hasError('required')">
         {{ 'error.required' | translate }}
@@ -38,7 +30,7 @@
       </mat-select>
     </mat-form-field>
 
-    <hr style="margin-bottom: 20px"/>
+    <hr style="margin-bottom: 20px" />
     <h2 style="text-align: center;">{{ 'users.roles' | translate }}</h2>
 
     <mat-list class="form-field form-toggles">
@@ -47,9 +39,7 @@
           <strong>{{ 'users.resident-title' | translate }}: </strong>
           {{ 'users.resident-info' | translate }}
         </p>
-        <mat-slide-toggle
-          color="accent"
-          formControlName="isResident">
+        <mat-slide-toggle color="accent" formControlName="isResident">
         </mat-slide-toggle>
       </div>
       <mat-divider></mat-divider>
@@ -58,9 +48,7 @@
           <strong>{{ 'users.guard-title' | translate }}: </strong>
           {{ 'users.guard-info' | translate }}
         </p>
-        <mat-slide-toggle
-          color="accent"
-          formControlName="isGuard">
+        <mat-slide-toggle color="accent" formControlName="isGuard">
         </mat-slide-toggle>
       </div>
       <mat-divider></mat-divider>
@@ -69,9 +57,7 @@
           <strong>{{ 'users.admin-title' | translate }}: </strong>
           {{ 'users.admin-info' | translate }}
         </p>
-        <mat-slide-toggle
-          color="accent"
-          formControlName="isAdmin">
+        <mat-slide-toggle color="accent" formControlName="isAdmin">
         </mat-slide-toggle>
       </div>
       <mat-divider></mat-divider>
@@ -80,21 +66,16 @@
           <strong>{{ 'users.super-admin-title' | translate }}: </strong>
           {{ 'users.super-admin-info' | translate }}
         </p>
-        <mat-slide-toggle
-          color="accent"
-          formControlName="isSuperAdmin">
+        <mat-slide-toggle color="accent" formControlName="isSuperAdmin">
         </mat-slide-toggle>
       </div>
     </mat-list>
 
     <div class="form-actions">
-      <button type="button" mat-raised-button [routerLink]="['/home/users']">
+      <button type="button" mat-raised-button [routerLink]="['/dashboard/users']">
         {{ 'general.cancel' | translate }}
       </button>
-      <button type="submit"
-        [disabled]="!form.valid"
-        mat-raised-button
-        color="accent">
+      <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">
         {{ 'users.update' | translate }}
       </button>
     </div>

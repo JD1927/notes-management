@@ -23,9 +23,9 @@
     </div>
   </form>
 
-  <div class="notes animated fade-in-down">
+  <div class="notes">
     <ng-template [ngIf]="notes?.length !== 0">
-      <mat-card class="notes__card" *ngFor="let note of notes">
+      <mat-card class="notes__card animated fade-in-down" *ngFor="let note of notes">
         <div class="notes__card-container">
           <button [matTooltip]="translation.translate('notes.whatsapp-tooltip')"
             class="notes__card-opt-right notes__card-opt-right--whatsapp" (click)="onMessageOwner(note)" type="button"

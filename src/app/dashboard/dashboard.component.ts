@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { Roles } from '../shared/models/auth.model';
 import { ConfirmDialog } from '../shared/models/dialog.model';
 import { ConfirmDialogService } from '../shared/services/dialog/confirm-dialog.service';
 import { FirebaseAuthService } from '../shared/services/firebase/firebase-auth.service';
@@ -18,10 +19,14 @@ export class DashboardComponent implements OnInit {
   @ViewChild('drawer') drawer!: MatDrawer;
 
   isDesktop!: boolean;
+  isLoading!: boolean;
   isDesktopDevice!: boolean;
   isDesktop$: Subscription = new Subscription();
   user!: any;
   user$: Observable<any> = this.authService.auth.user;
+  isResident!: boolean;
+  isGuard!: boolean;
+  isAdmin!: boolean;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -31,13 +36,38 @@ export class DashboardComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.handleDesktopDevice();
+    await this.handleUserOptions();
+  }
+
+  handleDesktopDevice(): void {
     this.isDesktop$ = this.breakpointObserver
       .observe(['(min-width: 992px)'])
       .subscribe((result) => {
         this.isDesktopDevice = isDesktopDevice();
         this.isDesktop = result.matches;
       });
+  }
+
+  async handleUserOptions(): Promise<void> {
+    this.isLoading = true;
+    const resident: Roles = {
+      isResident: true,
+      isSuperAdmin: true,
+    };
+    const guard: Roles = {
+      isGuard: true,
+      isSuperAdmin: true,
+    };
+    const admin: Roles = {
+      isAdmin: true,
+      isSuperAdmin: true,
+    };
+    this.isResident = await this.authService.checkUserRole(resident);
+    this.isGuard = await this.authService.checkUserRole(guard);
+    this.isAdmin = await this.authService.checkUserRole(admin);
+    this.isLoading = false;
   }
 
   async onSwitchLanguage(): Promise<void> {

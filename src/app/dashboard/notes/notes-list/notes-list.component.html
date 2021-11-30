@@ -6,7 +6,7 @@
   <div class="dashboard__header">
     <h1 class="dashboard__title">{{ 'notes.title' | translate }}</h1>
     <div *ngIf="user?.aptoID !== ''" class="dashboard__button">
-      <button [routerLink]="['/home/notes/form']" mat-raised-button color="accent">
+      <button [routerLink]="['/dashboard/notes/form']" mat-raised-button color="accent">
         {{ 'notes.add' | translate }}
         <mat-icon inline=true>add</mat-icon>
       </button>
@@ -47,7 +47,7 @@
       </mat-card>
     </ng-template>
     <ng-template [ngIf]="notes?.length === 0 && user?.aptoID !== ''">
-      <mat-card [routerLink]="['/home/notes/form']" class="notes__card notes__card--no-items">
+      <mat-card [routerLink]="['/dashboard/notes/form']" class="notes__card notes__card--no-items">
         <span>
           {{ 'notes.no-items' | translate }} <br />
           <strong><u>{{ 'notes.add' | translate }}</u></strong>

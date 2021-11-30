@@ -8,10 +8,9 @@ import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.s
 @Component({
   selector: 'nm-apartments-form',
   templateUrl: './apartments-form.component.html',
-  styleUrls: ['./apartments-form.component.scss']
+  styleUrls: ['./apartments-form.component.scss'],
 })
 export class ApartmentsFormComponent implements OnInit, OnDestroy {
-
   form!: FormGroup;
   isLoading!: boolean;
   isDesktop!: boolean;
@@ -22,8 +21,8 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private router: Router,
     private aptoService: ApartmentsService,
-    private route: ActivatedRoute,
-  ) { }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -35,11 +34,10 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
   }
 
   getParameters(): void {
-    this._route$ = this.route.params
-      .subscribe((params) => {
-        this.isLoading = true;
-        this.handleApartmentID(params?.id);
-      });
+    this._route$ = this.route.params.subscribe((params) => {
+      this.isLoading = true;
+      this.handleApartmentID(params?.id);
+    });
   }
 
   handleApartmentID(id: string): void {
@@ -55,10 +53,12 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
     });
   }
 
-
   createForm(): void {
     this.form = this.fb.group({
-      aptoNumber: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(5)]],
+      aptoNumber: [
+        '',
+        [Validators.required, Validators.minLength(2), Validators.maxLength(5)],
+      ],
     });
   }
 
@@ -72,7 +72,7 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
     };
     await this.aptoService.add(item);
     this.isLoading = false;
-    this.router.navigate(['/home/apartments']);
+    this.router.navigate(['/dashboard/apartments']);
   }
 
   async onUpdate(): Promise<void> {
@@ -86,7 +86,6 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
     };
     await this.aptoService.update(item);
     this.isLoading = false;
-    this.router.navigate(['/home/apartments']);
+    this.router.navigate(['/dashboard/apartments']);
   }
-
 }
