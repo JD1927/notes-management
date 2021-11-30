@@ -76,7 +76,7 @@ export class SignInComponent implements OnInit {
       this.hasEmailVerifiedError = true;
       return;
     }
-    this.router.navigate(['/home']);
+    this.router.navigate(['/dashboard']);
   }
 
   onSendEmailVerification(): void {
