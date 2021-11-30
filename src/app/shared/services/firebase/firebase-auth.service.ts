@@ -6,7 +6,7 @@ import {
 } from '@angular/fire/firestore';
 import firebase from 'firebase';
 import { first } from 'rxjs/operators';
-import { SignUpRequest, User } from '../../models/auth.model';
+import { Roles, SignUpRequest, User } from '../../models/auth.model';
 import { TranslationService } from '../translation/translation.service';
 import { BaseService } from './base.service';
 
@@ -85,10 +85,6 @@ export class FirebaseAuthService extends BaseService<User> {
     return userRef.set(data, { merge: true });
   }
 
-  isUserAdmin(userUid: string) {
-    return this.afs.doc<User>(`users/${userUid}`).valueChanges();
-  }
-
   async sendEmailVerification(): Promise<void> {
     return (await this.auth.currentUser)?.sendEmailVerification();
   }
@@ -99,5 +95,22 @@ export class FirebaseAuthService extends BaseService<User> {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  async checkUserRole(roles: Roles): Promise<boolean> {
+    let result = false;
+    const userRef = await this.getCurrentUser();
+    const user = await this.get(userRef?.uid as string)
+      .pipe(first())
+      .toPromise();
+    const rolesKeys: string[] = [...Object.keys(roles)];
+    const userRoles = { ...user.roles };
+    rolesKeys.forEach((role: string) => {
+      if (userRoles[role as keyof Roles] === true) {
+        console.log(userRoles[role as keyof Roles]);
+        result = true;
+      }
+    });
+    return result;
   }
 }
