@@ -1,0 +1,14 @@
+@import "./../../../assets/scss/utils/mixins";
+
+.welcome {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include e("jumbotron") {
+    font-size: 64px;
+    font-weight: 600;
+  }
+}
