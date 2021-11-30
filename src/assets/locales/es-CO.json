@@ -3,7 +3,7 @@
     "cancel": "CANCELAR",
     "confirm": "CONFIRMAR",
     "send": "ENVIAR",
-    "app-name": "Mis Notas",
+    "app-name": "Mis Recados",
     "welcome": "¡Bienvenido",
     "resend": "REENVIAR",
     "go-to": "IR A"
@@ -43,37 +43,34 @@
     "password-reset-message": "Hemos enviado un correo de restablecimiento de contraseña a"
   },
   "dashboard": {
-    "menu": "Menú",
-    "notes": "Notas",
+    "announcements": "Anuncios",
+    "notes": "Recados",
     "apartments": "Apartamentos",
-    "notes-by-apartment": "Notas por apto",
+    "notes-by-apartment": "Recados por apto",
     "users": "Usuarios",
     "dark-mode": "Modo oscuro",
     "light-mode": "Modo claro",
-    "language-tooltip": "Cambiar el idioma actual.",
-    "nav-list": {
-      "home": "Inicio"
-    }
+    "language-tooltip": "Cambiar el idioma actual."
   },
   "notes": {
-    "title": "Lista de Notas",
-    "add": "AGREGAR NOTA",
-    "update": "ACTUALIZAR NOTA",
-    "form-title": "Formulario de Notas",
+    "title": "Lista de Recados",
+    "add": "AGREGAR RECADO",
+    "update": "ACTUALIZAR RECADO",
+    "form-title": "Formulario de Recados",
     "input-title": "Título",
     "input-description": "Description",
     "status": "Estado",
     "date": "Fecha",
     "search": "BUSCAR",
     "time": "Hora",
-    "no-items": "Aún no tienes notas agregadas.",
-    "no-notes-apto": "Aún no hay notas registradas para este apartamento.",
+    "no-items": "Aún no tienes recados agregadas.",
+    "no-notes-apto": "Aún no hay recados registradas para este apartamento.",
     "no-apto": "Aún no tienes registrado un apartamento. Comunicate con un administrador.",
-    "delete-title": "ELIMINAR NOTA",
-    "delete-message": "¿Estás seguro que quieres eliminar esta nota?",
-    "delete-note-tooltip": "Eliminar nota",
-    "edit-note-tooltip": "Editar nota",
-    "whatsapp-tooltip": "Enviar mensaje al dueño de la nota"
+    "delete-title": "ELIMINAR RECADO",
+    "delete-message": "¿Estás seguro que quieres eliminar esta recado?",
+    "delete-note-tooltip": "Eliminar recado",
+    "edit-note-tooltip": "Editar recado",
+    "whatsapp-tooltip": "Enviar mensaje al dueño de la recado"
   },
   "apartments": {
     "title": "Lista de Apartamentos",
@@ -98,8 +95,8 @@
     "guard-title": "VIGILANTE",
     "admin-title": "ADMINISTRADOR",
     "super-admin-title": "SUPER ADMINISTRADOR",
-    "resident-info": "Este rol se aplica para los usuarios que sólo crearán notas.",
-    "guard-info": "Este rol se aplica para los usuarios que sólo tendrán acceso a ver notas de todos los apartamentos.",
+    "resident-info": "Este rol se aplica para los usuarios que sólo crearán recados.",
+    "guard-info": "Este rol se aplica para los usuarios que sólo tendrán acceso a ver recados de todos los apartamentos.",
     "admin-info": "Este rol se aplica para los usuarios que tendrán permisos para el manejo de otros usuarios.",
     "super-admin-info": "Este rol se aplica para los usuarios que tienen permiso en toda la aplicación."
   },
