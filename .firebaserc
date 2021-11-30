@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "notes-managment": {
-      "hosting": {
-        "notes-management": [
-          "notes-managment"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "notes-managment"
   }
