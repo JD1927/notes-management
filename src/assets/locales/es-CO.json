@@ -15,7 +15,7 @@
     "phone-pattern": "Por favor ingrese un teléfono móvil válido.",
     "password-pattern": "La contraseña debe contener números y letras.",
     "password-mismatch": "Las contraseñas deben coincidir.",
-    "sign-in": "Usuario o contraseña inválidos.",
+    "sign-in": "Usuario y/o contraseña incorrectos.",
     "email-not-verified": "Aún no has verificado tu correo electrónico.",
     "sign-up": "El usuario ya está registrado.",
     "user-role": "Aún no tienes permisos asignados, comunícate con un administrador.",
@@ -43,7 +43,7 @@
     "password-reset-message": "Hemos enviado un correo de restablecimiento de contraseña a"
   },
   "dashboard": {
-    "announcements": "Anuncios",
+    "announcements": "Inicio",
     "notes": "Recados",
     "apartments": "Apartamentos",
     "notes-by-apartment": "Recados por apto",
@@ -54,7 +54,7 @@
   },
   "notes": {
     "title": "Lista de Recados",
-    "add": "AGREGAR RECADO",
+    "add": "CREAR RECADO",
     "update": "ACTUALIZAR RECADO",
     "form-title": "Formulario de Recados",
     "input-title": "Título",
@@ -63,7 +63,7 @@
     "date": "Fecha",
     "search": "BUSCAR",
     "time": "Hora",
-    "no-items": "Aún no tienes recados agregadas.",
+    "no-items": "Aún no has registrado ningún recado.",
     "no-notes-apto": "Aún no hay recados registradas para este apartamento.",
     "no-apto": "Aún no tienes registrado un apartamento. Comunicate con un administrador.",
     "delete-title": "ELIMINAR RECADO",

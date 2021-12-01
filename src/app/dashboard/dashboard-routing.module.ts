@@ -8,7 +8,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'announcements',
+        path: 'home',
         loadChildren: () =>
           import('./announcements/announcements.module').then(
             (m) => m.AnnouncementsModule
@@ -34,12 +34,12 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/dashboard/announcements',
+        redirectTo: '/dashboard/home',
       },
       {
         path: '**',
         pathMatch: 'full',
-        redirectTo: '/dashboard/announcements',
+        redirectTo: '/dashboard/home',
       },
     ],
   },

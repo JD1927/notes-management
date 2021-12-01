@@ -76,20 +76,23 @@ export class DashboardComponent implements OnInit {
     await this.translation.useLanguage(lang);
   }
 
-  signOut(): void {
-    const options: ConfirmDialog = {
-      title: this.translation.translate('auth.sign-out'),
-      message: this.translation.translate('auth.sign-out-message'),
-      cancelText: this.translation.translate('general.cancel'),
-      confirmText: this.translation.translate('general.confirm'),
-    };
-    const dialogRef = this.confirmDialog.open(options);
-    this.confirmDialog.confirmed(dialogRef).subscribe(async (confirmed) => {
-      if (confirmed) {
-        await this.authService.signOut();
-        this.router.navigate(['/auth/sign-in']);
-      }
-    });
+  async signOut(): Promise<void> {
+    // TODO: Fix these mess :(
+    // const options: ConfirmDialog = {
+    //   title: this.translation.translate('auth.sign-out'),
+    //   message: this.translation.translate('auth.sign-out-message'),
+    //   cancelText: this.translation.translate('general.cancel'),
+    //   confirmText: this.translation.translate('general.confirm'),
+    // };
+    // const dialogRef = this.confirmDialog.open(options);
+    // this.confirmDialog.confirmed(dialogRef).subscribe(async (confirmed) => {
+    //   if (confirmed) {
+    //     await this.authService.signOut();
+    //     this.router.navigate(['/auth/sign-in']);
+    //   }
+    // });
+    await this.authService.signOut();
+    this.router.navigate(['/auth/sign-in']);
   }
 
   onSelectedOption(): void {

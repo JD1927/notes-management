@@ -57,12 +57,12 @@ export class SignInComponent implements OnInit {
       .toPromise();
     this.isLoading = false;
 
-    if (!user) {
-      this.hasFragmentedUser = true;
-      return;
-    }
     if (!credentials) {
       this.hasSignInError = true;
+      return;
+    }
+    if (!user) {
+      this.hasFragmentedUser = true;
       return;
     }
     const hasRole = [...Object.values(user.roles)].some(

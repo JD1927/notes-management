@@ -27,12 +27,12 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/dashboard/announcements',
+    redirectTo: '/dashboard/home',
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/dashboard/announcements',
+    redirectTo: '/dashboard/home',
   },
 ];
 
