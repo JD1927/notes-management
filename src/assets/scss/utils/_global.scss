@@ -1,4 +1,4 @@
-@use "~@angular/material" as mat;
+@use "@angular/material" as mat;
 
 $error-color: #cf6679;
 $light-dark: map-get(mat.$dark-theme-background-palette, "background");
