@@ -2,41 +2,43 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav color="accent" #drawer class="sidenav animated fade-in-left" fixedInViewport
       [attr.role]="!isDesktop ? 'dialog' : 'navigation'" [mode]="!isDesktop ? 'over' : 'side'" [opened]="isDesktop">
-      <mat-toolbar>
-        {{ 'general.app-name' | translate }}
+      <mat-toolbar class="toolbar-app-name">
+        <img src="./../../assets/images/notes.png" alt="notes-logo">
+        <div>{{ 'general.app-name' | translate }}</div>
       </mat-toolbar>
       <mat-nav-list>
         <mat-list>
-          <div *ngIf="isLoading" class="overlay-loader">
-            <mat-progress-spinner diameter="50" color="accent" mode="indeterminate">
-            </mat-progress-spinner>
-          </div>
           <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/dashboard/home/']"
             routerLinkActive="router-link-active">
+            <mat-icon class="list-option-icon">campaign</mat-icon>
             {{ 'dashboard.announcements' | translate }}
           </a>
           <mat-divider></mat-divider>
           <ng-template [ngIf]="isResident">
             <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/dashboard/notes']"
               routerLinkActive="router-link-active">
+              <mat-icon class="list-option-icon">text_snippet</mat-icon>
               {{ 'dashboard.notes' | translate }}
             </a>
           </ng-template>
           <ng-template [ngIf]="isGuard">
             <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/dashboard/notes/apartment']"
               routerLinkActive="router-link-active">
+              <mat-icon class="list-option-icon">text_snippet</mat-icon>
               {{ 'dashboard.notes-by-apartment' | translate }}
             </a>
           </ng-template>
           <ng-template [ngIf]="isAdmin">
             <a *ngIf="isDesktop && isDesktopDevice" mat-list-item (click)="onSelectedOption()"
               [routerLink]="['/dashboard/apartments']" routerLinkActive="router-link-active">
+              <mat-icon class="list-option-icon">apartment</mat-icon>
               {{ 'dashboard.apartments' | translate }}
             </a>
           </ng-template>
           <ng-template [ngIf]="isAdmin">
             <a *ngIf="isDesktop && isDesktopDevice" mat-list-item (click)="onSelectedOption()"
               [routerLink]="['/dashboard/users']" routerLinkActive="router-link-active">
+              <mat-icon class="list-option-icon">admin_panel_settings</mat-icon>
               {{ 'dashboard.users' | translate }}
             </a>
           </ng-template>

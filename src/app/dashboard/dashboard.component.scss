@@ -30,3 +30,17 @@
     display: block;
   }
 }
+
+.toolbar-app-name {
+  font-family: "Poppins";
+  display: flex;
+  gap: 10px;
+
+  img {
+    width: 25px;
+  }
+}
+
+.list-option-icon {
+  margin-right: 10px;
+}

@@ -19,7 +19,6 @@ export class DashboardComponent implements OnInit {
   @ViewChild('drawer') drawer!: MatDrawer;
 
   isDesktop!: boolean;
-  isLoading!: boolean;
   isDesktopDevice!: boolean;
   isDesktop$: Subscription = new Subscription();
   user!: any;
@@ -51,7 +50,6 @@ export class DashboardComponent implements OnInit {
   }
 
   async handleUserOptions(): Promise<void> {
-    this.isLoading = true;
     const resident: Roles = {
       isResident: true,
       isSuperAdmin: true,
@@ -67,7 +65,6 @@ export class DashboardComponent implements OnInit {
     this.isResident = await this.authService.checkUserRole(resident);
     this.isGuard = await this.authService.checkUserRole(guard);
     this.isAdmin = await this.authService.checkUserRole(admin);
-    this.isLoading = false;
   }
 
   async onSwitchLanguage(): Promise<void> {
@@ -77,22 +74,19 @@ export class DashboardComponent implements OnInit {
   }
 
   async signOut(): Promise<void> {
-    // TODO: Fix these mess :(
-    // const options: ConfirmDialog = {
-    //   title: this.translation.translate('auth.sign-out'),
-    //   message: this.translation.translate('auth.sign-out-message'),
-    //   cancelText: this.translation.translate('general.cancel'),
-    //   confirmText: this.translation.translate('general.confirm'),
-    // };
-    // const dialogRef = this.confirmDialog.open(options);
-    // this.confirmDialog.confirmed(dialogRef).subscribe(async (confirmed) => {
-    //   if (confirmed) {
-    //     await this.authService.signOut();
-    //     this.router.navigate(['/auth/sign-in']);
-    //   }
-    // });
-    await this.authService.signOut();
-    this.router.navigate(['/auth/sign-in']);
+    const options: ConfirmDialog = {
+      title: this.translation.translate('auth.sign-out'),
+      message: this.translation.translate('auth.sign-out-message'),
+      cancelText: this.translation.translate('general.cancel'),
+      confirmText: this.translation.translate('general.confirm'),
+    };
+    const dialogRef = this.confirmDialog.open(options);
+    this.confirmDialog.confirmed(dialogRef).subscribe(async (confirmed) => {
+      if (confirmed) {
+        await this.authService.signOut();
+        this.router.navigate(['/auth/sign-in']);
+      }
+    });
   }
 
   onSelectedOption(): void {
