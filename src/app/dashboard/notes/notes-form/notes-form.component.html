@@ -53,6 +53,7 @@
       </button>
       <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">
         {{ (note ? 'notes.update' : 'notes.add') | translate }}
+        <mat-icon inline=true>{{ note ? 'edit' : 'add_circle_outline' }}</mat-icon>
       </button>
     </div>
   </form>
