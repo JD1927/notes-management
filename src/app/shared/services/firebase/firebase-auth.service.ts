@@ -107,7 +107,6 @@ export class FirebaseAuthService extends BaseService<User> {
     const userRoles = { ...user.roles };
     rolesKeys.forEach((role: string) => {
       if (userRoles[role as keyof Roles] === true) {
-        console.log(userRoles[role as keyof Roles]);
         result = true;
       }
     });
