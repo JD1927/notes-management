@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nm-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+	selector: 'nm-users',
+	templateUrl: './users.component.html',
+	styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }

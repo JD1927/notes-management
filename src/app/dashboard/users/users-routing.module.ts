@@ -5,29 +5,29 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UsersComponent } from './users.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UsersComponent,
-    children: [
-      {
-        path: 'list',
-        component: UsersListComponent,
-      },
-      {
-        path: 'form/:id',
-        component: UsersFormComponent,
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/dashboard/users/list',
-      },
-    ],
-  },
+	{
+		path: '',
+		component: UsersComponent,
+		children: [
+			{
+				path: 'list',
+				component: UsersListComponent,
+			},
+			{
+				path: 'form/:id',
+				component: UsersFormComponent,
+			},
+			{
+				path: '',
+				pathMatch: 'full',
+				redirectTo: '/dashboard/users/list',
+			},
+		],
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
 export class UsersRoutingModule {}

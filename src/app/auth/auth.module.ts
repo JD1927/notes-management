@@ -18,31 +18,29 @@ import { SignUpSuccessComponent } from './sign-up-success/sign-up-success.compon
 import { ForgottenPasswordComponent } from './forgotten-password/forgotten-password.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-
-
 @NgModule({
-  declarations: [
-    AuthComponent,
-    SignInComponent,
-    SignUpComponent,
-    SignUpSuccessComponent,
-    ForgottenPasswordComponent
-  ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    InternationalizationModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatInputModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    MatSnackBarModule,
-    SharedModule
-  ]
+	declarations: [
+		AuthComponent,
+		SignInComponent,
+		SignUpComponent,
+		SignUpSuccessComponent,
+		ForgottenPasswordComponent,
+	],
+	imports: [
+		CommonModule,
+		AuthRoutingModule,
+		InternationalizationModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatCardModule,
+		MatButtonModule,
+		MatInputModule,
+		MatDialogModule,
+		MatFormFieldModule,
+		MatIconModule,
+		MatProgressSpinnerModule,
+		MatSnackBarModule,
+		SharedModule,
+	],
 })
-export class AuthModule { }
+export class AuthModule {}

@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nm-apartments',
-  templateUrl: './apartments.component.html',
-  styleUrls: ['./apartments.component.scss']
+	selector: 'nm-apartments',
+	templateUrl: './apartments.component.html',
+	styleUrls: ['./apartments.component.scss'],
 })
 export class ApartmentsComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }

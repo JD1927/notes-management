@@ -6,48 +6,48 @@ import { ApartmentsListComponent } from './apartments-list/apartments-list.compo
 import { ApartmentsComponent } from './apartments.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ApartmentsComponent,
-    children: [
-      {
-        path: 'list',
-        component: ApartmentsListComponent,
-        canActivate: [RoleGuard],
-        data: {
-          isAdmin: true,
-          isSuperAdmin: true,
-        },
-      },
-      {
-        path: 'form',
-        component: ApartmentsFormComponent,
-        canActivate: [RoleGuard],
-        data: {
-          isAdmin: true,
-          isSuperAdmin: true,
-        },
-      },
-      {
-        path: 'form/:id',
-        component: ApartmentsFormComponent,
-        canActivate: [RoleGuard],
-        data: {
-          isAdmin: true,
-          isSuperAdmin: true,
-        },
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/dashboard/apartments/list',
-      },
-    ],
-  },
+	{
+		path: '',
+		component: ApartmentsComponent,
+		children: [
+			{
+				path: 'list',
+				component: ApartmentsListComponent,
+				canActivate: [RoleGuard],
+				data: {
+					isAdmin: true,
+					isSuperAdmin: true,
+				},
+			},
+			{
+				path: 'form',
+				component: ApartmentsFormComponent,
+				canActivate: [RoleGuard],
+				data: {
+					isAdmin: true,
+					isSuperAdmin: true,
+				},
+			},
+			{
+				path: 'form/:id',
+				component: ApartmentsFormComponent,
+				canActivate: [RoleGuard],
+				data: {
+					isAdmin: true,
+					isSuperAdmin: true,
+				},
+			},
+			{
+				path: '',
+				pathMatch: 'full',
+				redirectTo: '/dashboard/apartments/list',
+			},
+		],
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
 export class ApartmentsRoutingModule {}

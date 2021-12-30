@@ -11,87 +11,87 @@ import { TranslationService } from '../shared/services/translation/translation.s
 import { isDesktopDevice } from '../shared/utils/utils';
 
 @Component({
-  selector: 'nm-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+	selector: 'nm-dashboard',
+	templateUrl: './dashboard.component.html',
+	styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild('drawer') drawer!: MatDrawer;
+	@ViewChild('drawer') drawer!: MatDrawer;
 
-  isDesktop!: boolean;
-  isDesktopDevice!: boolean;
-  isDesktop$: Subscription = new Subscription();
-  user!: any;
-  user$: Observable<any> = this.authService.auth.user;
-  isResident!: boolean;
-  isGuard!: boolean;
-  isAdmin!: boolean;
+	isDesktop!: boolean;
+	isDesktopDevice!: boolean;
+	isDesktop$: Subscription = new Subscription();
+	user!: any;
+	user$: Observable<any> = this.authService.auth.user;
+	isResident!: boolean;
+	isGuard!: boolean;
+	isAdmin!: boolean;
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    public translation: TranslationService,
-    private authService: FirebaseAuthService,
-    private confirmDialog: ConfirmDialogService,
-    private router: Router
-  ) {}
+	constructor(
+		private breakpointObserver: BreakpointObserver,
+		public translation: TranslationService,
+		private authService: FirebaseAuthService,
+		private confirmDialog: ConfirmDialogService,
+		private router: Router,
+	) {}
 
-  async ngOnInit(): Promise<void> {
-    this.handleDesktopDevice();
-    await this.handleUserOptions();
-  }
+	async ngOnInit(): Promise<void> {
+		this.handleDesktopDevice();
+		await this.handleUserOptions();
+	}
 
-  handleDesktopDevice(): void {
-    this.isDesktop$ = this.breakpointObserver
-      .observe(['(min-width: 992px)'])
-      .subscribe((result) => {
-        this.isDesktopDevice = isDesktopDevice();
-        this.isDesktop = result.matches;
-      });
-  }
+	handleDesktopDevice(): void {
+		this.isDesktop$ = this.breakpointObserver
+			.observe(['(min-width: 992px)'])
+			.subscribe((result) => {
+				this.isDesktopDevice = isDesktopDevice();
+				this.isDesktop = result.matches;
+			});
+	}
 
-  async handleUserOptions(): Promise<void> {
-    const resident: Roles = {
-      isResident: true,
-      isSuperAdmin: true,
-    };
-    const guard: Roles = {
-      isGuard: true,
-      isSuperAdmin: true,
-    };
-    const admin: Roles = {
-      isAdmin: true,
-      isSuperAdmin: true,
-    };
-    this.isResident = await this.authService.checkUserRole(resident);
-    this.isGuard = await this.authService.checkUserRole(guard);
-    this.isAdmin = await this.authService.checkUserRole(admin);
-  }
+	async handleUserOptions(): Promise<void> {
+		const resident: Roles = {
+			isResident: true,
+			isSuperAdmin: true,
+		};
+		const guard: Roles = {
+			isGuard: true,
+			isSuperAdmin: true,
+		};
+		const admin: Roles = {
+			isAdmin: true,
+			isSuperAdmin: true,
+		};
+		this.isResident = await this.authService.checkUserRole(resident);
+		this.isGuard = await this.authService.checkUserRole(guard);
+		this.isAdmin = await this.authService.checkUserRole(admin);
+	}
 
-  async onSwitchLanguage(): Promise<void> {
-    const currentLanguage = this.translation.getCurrentLanguage();
-    const lang = currentLanguage === 'es-CO' ? 'en-US' : 'es-CO';
-    await this.translation.useLanguage(lang);
-  }
+	async onSwitchLanguage(): Promise<void> {
+		const currentLanguage = this.translation.getCurrentLanguage();
+		const lang = currentLanguage === 'es-CO' ? 'en-US' : 'es-CO';
+		await this.translation.useLanguage(lang);
+	}
 
-  async signOut(): Promise<void> {
-    const options: ConfirmDialog = {
-      title: this.translation.translate('auth.sign-out'),
-      message: this.translation.translate('auth.sign-out-message'),
-      cancelText: this.translation.translate('general.cancel'),
-      confirmText: this.translation.translate('general.confirm'),
-    };
-    const dialogRef = this.confirmDialog.open(options);
-    this.confirmDialog.confirmed(dialogRef).subscribe(async (confirmed) => {
-      if (confirmed) {
-        await this.authService.signOut();
-        this.router.navigate(['/auth/sign-in']);
-      }
-    });
-  }
+	async signOut(): Promise<void> {
+		const options: ConfirmDialog = {
+			title: this.translation.translate('auth.sign-out'),
+			message: this.translation.translate('auth.sign-out-message'),
+			cancelText: this.translation.translate('general.cancel'),
+			confirmText: this.translation.translate('general.confirm'),
+		};
+		const dialogRef = this.confirmDialog.open(options);
+		this.confirmDialog.confirmed(dialogRef).subscribe(async (confirmed) => {
+			if (confirmed) {
+				await this.authService.signOut();
+				this.router.navigate(['/auth/sign-in']);
+			}
+		});
+	}
 
-  onSelectedOption(): void {
-    if (!this.isDesktop) {
-      this.drawer.close();
-    }
-  }
+	onSelectedOption(): void {
+		if (!this.isDesktop) {
+			this.drawer.close();
+		}
+	}
 }

@@ -7,12 +7,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [AnnouncementsComponent],
-  imports: [
-    CommonModule,
-    AnnouncementsRoutingModule,
-    SharedModule,
-    MatCardModule,
-  ],
+	declarations: [AnnouncementsComponent],
+	imports: [
+		CommonModule,
+		AnnouncementsRoutingModule,
+		SharedModule,
+		MatCardModule,
+	],
 })
 export class AnnouncementsModule {}

@@ -2,15 +2,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-  MomentDateAdapter,
+	MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+	MomentDateAdapter,
 } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
+	DateAdapter,
+	MAT_DATE_FORMATS,
+	MAT_DATE_LOCALE,
 } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,47 +28,47 @@ import { NotesApartmentComponent } from './notes-apartment/notes-apartment.compo
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 export const FORMAT = {
-  parse: {
-    dateInput: 'DD/MM/YYYY',
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
+	parse: {
+		dateInput: 'DD/MM/YYYY',
+	},
+	display: {
+		dateInput: 'DD/MM/YYYY',
+		monthYearLabel: 'MMM YYYY',
+		dateA11yLabel: 'LL',
+		monthYearA11yLabel: 'MMMM YYYY',
+	},
 };
 @NgModule({
-  declarations: [
-    NotesComponent,
-    NotesListComponent,
-    NotesFormComponent,
-    NotesApartmentComponent,
-  ],
-  imports: [
-    CommonModule,
-    NotesRoutingModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatTooltipModule,
-    FormsModule,
-    InternationalizationModule,
-    SharedModule,
-  ],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-    { provide: MAT_DATE_FORMATS, useValue: FORMAT },
-  ],
+	declarations: [
+		NotesComponent,
+		NotesListComponent,
+		NotesFormComponent,
+		NotesApartmentComponent,
+	],
+	imports: [
+		CommonModule,
+		NotesRoutingModule,
+		MatInputModule,
+		MatButtonModule,
+		MatIconModule,
+		MatFormFieldModule,
+		MatProgressSpinnerModule,
+		MatSelectModule,
+		MatCardModule,
+		ReactiveFormsModule,
+		MatDatepickerModule,
+		MatTooltipModule,
+		FormsModule,
+		InternationalizationModule,
+		SharedModule,
+	],
+	providers: [
+		{
+			provide: DateAdapter,
+			useClass: MomentDateAdapter,
+			deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+		},
+		{ provide: MAT_DATE_FORMATS, useValue: FORMAT },
+	],
 })
 export class NotesModule {}

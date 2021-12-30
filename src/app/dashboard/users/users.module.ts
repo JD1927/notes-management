@@ -19,37 +19,32 @@ import { UsersFormComponent } from './users-form/users-form.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-  declarations: [
-    UsersComponent,
-    UsersListComponent,
-    UsersFormComponent
-  ],
-  imports: [
-    CommonModule,
-    UsersRoutingModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatCardModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatTableModule,
-    MatSlideToggleModule,
-    MatDividerModule,
-    MatListModule,
-    InternationalizationModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule,
-  ]
+	declarations: [UsersComponent, UsersListComponent, UsersFormComponent],
+	imports: [
+		CommonModule,
+		UsersRoutingModule,
+		MatInputModule,
+		MatButtonModule,
+		MatIconModule,
+		MatFormFieldModule,
+		MatProgressSpinnerModule,
+		MatSelectModule,
+		MatDatepickerModule,
+		MatCardModule,
+		MatSortModule,
+		MatPaginatorModule,
+		MatTableModule,
+		MatSlideToggleModule,
+		MatDividerModule,
+		MatListModule,
+		InternationalizationModule,
+		FormsModule,
+		ReactiveFormsModule,
+		SharedModule,
+	],
 })
-export class UsersModule { }
+export class UsersModule {}

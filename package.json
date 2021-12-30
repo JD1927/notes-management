@@ -7,7 +7,8 @@
     "hmr": "ng serve --hmr",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "private": true,
   "dependencies": {
@@ -57,6 +58,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "open": "^7.0.3",
+    "prettier": "2.5.1",
     "typescript": "~4.5.4"
   },
   "author": "Juan David Aguirre Córdoba"

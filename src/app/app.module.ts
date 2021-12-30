@@ -25,42 +25,42 @@ registerLocaleData(localeCO, 'es-CO');
 registerLocaleData(localeEN, 'en-US');
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '../assets/locales/', '.json');
+	return new TranslateHttpLoader(http, '../assets/locales/', '.json');
 }
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig), // Firebase SETUP
-    AngularFireAuthModule, // Firebase AUTH
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000',
-    }), // PWA
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
-    EffectsModule.forRoot([]),
-    BrowserAnimationsModule,
-    LayoutModule,
-    HttpClientModule,
-    InternationalizationModule.forRoot({ locale_id: 'es-CO' }), // initializing with default language: en-US
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }), // TRANSLATE SERVICE
-  ],
-  providers: [AngularFirestore],
-  bootstrap: [AppComponent],
+	declarations: [AppComponent],
+	imports: [
+		BrowserModule,
+		RouterModule,
+		AppRoutingModule,
+		AngularFireModule.initializeApp(environment.firebaseConfig), // Firebase SETUP
+		AngularFireAuthModule, // Firebase AUTH
+		ServiceWorkerModule.register('ngsw-worker.js', {
+			enabled: environment.production,
+			// Register the ServiceWorker as soon as the app is stable
+			// or after 30 seconds (whichever comes first).
+			registrationStrategy: 'registerWhenStable:30000',
+		}), // PWA
+		StoreModule.forRoot({}, {}),
+		StoreDevtoolsModule.instrument({
+			maxAge: 25,
+			logOnly: environment.production,
+		}),
+		EffectsModule.forRoot([]),
+		BrowserAnimationsModule,
+		LayoutModule,
+		HttpClientModule,
+		InternationalizationModule.forRoot({ locale_id: 'es-CO' }), // initializing with default language: en-US
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient],
+			},
+		}), // TRANSLATE SERVICE
+	],
+	providers: [AngularFirestore],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

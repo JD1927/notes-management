@@ -20,29 +20,29 @@ import { ApartmentsListComponent } from './apartments-list/apartments-list.compo
 import { ApartmentsFormComponent } from './apartments-form/apartments-form.component';
 
 @NgModule({
-  declarations: [
-    ApartmentsComponent,
-    ApartmentsListComponent,
-    ApartmentsFormComponent
-  ],
-  imports: [
-    CommonModule,
-    ApartmentsRoutingModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatCardModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatTableModule,
-    InternationalizationModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule,
-  ]
+	declarations: [
+		ApartmentsComponent,
+		ApartmentsListComponent,
+		ApartmentsFormComponent,
+	],
+	imports: [
+		CommonModule,
+		ApartmentsRoutingModule,
+		MatInputModule,
+		MatButtonModule,
+		MatIconModule,
+		MatFormFieldModule,
+		MatProgressSpinnerModule,
+		MatSelectModule,
+		MatDatepickerModule,
+		MatCardModule,
+		MatSortModule,
+		MatPaginatorModule,
+		MatTableModule,
+		InternationalizationModule,
+		FormsModule,
+		ReactiveFormsModule,
+		SharedModule,
+	],
 })
-export class ApartmentsModule { }
+export class ApartmentsModule {}

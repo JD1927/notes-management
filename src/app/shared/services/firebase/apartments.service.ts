@@ -4,11 +4,10 @@ import { Apartment } from '../../models/apartments.model';
 import { BaseService } from './base.service';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class ApartmentsService extends BaseService<Apartment> {
-
-  constructor(afs: AngularFirestore) {
-    super('apartments', afs);
-  }
+	constructor(afs: AngularFirestore) {
+		super('apartments', afs);
+	}
 }

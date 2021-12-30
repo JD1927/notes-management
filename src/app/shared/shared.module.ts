@@ -7,23 +7,15 @@ import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogService } from './services/dialog/confirm-dialog.service';
 
-
 @NgModule({
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    InternationalizationModule,
-  ],
-  declarations: [
-    ConfirmDialogComponent,
-  ],
-  exports: [
-    ConfirmDialogComponent,
-  ],
-  providers: [
-    ConfirmDialogService,
-    TimeFormatPipe
-  ]
+	imports: [
+		CommonModule,
+		MatDialogModule,
+		MatButtonModule,
+		InternationalizationModule,
+	],
+	declarations: [ConfirmDialogComponent],
+	exports: [ConfirmDialogComponent],
+	providers: [ConfirmDialogService, TimeFormatPipe],
 })
-export class SharedModule { }
+export class SharedModule {}

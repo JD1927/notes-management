@@ -7,37 +7,37 @@ import { SignUpSuccessComponent } from './sign-up-success/sign-up-success.compon
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AuthComponent,
-    children: [
-      {
-        path: 'sign-in',
-        component: SignInComponent,
-      },
-      {
-        path: 'sign-up',
-        component: SignUpComponent,
-      },
-      {
-        path: 'sign-up-success',
-        component: SignUpSuccessComponent,
-      },
-      {
-        path: 'forgotten-password',
-        component: ForgottenPasswordComponent,
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/sign-in'
-      },
-    ]
-  }
+	{
+		path: '',
+		component: AuthComponent,
+		children: [
+			{
+				path: 'sign-in',
+				component: SignInComponent,
+			},
+			{
+				path: 'sign-up',
+				component: SignUpComponent,
+			},
+			{
+				path: 'sign-up-success',
+				component: SignUpSuccessComponent,
+			},
+			{
+				path: 'forgotten-password',
+				component: ForgottenPasswordComponent,
+			},
+			{
+				path: '',
+				pathMatch: 'full',
+				redirectTo: '/sign-in',
+			},
+		],
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}

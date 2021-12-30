@@ -1,42 +1,52 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Note } from '../../models/notes.model';
 import { BaseService } from './base.service';
-import * as moment from 'moment';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class NotesService extends BaseService<Note> {
+	_notes$: Subscription = new Subscription();
 
-  _notes$: Subscription = new Subscription();
+	constructor(afs: AngularFirestore) {
+		super('notes', afs);
+	}
 
-  constructor(afs: AngularFirestore) {
-    super('notes', afs);
-  }
+	getNotesByApartment(aptoID: string): Observable<Note[]> {
+		const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
+		return this.afs
+			.collection<Note>('notes', (ref) =>
+				ref
+					.where('aptoID', '==', aptoID)
+					.where('createdAt', '>=', createdAt.getTime()),
+			)
+			.valueChanges();
+	}
 
-  getNotesByApartment(aptoID: string): Observable<Note[]> {
-    const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
-    return this.afs.collection<Note>(
-      'notes', ref => ref.where('aptoID', '==', aptoID).where('createdAt', '>=', createdAt.getTime())
-    ).valueChanges();
-  }
+	getNotesByUser(userID: string): Observable<Note[]> {
+		const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
+		return this.afs
+			.collection<Note>('notes', (ref) =>
+				ref
+					.where('userID', '==', userID)
+					.where('createdAt', '>=', createdAt.getTime()),
+			)
+			.valueChanges();
+	}
 
-  getNotesByUser(userID: string): Observable<Note[]> {
-    const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
-    return this.afs.collection<Note>(
-      'notes', ref => ref.where('userID', '==', userID).where('createdAt', '>=', createdAt.getTime())
-    ).valueChanges();
-  }
-
-  async deleteNotesByApartment(aptoID: string): Promise<void> {
-    const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
-    const notesRef = await this.afs.collection<Note>(
-      'notes',
-      ref => ref.where('aptoID', '==', aptoID).where('createdAt', '<', createdAt.getTime()),
-    ).get().toPromise();
-    notesRef.docs.forEach(doc => this.delete(doc.id));
-  }
+	async deleteNotesByApartment(aptoID: string): Promise<void> {
+		const createdAt: Date = moment().hours(0).minutes(0).seconds(0).toDate();
+		const notesRef = await this.afs
+			.collection<Note>('notes', (ref) =>
+				ref
+					.where('aptoID', '==', aptoID)
+					.where('createdAt', '<', createdAt.getTime()),
+			)
+			.get()
+			.toPromise();
+		notesRef.docs.forEach((doc) => this.delete(doc.id));
+	}
 }

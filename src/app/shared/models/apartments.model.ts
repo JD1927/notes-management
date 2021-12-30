@@ -1,4 +1,4 @@
 export interface Apartment {
-  id: string;
-  aptoNumber: string;
+	id: string;
+	aptoNumber: string;
 }

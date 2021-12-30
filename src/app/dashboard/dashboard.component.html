@@ -17,14 +17,14 @@
           <ng-template [ngIf]="isResident">
             <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/dashboard/notes']"
               routerLinkActive="router-link-active">
-              <mat-icon class="list-option-icon">text_snippet</mat-icon>
+              <mat-icon class="list-option-icon">sticky_note_2</mat-icon>
               {{ 'dashboard.notes' | translate }}
             </a>
           </ng-template>
           <ng-template [ngIf]="isGuard">
             <a mat-list-item (click)="onSelectedOption()" [routerLink]="['/dashboard/notes/apartment']"
               routerLinkActive="router-link-active">
-              <mat-icon class="list-option-icon">text_snippet</mat-icon>
+              <mat-icon class="list-option-icon">sticky_note_2</mat-icon>
               {{ 'dashboard.notes-by-apartment' | translate }}
             </a>
           </ng-template>
