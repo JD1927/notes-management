@@ -78,7 +78,7 @@
     "update": "UPDATE APARTMENT",
     "delete-title": "DELETE APARTMENT",
     "delete-message": "Are you sure you want to delete this apartment?",
-    "input-apto": "Apartment Number",
+    "input-apto": "Apartment's number",
     "form-title": "Apartments Form"
   },
   "users": {

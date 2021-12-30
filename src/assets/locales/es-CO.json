@@ -78,7 +78,7 @@
     "update": "ACTUALIZAR APARTAMENTO",
     "delete-title": "ELIMINAR APARTAMENTO",
     "delete-message": "¿Estás seguro que quieres eliminar este apartamento?",
-    "input-apto": "Número de Apartamento",
+    "input-apto": "Número de apartamento",
     "form-title": "Formulario de Apartamentos"
   },
   "users": {
