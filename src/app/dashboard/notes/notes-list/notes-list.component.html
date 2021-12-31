@@ -13,7 +13,7 @@
     </div>
   </div>
   <hr style="margin-bottom: 40px" />
-  <div class="notes animated fade-in-down">
+  <div class="notes animated fade-in-down" data-animation-delay=".2">
     <ng-template [ngIf]="notes?.length !== 0 && user?.aptoID !== ''">
       <mat-card class="notes__card" *ngFor="let note of notes">
         <div class="notes__card-container">
@@ -26,7 +26,7 @@
           <button [matTooltip]="translation.translate('notes.edit-note-tooltip')" (click)="onEditNote(note)"
             class="notes__card-opt-left" color="accent" type="button" aria-label="Edit note" mat-mini-fab>
             <mat-icon aria-label="edit">
-              edit
+              edit_note
             </mat-icon>
           </button>
           <div class="notes__card-header">

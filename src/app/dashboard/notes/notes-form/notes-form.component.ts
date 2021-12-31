@@ -1,3 +1,4 @@
+import { first } from 'rxjs/operators';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -24,6 +25,8 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 	isDesktop!: boolean;
 	user!: User;
 	note!: Note;
+	minDateValue!: Moment;
+	maxDateValue!: Moment;
 	isDesktop$: Subscription = new Subscription();
 	_users$: Subscription = new Subscription();
 	_route$: Subscription = new Subscription();
@@ -46,6 +49,7 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 		this.getParameters();
 		this.checkDesktopDevice();
 		this.getCurrentUser();
+		this.generateDateRanges();
 	}
 
 	ngOnDestroy(): void {
@@ -54,22 +58,25 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 		this._route$.unsubscribe();
 	}
 
+	generateDateRanges(): void {
+		this.minDateValue = moment();
+		this.maxDateValue = moment().add(1, 'M');
+	}
+
 	getParameters(): void {
-		this._route$ = this.route.params.subscribe((params) => {
-			this.isLoading = true;
-			this.handleNoteID(params?.id);
+		this._route$ = this.route.params.subscribe(async (params) => {
+			await this.handleNoteID(params?.id);
 		});
 	}
 
-	handleNoteID(id: string): void {
+	async handleNoteID(id: string): Promise<void> {
 		if (id === undefined) {
-			this.isLoading = false;
 			return;
 		}
-		this.noteService.get(id).subscribe((note) => {
-			this.setFormFields(note);
-			this.isLoading = false;
-		});
+		this.isLoading = true;
+		const note = await this.noteService.get(id).pipe(first()).toPromise();
+		this.setFormFields(note);
+		this.isLoading = false;
 	}
 
 	setFormFields(note: Note): void {
@@ -82,21 +89,20 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 	}
 
 	getCurrentUser(): void {
-		this.isLoading = true;
-		this._users$ = this.users.auth.authState.subscribe((userRef) => {
-			this.getUserFromFirestore(userRef?.uid as string);
+		this._users$ = this.users.auth.authState.subscribe(async (userRef) => {
+			await this.getUserFromFirestore(userRef?.uid as string);
 		});
 	}
 
-	getUserFromFirestore(uid: string): void {
-		this.users.get(uid).subscribe((user) => {
-			if (!user || user.aptoID === '') {
-				this.router.navigate(['/dashboard/notes']);
-				return;
-			}
-			this.user = { ...user };
-			this.isLoading = false;
-		});
+	async getUserFromFirestore(uid: string): Promise<void> {
+		this.isLoading = true;
+		const user = await this.users.get(uid).pipe(first()).toPromise();
+		if (!user || user.aptoID === '') {
+			this.router.navigate(['/dashboard/notes']);
+			return;
+		}
+		this.isLoading = false;
+		this.user = { ...user };
 	}
 
 	setLocale() {

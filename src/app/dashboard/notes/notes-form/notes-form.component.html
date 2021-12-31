@@ -31,7 +31,7 @@
 
     <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'notes.date' | translate }}</mat-label>
-      <input matInput formControlName="date" [matDatepicker]="datepicker">
+      <input matInput formControlName="date" [matDatepicker]="datepicker" [min]="minDateValue" [max]="maxDateValue">
       <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
       <mat-datepicker [touchUi]="isDesktop ? false : true" #datepicker></mat-datepicker>
       <mat-error *ngIf="form.controls['date'].hasError('required')">
@@ -53,7 +53,7 @@
       </button>
       <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">
         {{ (note ? 'notes.update' : 'notes.add') | translate }}
-        <mat-icon inline=true>{{ note ? 'edit' : 'add_circle_outline' }}</mat-icon>
+        <mat-icon inline=true>{{ note ? 'edit_note' : 'add_circle_outline' }}</mat-icon>
       </button>
     </div>
   </form>

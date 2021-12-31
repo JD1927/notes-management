@@ -21,7 +21,7 @@ export class NotesService extends BaseService<Note> {
 			.collection<Note>('notes', (ref) =>
 				ref
 					.where('aptoID', '==', aptoID)
-					.where('createdAt', '>=', createdAt.getTime()),
+					.where('dateAt', '>=', createdAt.getTime()),
 			)
 			.valueChanges();
 	}
@@ -32,7 +32,7 @@ export class NotesService extends BaseService<Note> {
 			.collection<Note>('notes', (ref) =>
 				ref
 					.where('userID', '==', userID)
-					.where('createdAt', '>=', createdAt.getTime()),
+					.where('dateAt', '>=', createdAt.getTime()),
 			)
 			.valueChanges();
 	}
@@ -43,7 +43,7 @@ export class NotesService extends BaseService<Note> {
 			.collection<Note>('notes', (ref) =>
 				ref
 					.where('aptoID', '==', aptoID)
-					.where('createdAt', '<', createdAt.getTime()),
+					.where('dateAt', '<', createdAt.getTime()),
 			)
 			.get()
 			.toPromise();
