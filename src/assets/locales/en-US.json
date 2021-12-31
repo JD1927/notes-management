@@ -24,6 +24,7 @@
   "auth": {
     "sign-in-title": "SIGN IN",
     "sign-up-title": "SIGN UP",
+    "name": "Name",
     "email": "Email",
     "password": "Password",
     "phone": "Phone number",

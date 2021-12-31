@@ -4,7 +4,7 @@
     "confirm": "CONFIRMAR",
     "send": "ENVIAR",
     "app-name": "Mis Notas",
-    "welcome": "¡Bienvenido",
+    "welcome": "¡Bienvenid@",
     "resend": "REENVIAR",
     "go-to": "IR A"
   },
@@ -24,6 +24,7 @@
   "auth": {
     "sign-in-title": "INICIAR SESIÓN",
     "sign-up-title": "REGISTRARME",
+    "name": "Nombre",
     "email": "Correo electrónico",
     "password": "Contraseña",
     "phone": "Teléfono móvil",

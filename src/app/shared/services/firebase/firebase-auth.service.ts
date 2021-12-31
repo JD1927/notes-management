@@ -36,14 +36,19 @@ export class FirebaseAuthService extends BaseService<User> {
 
 	async createUserWithEmailAndPassword(request: SignUpRequest) {
 		let credentials = undefined;
+		const { name, email, password, phoneNumber } = request;
 		try {
 			credentials = await this.auth.createUserWithEmailAndPassword(
-				request.email,
-				request.password,
+				email,
+				password,
 			);
+			await credentials.user?.updateProfile({
+				displayName: name,
+			});
 			const user = {
 				...credentials.user,
-				phoneNumber: request.phoneNumber,
+				name,
+				phoneNumber,
 			};
 			await this.updateUserData(user);
 			this.sendEmailVerification();
@@ -71,7 +76,7 @@ export class FirebaseAuthService extends BaseService<User> {
 		);
 		const data: User = {
 			id: user.uid,
-			name: '',
+			name: user.name || '',
 			apartment: '',
 			email: user.email,
 			phoneNumber: user.phoneNumber,

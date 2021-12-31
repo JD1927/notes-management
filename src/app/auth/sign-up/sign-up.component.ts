@@ -39,6 +39,7 @@ export class SignUpComponent implements OnInit {
 
 	createForm(): void {
 		this.form = this.fb.group({
+			name: ['', [Validators.required]],
 			email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
 			phoneNumber: [
 				'',
@@ -60,8 +61,9 @@ export class SignUpComponent implements OnInit {
 		this.validateFormFields();
 		this.isLoading = true;
 
-		const { email, password, phoneNumber } = this.form.value;
+		const { name, email, password, phoneNumber } = this.form.value;
 		const request: SignUpRequest = {
+			name,
 			email,
 			password,
 			phoneNumber,

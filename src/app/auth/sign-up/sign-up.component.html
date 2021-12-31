@@ -1,16 +1,13 @@
 <mat-card class="mat-elevation-z3 animated fade-in-down">
   <div *ngIf="isLoading" class="overlay-loader">
-    <mat-progress-spinner
-      diameter="50"
-      color="accent"
-      mode="indeterminate">
+    <mat-progress-spinner diameter="50" color="accent" mode="indeterminate">
     </mat-progress-spinner>
   </div>
   <mat-card-header>
     <mat-icon mat-card-avatar>account_circle</mat-icon>
     <mat-card-title>{{ 'auth.sign-up-title' | translate }}</mat-card-title>
   </mat-card-header>
-  <hr style="margin-bottom: 20px"/>
+  <hr style="margin-bottom: 20px" />
   <div *ngIf="hasSignUpError" class="form-error__box">
     <div class="form-error__text">
       {{ 'error.sign-up' | translate }}
@@ -18,6 +15,15 @@
   </div>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field color="accent" class="form-field" appearance="outline">
+        <mat-label>{{ 'auth.name' | translate }}</mat-label>
+
+        <input matInput type="text" formControlName="name" autocomplete="false">
+
+        <mat-error *ngIf="form.controls['name'].hasError('required')">
+          {{ 'error.required' | translate }}
+        </mat-error>
+      </mat-form-field>
       <mat-form-field color="accent" class="form-field" appearance="outline">
         <mat-label>{{ 'auth.email' | translate }}</mat-label>
 
@@ -66,7 +72,8 @@
       <mat-form-field color="accent" class="form-field" appearance="outline">
         <mat-label>{{ 'auth.confirm-password' | translate }}</mat-label>
 
-        <input matInput [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirm" autocomplete="false">
+        <input matInput [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirm"
+          autocomplete="false">
 
         <button type="button" mat-icon-button matSuffix (click)="showConfirmPassword = !showConfirmPassword">
           <mat-icon>{{ showConfirmPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
@@ -87,11 +94,9 @@
         <button type="button" mat-raised-button [routerLink]="['/auth/sign-in']">
           {{ 'general.cancel' | translate }}
         </button>
-        <button type="submit"
-          [disabled]="!form.valid"
-          mat-raised-button
-          color="accent">
+        <button type="submit" [disabled]="!form.valid" mat-raised-button color="accent">
           {{ 'auth.sign-up-title' | translate }}
+          <mat-icon inline=true>how_to_reg</mat-icon>
         </button>
       </div>
     </form>
