@@ -61,10 +61,6 @@ export class SignInComponent implements OnInit {
 			this.hasSignInError = true;
 			return;
 		}
-		// if (!user) {
-		//   this.hasFragmentedUser = true;
-		//   return;
-		// }
 		const hasRole = [...Object.values(user.roles)].some(
 			(value) => value === true,
 		);
