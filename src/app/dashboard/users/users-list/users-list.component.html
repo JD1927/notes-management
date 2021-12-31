@@ -42,11 +42,11 @@
           <div class="table-actions">
             <button mat-flat-button [routerLink]="['/dashboard/users/form', row.id]" color="accent">
               {{ 'table.update' | translate }}
-              <mat-icon inline=true>edit</mat-icon>
+              <mat-icon inline=true>manage_accounts</mat-icon>
             </button>
             <button mat-flat-button color="warn" (click)="deleteUser(row.id, row.email)">
               {{ 'table.delete' | translate }}
-              <mat-icon inline=true>delete_outline</mat-icon>
+              <mat-icon inline=true>person_remove</mat-icon>
             </button>
           </div>
         </td>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -12,7 +13,7 @@ import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-a
 	templateUrl: './users-form.component.html',
 	styleUrls: ['./users-form.component.scss'],
 })
-export class UsersFormComponent implements OnInit {
+export class UsersFormComponent implements OnInit, OnDestroy {
 	form!: FormGroup;
 	isLoading!: boolean;
 	isDesktop$: Subscription = new Subscription();
@@ -36,6 +37,12 @@ export class UsersFormComponent implements OnInit {
 		this.getParameters();
 	}
 
+	ngOnDestroy(): void {
+		this._apartments$.unsubscribe();
+		this._route$.unsubscribe();
+		this.isDesktop$.unsubscribe();
+	}
+
 	createForm(): void {
 		this.form = this.fb.group({
 			name: ['', [Validators.maxLength(60)]],
@@ -48,20 +55,19 @@ export class UsersFormComponent implements OnInit {
 	}
 
 	getParameters(): void {
-		this._route$ = this.route.params.subscribe((params) => {
+		this._route$ = this.route.params.subscribe(async (params) => {
 			this.isLoading = true;
-			this.handleUserID(params?.id);
+			await this.handleUserID(params?.id);
 		});
 	}
 
-	handleUserID(id: string): void {
+	async handleUserID(id: string): Promise<void> {
 		if (id === undefined) {
 			this.isLoading = false;
 			return;
 		}
-		this.usersService.get(id).subscribe((user) => {
-			this.setFormValues(user);
-		});
+		const user = await this.usersService.get(id).pipe(first()).toPromise();
+		this.setFormValues(user);
 	}
 
 	setFormValues(user: User): void {
@@ -78,10 +84,8 @@ export class UsersFormComponent implements OnInit {
 	}
 
 	getApartments(): void {
-		this.isLoading = true;
 		this._apartments$ = this.aptoService.list().subscribe((res) => {
 			this.apartments = [...res];
-			this.isLoading = false;
 		});
 	}
 
@@ -112,8 +116,8 @@ export class UsersFormComponent implements OnInit {
 			},
 		};
 		const result = await this.usersService.update(item);
-		this.isLoading = false;
 		if (!result) {
+			this.isLoading = false;
 			return;
 		}
 		this.router.navigate(['/dashboard/users']);
