@@ -1,3 +1,4 @@
+import { first } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -38,24 +39,23 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
 	}
 
 	getParameters(): void {
-		this._route$ = this.route.params.subscribe((params) => {
+		this._route$ = this.route.params.subscribe(async (params) => {
 			this.isLoading = true;
-			this.handleApartmentID(params?.id);
+			await this.handleApartmentID(params?.id);
 		});
 	}
 
-	handleApartmentID(id: string): void {
+	async handleApartmentID(id: string): Promise<void> {
 		if (id === undefined) {
 			this.isLoading = false;
 			return;
 		}
-		this.aptoService.get(id).subscribe((apto) => {
-			this.apartment = { ...apto };
-			this.form.controls['aptoNumber'].setValue(apto.aptoNumber);
-			this.form.controls['parkingSpot'].setValue(apto.parkingSpot);
-			this.form.updateValueAndValidity();
-			this.isLoading = false;
-		});
+		const apto = await this.aptoService.get(id).pipe(first()).toPromise();
+		this.apartment = { ...apto };
+		this.form.controls['aptoNumber'].setValue(apto.aptoNumber);
+		this.form.controls['parkingSpot'].setValue(apto.parkingSpot);
+		this.form.updateValueAndValidity();
+		this.isLoading = false;
 	}
 
 	createForm(): void {
@@ -73,31 +73,30 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
 			return;
 		}
 		this.isLoading = true;
-		let item: Apartment = {
-			...this.form.value,
-		};
-		await this.aptoService.add(item);
+		const item: Apartment = this.getApartmentObject();
+		if (this.apartment) {
+			await this.aptoService.update(item);
+		} else {
+			await this.aptoService.add(item);
+		}
 		this.basicSnackbar.openSnackBar(
-			this.translation.translate('apartments.added'),
+			this.translation.translate(
+				`apartments.${this.apartment ? 'updated' : 'added'}`,
+			),
 		);
-		this.isLoading = false;
 		this.router.navigate(['/dashboard/apartments']);
 	}
 
-	async onUpdate(): Promise<void> {
-		if (this.form.invalid) {
-			return;
-		}
-		this.isLoading = true;
+	getApartmentObject(): Apartment {
 		let item: Apartment = {
-			...this.apartment,
 			...this.form.value,
 		};
-		await this.aptoService.update(item);
-		this.basicSnackbar.openSnackBar(
-			this.translation.translate('apartments.updated'),
-		);
-		this.isLoading = false;
-		this.router.navigate(['/dashboard/apartments']);
+		if (this.apartment) {
+			item = {
+				...this.apartment,
+				...this.form.value,
+			};
+		}
+		return { ...item };
 	}
 }

@@ -12,7 +12,7 @@
     </div>
   </div>
   <hr style="margin-bottom: 20px" />
-  <form [formGroup]="form" (ngSubmit)="apartment ? onUpdate() : onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field color="accent" class="form-field" appearance="outline">
       <mat-label>{{ 'apartments.input-apto' | translate }}</mat-label>
       <input matInput formControlName="aptoNumber" maxLength="5">
