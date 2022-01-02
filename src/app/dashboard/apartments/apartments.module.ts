@@ -14,10 +14,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { InternationalizationModule } from 'src/app/shared/modules/internationalization/internationalization.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ApartmentsFormComponent } from './apartments-form/apartments-form.component';
+import { ApartmentsListComponent } from './apartments-list/apartments-list.component';
 import { ApartmentsRoutingModule } from './apartments-routing.module';
 import { ApartmentsComponent } from './apartments.component';
-import { ApartmentsListComponent } from './apartments-list/apartments-list.component';
-import { ApartmentsFormComponent } from './apartments-form/apartments-form.component';
 
 @NgModule({
 	declarations: [

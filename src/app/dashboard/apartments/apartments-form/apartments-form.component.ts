@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Apartment } from 'src/app/shared/models/apartments.model';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
+import { BasicSnackBarService } from 'src/app/shared/services/snackbar/basic-snack-bar.service';
+import { TranslationService } from 'src/app/shared/services/translation/translation.service';
 
 @Component({
 	selector: 'nm-apartments-form',
@@ -22,6 +24,8 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
 		private router: Router,
 		private aptoService: ApartmentsService,
 		private route: ActivatedRoute,
+		private translation: TranslationService,
+		private basicSnackbar: BasicSnackBarService,
 	) {}
 
 	ngOnInit(): void {
@@ -48,6 +52,7 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
 		this.aptoService.get(id).subscribe((apto) => {
 			this.apartment = { ...apto };
 			this.form.controls['aptoNumber'].setValue(apto.aptoNumber);
+			this.form.controls['parkingSpot'].setValue(apto.parkingSpot);
 			this.form.updateValueAndValidity();
 			this.isLoading = false;
 		});
@@ -59,6 +64,7 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
 				'',
 				[Validators.required, Validators.minLength(2), Validators.maxLength(5)],
 			],
+			parkingSpot: ['', [Validators.minLength(3), Validators.maxLength(7)]],
 		});
 	}
 
@@ -71,6 +77,9 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
 			...this.form.value,
 		};
 		await this.aptoService.add(item);
+		this.basicSnackbar.openSnackBar(
+			this.translation.translate('apartments.added'),
+		);
 		this.isLoading = false;
 		this.router.navigate(['/dashboard/apartments']);
 	}
@@ -85,6 +94,9 @@ export class ApartmentsFormComponent implements OnInit, OnDestroy {
 			...this.form.value,
 		};
 		await this.aptoService.update(item);
+		this.basicSnackbar.openSnackBar(
+			this.translation.translate('apartments.updated'),
+		);
 		this.isLoading = false;
 		this.router.navigate(['/dashboard/apartments']);
 	}

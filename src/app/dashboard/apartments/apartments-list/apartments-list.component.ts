@@ -8,6 +8,7 @@ import { Apartment } from 'src/app/shared/models/apartments.model';
 import { ConfirmDialog } from 'src/app/shared/models/dialog.model';
 import { ConfirmDialogService } from 'src/app/shared/services/dialog/confirm-dialog.service';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
+import { BasicSnackBarService } from 'src/app/shared/services/snackbar/basic-snack-bar.service';
 import { TranslationService } from 'src/app/shared/services/translation/translation.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class ApartmentsListComponent implements OnInit {
 	apartments!: MatTableDataSource<Apartment>;
 	_apartments$: Subscription = new Subscription();
 	aptoSearch: FormControl = new FormControl('');
-	displayedColumns: string[] = ['id', 'aptoNumber', 'actions'];
+	displayedColumns: string[] = ['aptoNumber', 'parkingSpot', 'actions'];
 
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 	@ViewChild(MatSort) sort!: MatSort;
@@ -28,20 +29,21 @@ export class ApartmentsListComponent implements OnInit {
 	constructor(
 		private aptoService: ApartmentsService,
 		private confirmDialog: ConfirmDialogService,
-		private locale: TranslationService,
+		private translation: TranslationService,
+		private basicSnackbar: BasicSnackBarService,
 	) {
 		this.apartments = new MatTableDataSource<Apartment>([]);
 	}
 
 	ngOnInit(): void {
-		this.getUserList();
+		this.getApartmentList();
 	}
 
 	ngOnDestroy(): void {
 		this._apartments$.unsubscribe();
 	}
 
-	getUserList(): void {
+	getApartmentList(): void {
 		this.isLoading = true;
 		this._apartments$ = this.aptoService.list().subscribe((res) => {
 			this.apartments = new MatTableDataSource([...res]);
@@ -62,20 +64,23 @@ export class ApartmentsListComponent implements OnInit {
 		}
 	}
 
-	deleteUser(userID: string, email: string): void {
+	deleteApartment(aptoID: string, aptoNumber: string): void {
 		const options: ConfirmDialog = {
-			title: this.locale.translate('apartments.delete-title'),
-			message: `${this.locale.translate(
+			title: this.translation.translate('apartments.delete-title'),
+			message: `${this.translation.translate(
 				'apartments.delete-message',
-			)} "${email}"`,
-			cancelText: this.locale.translate('general.cancel'),
-			confirmText: this.locale.translate('general.confirm'),
+			)} "${aptoNumber}"`,
+			cancelText: this.translation.translate('general.cancel'),
+			confirmText: this.translation.translate('general.confirm'),
 		};
 		const dialogRef = this.confirmDialog.open(options);
 		this.confirmDialog.confirmed(dialogRef).subscribe((confirmed) => {
 			if (confirmed) {
 				this.isLoading = true;
-				this.aptoService.delete(userID);
+				this.aptoService.delete(aptoID);
+				this.basicSnackbar.openSnackBar(
+					this.translation.translate('apartments.deleted'),
+				);
 				this.isLoading = false;
 			}
 		});

@@ -21,6 +21,11 @@
       </mat-error>
     </mat-form-field>
 
+    <mat-form-field color="accent" class="form-field" appearance="outline">
+      <mat-label>{{ 'apartments.input-parking-spot' | translate }}</mat-label>
+      <input matInput formControlName="parkingSpot" maxLength="7">
+    </mat-form-field>
+
     <div class="form-actions">
       <button type="button" mat-raised-button [routerLink]="['/dashboard/apartments']">
         {{ 'general.cancel' | translate }}

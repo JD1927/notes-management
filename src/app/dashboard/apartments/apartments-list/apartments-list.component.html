@@ -23,16 +23,16 @@
   <div class="mat-elevation-z8">
     <table class="table" mat-table [dataSource]="apartments" matSort>
 
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'table.id' | translate }}</th>
-        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-      </ng-container>
-
       <!-- APARTMENT NUMBER Column -->
       <ng-container matColumnDef="aptoNumber">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'table.apartment' | translate }}</th>
-        <td mat-cell *matCellDef="let row"> {{row.aptoNumber}} </td>
+        <td mat-cell *matCellDef="let row"> {{row?.aptoNumber}} </td>
+
+      </ng-container>
+      <!-- PARKING SPOT Column -->
+      <ng-container matColumnDef="parkingSpot">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'table.parking-spot' | translate }}</th>
+        <td mat-cell *matCellDef="let row"> {{row?.parkingSpot ||'table.unassigned' | translate}} </td>
       </ng-container>
 
       <!-- ACTIONS Column -->
@@ -44,7 +44,7 @@
               {{ 'table.update' | translate }}
               <mat-icon inline=true>edit_note</mat-icon>
             </button>
-            <button mat-flat-button color="warn" (click)="deleteUser(row.id, row.aptoNumber)">
+            <button mat-flat-button color="warn" (click)="deleteApartment(row.id, row.aptoNumber)">
               {{ 'table.delete' | translate }}
               <mat-icon inline=true>delete_outline</mat-icon>
             </button>
