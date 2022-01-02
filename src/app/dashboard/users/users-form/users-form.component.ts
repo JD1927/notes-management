@@ -7,6 +7,8 @@ import { Apartment } from 'src/app/shared/models/apartments.model';
 import { User } from 'src/app/shared/models/auth.model';
 import { ApartmentsService } from 'src/app/shared/services/firebase/apartments.service';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
+import { BasicSnackBarService } from 'src/app/shared/services/snackbar/basic-snack-bar.service';
+import { TranslationService } from 'src/app/shared/services/translation/translation.service';
 
 @Component({
 	selector: 'nm-users-form',
@@ -29,6 +31,8 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 		private usersService: FirebaseAuthService,
 		private aptoService: ApartmentsService,
 		private route: ActivatedRoute,
+		private translation: TranslationService,
+		private basicSnackbar: BasicSnackBarService,
 	) {}
 
 	ngOnInit(): void {
@@ -45,7 +49,6 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 
 	createForm(): void {
 		this.form = this.fb.group({
-			name: ['', [Validators.maxLength(60)]],
 			apartment: [''],
 			isResident: [false],
 			isGuard: [false],
@@ -73,7 +76,6 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 	setFormValues(user: User): void {
 		this.user = { ...user };
 		const { roles } = user;
-		this.form.controls['name'].setValue(user.name);
 		this.form.controls['apartment'].setValue(user.aptoID);
 		this.form.controls['isResident'].setValue(roles?.isResident);
 		this.form.controls['isGuard'].setValue(roles?.isGuard);
@@ -95,7 +97,6 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 		}
 		this.isLoading = true;
 		const {
-			name,
 			apartment: aptoID,
 			isResident,
 			isGuard,
@@ -105,7 +106,6 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 		const apto = this.apartments.find((a) => a.id === aptoID);
 		const item: User = {
 			...this.user,
-			name: name || '',
 			apartment: apto?.aptoNumber || '',
 			aptoID: apto?.id || '',
 			roles: {
@@ -116,6 +116,9 @@ export class UsersFormComponent implements OnInit, OnDestroy {
 			},
 		};
 		const result = await this.usersService.update(item);
+		this.basicSnackbar.openSnackBar(
+			this.translation.translate('users.updated'),
+		);
 		if (!result) {
 			this.isLoading = false;
 			return;

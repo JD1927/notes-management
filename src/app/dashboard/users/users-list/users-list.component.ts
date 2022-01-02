@@ -8,6 +8,7 @@ import { User } from 'src/app/shared/models/auth.model';
 import { ConfirmDialog } from 'src/app/shared/models/dialog.model';
 import { ConfirmDialogService } from 'src/app/shared/services/dialog/confirm-dialog.service';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
+import { BasicSnackBarService } from 'src/app/shared/services/snackbar/basic-snack-bar.service';
 import { TranslationService } from 'src/app/shared/services/translation/translation.service';
 
 @Component({
@@ -29,6 +30,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
 		private authService: FirebaseAuthService,
 		private confirmDialog: ConfirmDialogService,
 		private translation: TranslationService,
+		private basicSnackbar: BasicSnackBarService,
 	) {
 		this.users = new MatTableDataSource<User>([]);
 	}
@@ -75,6 +77,9 @@ export class UsersListComponent implements OnInit, OnDestroy {
 			if (confirmed) {
 				this.isLoading = true;
 				this.authService.delete(userID);
+				this.basicSnackbar.openSnackBar(
+					this.translation.translate('users.deleted'),
+				);
 				this.isLoading = false;
 			}
 		});
