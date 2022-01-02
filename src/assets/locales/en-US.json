@@ -72,7 +72,10 @@
     "delete-message": "Are you sure you want to delete this note?",
     "delete-note-tooltip": "Delete note",
     "edit-note-tooltip": "Edit note",
-    "whatsapp-tooltip": "Send message to the note's owner"
+    "whatsapp-tooltip": "Send message to the note's owner",
+    "added": "Note added successfully. ✅",
+    "updated": "Note updated successfully. ✅",
+    "deleted": "Note deleted successfully. ✅"
   },
   "apartments": {
     "title": "Apartment List",
@@ -104,7 +107,9 @@
     "resident-info": "This role is applied to users who will only create notes.",
     "guard-info": "This role is applied to users who will only have access to see notes from all apartments.",
     "admin-info": "This role is applied to users who will have permissions to manage other users.",
-    "super-admin-info": "This role is applied for users who have permission throughout the application."
+    "super-admin-info": "This role is applied for users who have permission throughout the application.",
+    "updated": "User updated successfully. ✅",
+    "deleted": "User deleted successfully. ✅"
   },
   "table": {
     "no-data": "No data matching the filter",

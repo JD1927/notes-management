@@ -72,7 +72,10 @@
     "delete-message": "¿Estás seguro que quieres eliminar esta nota?",
     "delete-note-tooltip": "Eliminar nota",
     "edit-note-tooltip": "Editar nota",
-    "whatsapp-tooltip": "Enviar mensaje al dueño de la nota"
+    "whatsapp-tooltip": "Enviar mensaje al dueño de la nota",
+    "added": "Nota agregada exitosamente. ✅",
+    "updated": "Nota actualizada exitosamente. ✅",
+    "deleted": "Nota eliminada exitosamente. ✅"
   },
   "apartments": {
     "title": "Lista de Apartamentos",
@@ -104,7 +107,9 @@
     "resident-info": "Este rol se aplica para los usuarios que sólo crearán notas.",
     "guard-info": "Este rol se aplica para los usuarios que sólo tendrán acceso a ver notas de todos los apartamentos.",
     "admin-info": "Este rol se aplica para los usuarios que tendrán permisos para el manejo de otros usuarios.",
-    "super-admin-info": "Este rol se aplica para los usuarios que tienen permiso en toda la aplicación."
+    "super-admin-info": "Este rol se aplica para los usuarios que tienen permiso en toda la aplicación.",
+    "updated": "Usuario actualizado exitosamente. ✅",
+    "deleted": "Usuario eliminado exitosamente. ✅"
   },
   "table": {
     "no-data": "No hay datos que coincidan con el filtro",
