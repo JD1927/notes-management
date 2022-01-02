@@ -6,6 +6,8 @@ import { InternationalizationModule } from './modules/internationalization/inter
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogService } from './services/dialog/confirm-dialog.service';
+import { BasicSnackBarService } from './services/snackbar/basic-snack-bar.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
 	imports: [
@@ -13,9 +15,10 @@ import { ConfirmDialogService } from './services/dialog/confirm-dialog.service';
 		MatDialogModule,
 		MatButtonModule,
 		InternationalizationModule,
+		MatSnackBarModule,
 	],
 	declarations: [ConfirmDialogComponent],
 	exports: [ConfirmDialogComponent],
-	providers: [ConfirmDialogService, TimeFormatPipe],
+	providers: [ConfirmDialogService, BasicSnackBarService, TimeFormatPipe],
 })
 export class SharedModule {}
