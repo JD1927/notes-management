@@ -4,7 +4,7 @@
     </mat-progress-spinner>
   </div>
   <div class="dashboard__header">
-    <h1 class="dashboard__title">{{ 'notes.title' | translate }}</h1>
+    <h1 class="dashboard__title">{{ 'notes.title' | translate }} - {{user?.apartment}}</h1>
     <div *ngIf="user?.aptoID !== ''" class="dashboard__button">
       <button [routerLink]="['/dashboard/notes/form']" mat-raised-button color="accent">
         {{ 'notes.add' | translate }}

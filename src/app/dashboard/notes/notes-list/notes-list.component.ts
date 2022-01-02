@@ -7,6 +7,7 @@ import { Note } from 'src/app/shared/models/notes.model';
 import { ConfirmDialogService } from 'src/app/shared/services/dialog/confirm-dialog.service';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
 import { NotesService } from 'src/app/shared/services/firebase/notes.service';
+import { BasicSnackBarService } from 'src/app/shared/services/snackbar/basic-snack-bar.service';
 import { TranslationService } from 'src/app/shared/services/translation/translation.service';
 
 @Component({
@@ -27,6 +28,7 @@ export class NotesListComponent implements OnInit, OnDestroy {
 		public translation: TranslationService,
 		private confirmDialog: ConfirmDialogService,
 		private router: Router,
+		private basicSnackbar: BasicSnackBarService,
 	) {}
 
 	async ngOnInit(): Promise<void> {
@@ -73,6 +75,9 @@ export class NotesListComponent implements OnInit, OnDestroy {
 			if (confirmed) {
 				this.isLoading = true;
 				this.notesService.delete(note?.id as string);
+				this.basicSnackbar.openSnackBar(
+					this.translation.translate('notes.deleted'),
+				);
 				this.isLoading = false;
 			}
 		});

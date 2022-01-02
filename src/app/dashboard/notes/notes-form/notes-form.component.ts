@@ -13,6 +13,7 @@ import { TimeFormatPipe } from 'src/app/shared/pipes/time-format.pipe';
 import { FirebaseAuthService } from 'src/app/shared/services/firebase/firebase-auth.service';
 import { NotesService } from 'src/app/shared/services/firebase/notes.service';
 import { TranslationService } from 'src/app/shared/services/translation/translation.service';
+import { BasicSnackBarService } from 'src/app/shared/services/snackbar/basic-snack-bar.service';
 
 @Component({
 	selector: 'nm-notes-form',
@@ -41,6 +42,7 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 		private timeFormat: TimeFormatPipe,
 		private users: FirebaseAuthService,
 		private route: ActivatedRoute,
+		private basicSnackbar: BasicSnackBarService,
 	) {}
 
 	ngOnInit(): void {
@@ -141,6 +143,9 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 		} else {
 			await this.noteService.add(item);
 		}
+		this.basicSnackbar.openSnackBar(
+			this.translation.translate(`notes.${this.note ? 'updated' : 'added'}`),
+		);
 		this.router.navigate(['/dashboard/notes']);
 	}
 
