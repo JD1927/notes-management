@@ -24,7 +24,7 @@
   "auth": {
     "sign-in-title": "INICIAR SESIÓN",
     "sign-up-title": "REGISTRARME",
-    "name": "Nombre",
+    "name": "Nombre de usuario",
     "email": "Correo electrónico",
     "password": "Contraseña",
     "phone": "Teléfono móvil",
@@ -66,6 +66,7 @@
     "time": "Hora",
     "no-items": "Aún no has registrado notas.",
     "no-notes-apto": "Aún no hay notas registradas para este apartamento.",
+    "first-search-notes-apto": "Aún no has seleccionado un número de apartamento.",
     "no-apto": "Aún no tienes registrado un apartamento. Comunicate con un administrador.",
     "delete-title": "ELIMINAR NOTA",
     "delete-message": "¿Estás seguro que quieres eliminar esta nota?",
@@ -80,7 +81,11 @@
     "delete-title": "ELIMINAR APARTAMENTO",
     "delete-message": "¿Estás seguro que quieres eliminar este apartamento?",
     "input-apto": "Número de apartamento",
-    "form-title": "Formulario de Apartamentos"
+    "input-parking-spot": "Número de parqueadero asignado",
+    "form-title": "Formulario de Apartamentos",
+    "added": "Apartamento agregado exitosamente. ✅",
+    "updated": "Apartamento actualizado exitosamente. ✅",
+    "deleted": "Apartamento eliminado exitosamente. ✅"
   },
   "users": {
     "title": "Lista de Usuarios",
@@ -109,6 +114,7 @@
     "name": "NOMBRE",
     "email": "CORREO ELECTRÓNICO",
     "apartment": "APARTAMENTO",
+    "parking-spot": "PARQUEADERO",
     "role": "ROL",
     "actions": "ACCIONES",
     "update": "ACTUALIZAR",
