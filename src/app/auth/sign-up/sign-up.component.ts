@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
 
 	createForm(): void {
 		this.form = this.fb.group({
-			name: ['', [Validators.required]],
+			name: ['', [Validators.required, Validators.maxLength(60)]],
 			email: ['', [Validators.required, Validators.pattern(EMAIL_REGEX)]],
 			phoneNumber: [
 				'',
