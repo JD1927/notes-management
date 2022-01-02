@@ -51,10 +51,17 @@
         </div>
       </mat-card>
     </ng-template>
-    <ng-template [ngIf]="notes?.length === 0">
+    <ng-template [ngIf]="notes?.length === 0 && isFirstSearch">
       <mat-card class="notes__card notes__card--no-notes-apto">
         <span>
           {{ 'notes.no-notes-apto' | translate }}
+        </span>
+      </mat-card>
+    </ng-template>
+    <ng-template [ngIf]="notes?.length === 0 && !isFirstSearch">
+      <mat-card class="notes__card notes__card--no-notes-apto">
+        <span>
+          {{ 'notes.first-search-notes-apto' | translate }}
         </span>
       </mat-card>
     </ng-template>

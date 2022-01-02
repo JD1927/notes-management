@@ -22,6 +22,7 @@ export class NotesApartmentComponent implements OnInit {
 	_notes$: Subscription = new Subscription();
 	_apartments$: Subscription = new Subscription();
 	apartments: Apartment[] = [];
+	isFirstSearch!: boolean;
 
 	constructor(
 		private notesService: NotesService,
@@ -75,6 +76,7 @@ export class NotesApartmentComponent implements OnInit {
 		if (this.form.invalid) {
 			return;
 		}
+		this.isFirstSearch = true;
 		const { apartment } = this.form.value;
 		this.getNotesByApartment(apartment);
 	}

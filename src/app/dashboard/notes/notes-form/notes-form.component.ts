@@ -36,7 +36,7 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 		private noteService: NotesService,
 		private router: Router,
 		private dateAdapter: DateAdapter<Moment>,
-		private localeService: TranslationService,
+		private translation: TranslationService,
 		private breakPointObserver: BreakpointObserver,
 		private timeFormat: TimeFormatPipe,
 		private users: FirebaseAuthService,
@@ -107,8 +107,8 @@ export class NotesFormComponent implements OnInit, OnDestroy {
 
 	setLocale() {
 		this.dateAdapter.setLocale(
-			this.localeService.getCurrentLanguage() ||
-				this.localeService.getDefaultLanguage(),
+			this.translation.getCurrentLanguage() ||
+				this.translation.getDefaultLanguage(),
 		);
 	}
 
