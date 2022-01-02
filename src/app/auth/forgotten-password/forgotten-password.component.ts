@@ -18,7 +18,7 @@ export class ForgottenPasswordComponent implements OnInit {
 		private fb: FormBuilder,
 		private auth: FirebaseAuthService,
 		private snackBar: MatSnackBar,
-		private locale: TranslationService,
+		private translation: TranslationService,
 		private router: Router,
 	) {}
 
@@ -40,7 +40,7 @@ export class ForgottenPasswordComponent implements OnInit {
 		const { email } = this.form.value;
 		await this.auth.sendPasswordResetEmail(email);
 		this.isLoading = false;
-		const message = this.locale.translate('auth.password-reset-message');
+		const message = this.translation.translate('auth.password-reset-message');
 		const snackBarRef = this.snackBar.open(`${message} ${email}`, undefined, {
 			duration: 4000,
 			horizontalPosition: 'center',
