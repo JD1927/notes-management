@@ -4,17 +4,20 @@
     </mat-progress-spinner>
   </div>
   <div class="dashboard__header">
-    <h1 class="dashboard__title">{{ 'notes.title' | translate }} - {{user?.apartment}}</h1>
-    <div *ngIf="user?.aptoID !== ''" class="dashboard__button">
+    <h1 class="dashboard__title">
+      {{ 'notes.title' | translate }} - {{user?.apartment || 'table.unassigned' | translate}}
+    </h1>
+    <div *ngIf="user?.aptoID && user?.apartment" class="dashboard__button">
       <button [routerLink]="['/dashboard/notes/form']" mat-raised-button color="accent">
         {{ 'notes.add' | translate }}
         <mat-icon inline=true>add_circle_outline</mat-icon>
       </button>
     </div>
+
   </div>
   <hr style="margin-bottom: 40px" />
   <div class="notes animated fade-in-down" data-animation-delay=".2">
-    <ng-template [ngIf]="notes?.length !== 0 && user?.aptoID !== ''">
+    <ng-template [ngIf]="notes?.length !== 0 && user?.aptoID">
       <mat-card class="notes__card" *ngFor="let note of notes">
         <div class="notes__card-container">
           <button [matTooltip]="translation.translate('notes.delete-note-tooltip')" (click)="onDeleteNote(note)"
@@ -46,7 +49,7 @@
         </div>
       </mat-card>
     </ng-template>
-    <ng-template [ngIf]="notes?.length === 0 && user?.aptoID !== ''">
+    <ng-template [ngIf]="notes?.length === 0 && user?.aptoID">
       <mat-card [routerLink]="['/dashboard/notes/form']" class="notes__card notes__card--no-items">
         <span>
           {{ 'notes.no-items' | translate }} <br />
@@ -54,7 +57,7 @@
         </span>
       </mat-card>
     </ng-template>
-    <ng-template [ngIf]="notes?.length === 0 && user?.aptoID === ''">
+    <ng-template [ngIf]="notes?.length === 0 || !user?.aptoID">
       <mat-card style="cursor: not-allowed;" class="notes__card notes__card--no-notes-apto">
         <span>
           {{ 'notes.no-apto' | translate }} <br />

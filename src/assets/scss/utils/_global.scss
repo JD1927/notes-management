@@ -1,133 +1,133 @@
-@use "@angular/material" as mat;
+@use '@angular/material' as mat;
 
 $error-color: #cf6679;
-$light-dark: map-get(mat.$dark-theme-background-palette, "background");
+$light-dark: map-get(mat.$dark-theme-background-palette, 'background');
 .router-link-active {
-  font-weight: 600;
-  background-color: lighten($light-dark, 20%);
+	font-weight: 600;
+	background-color: lighten($light-dark, 20%);
 }
 
 .dashboard {
-  @include e("header") {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  @include e("title") {
-    font-size: 1.2rem;
-    @include mq-up(xs) {
-      font-size: 1.5rem;
-    }
-    @include mq-up(sm) {
-      font-size: 2rem;
-    }
-  }
-  @include e("button") {
-    margin-left: auto;
-  }
-  @include e("return-back") {
-    margin-right: 15px;
-  }
+	@include e('header') {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
+	@include e('title') {
+		font-size: 1rem;
+		@include mq-up(xs) {
+			font-size: 1.5rem;
+		}
+		@include mq-up(sm) {
+			font-size: 2rem;
+		}
+	}
+	@include e('button') {
+		margin-left: auto;
+	}
+	@include e('return-back') {
+		margin-right: 15px;
+	}
 }
 
 button,
 a {
-  &.mat-button,
-  &.mat-raised-button,
-  &.mat-flat-button,
-  &.mat-stroked-button {
-    .mat-icon {
-      vertical-align: top;
-      font-size: 1.3rem;
-    }
-  }
+	&.mat-button,
+	&.mat-raised-button,
+	&.mat-flat-button,
+	&.mat-stroked-button {
+		.mat-icon {
+			vertical-align: top;
+			font-size: 1.3rem;
+		}
+	}
 }
 
 .main-content {
-  position: relative;
-  padding: 20px;
+	position: relative;
+	padding: 20px;
 
-  @include mq-up(md) {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
-  @include mq-up(lg) {
-    margin-left: 125px;
-    margin-right: 125px;
-  }
-  @include mq-up(xl) {
-    margin-left: 200px;
-    margin-right: 200px;
-  }
+	@include mq-up(md) {
+		margin-left: 50px;
+		margin-right: 50px;
+	}
+	@include mq-up(lg) {
+		margin-left: 125px;
+		margin-right: 125px;
+	}
+	@include mq-up(xl) {
+		margin-left: 200px;
+		margin-right: 200px;
+	}
 }
 
 .form-field {
-  width: 100%;
-  margin-bottom: 15px;
+	width: 100%;
+	margin-bottom: 15px;
 }
 
 .form-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
 }
 
 .form-actions {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
 }
 
 .form-toggles {
-  display: grid;
+	display: grid;
 }
 
 .overlay-loader {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(247, 242, 242, 0.65);
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 9px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(247, 242, 242, 0.65);
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 9px;
 }
 
-input[type="time"]::-webkit-calendar-picker-indicator {
-  background: none;
+input[type='time']::-webkit-calendar-picker-indicator {
+	background: none;
 }
 
 .link {
-  color: map-get(mat.$amber-palette, A200);
+	color: map-get(mat.$amber-palette, A200);
 }
 
 .form-error {
-  @include e("box") {
-    background-color: $error-color;
-    border-radius: 5px;
-    width: 100%;
-    margin-bottom: 20px;
-  }
+	@include e('box') {
+		background-color: $error-color;
+		border-radius: 5px;
+		width: 100%;
+		margin-bottom: 20px;
+	}
 
-  @include e("text") {
-    color: black;
-    padding: 20px;
-    font-size: 1rem;
-  }
+	@include e('text') {
+		color: black;
+		padding: 20px;
+		font-size: 1rem;
+	}
 }
 
 .table {
-  width: 100%;
+	width: 100%;
 }
 
 .table-actions {
-  @extend .form-actions;
-  justify-content: flex-start;
+	@extend .form-actions;
+	justify-content: flex-start;
 }
 
 mat-sidenav {
-  transition: all 0.5s ease-in-out !important;
+	transition: all 0.5s ease-in-out !important;
 }

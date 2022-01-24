@@ -51,7 +51,7 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
         <span class="general-welcome">
-          {{ 'general.welcome' | translate }} {{ (user$ | async)?.displayName || (user$ | async)?.email }}!
+          {{ 'general.welcome' | translate }} {{ (user$ | async)?.displayName }}!
         </span>
         <div class="toolbar-config">
           <div>
